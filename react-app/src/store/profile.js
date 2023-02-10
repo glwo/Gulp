@@ -55,6 +55,9 @@ const profileReducer = (state = initialState, action) => {
         case EDIT_PROFILE:
             newState = { ...state, [action.profile.id]: action.profile }
             return newState
+
+        default:
+            return state
     }
 }
 
