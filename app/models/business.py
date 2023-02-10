@@ -16,8 +16,8 @@ class Business(db.Model):
   address = db.Column(db.String, nullable=False)
   zipcode = db.Column(db.Integer, nullable=False)
   business_type = db.Column(db.String, nullable=False)
-  opening_time = db.Column(db.Time, nullable=False)
-  closing_time = db.Column(db.Time, nullable=False)
+  opening_time = db.Column(db.String, nullable=False)
+  closing_time = db.Column(db.String, nullable=False)
   phone_num = db.Column(db.Integer, nullable=False)
   avg_rating = db.Column(db.Numeric(2, 1), nullable=False)
   num_reviews = db.Column(db.Integer, nullable=False)
@@ -25,7 +25,7 @@ class Business(db.Model):
   updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now(), nullable=False)
 
   owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
-  business_images = db.relationship("BusinessImages", back_populates="business_images")
+  business_images = db.relationship("BusinessImage", back_populates="business")
 
   def to_dict(self):
     return {
