@@ -41,5 +41,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'img_url': self.img_url,
             'bio': self.bio,
-            'last_initial': (self.last_name[0]).upper()
+            'last_initial': (self.last_name[0]).upper(),
+            'filter': self.filter.to_dict()
         }
