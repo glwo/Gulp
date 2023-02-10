@@ -16,8 +16,8 @@ class Business(db.Model):
   address = db.Column(db.String, nullable=False)
   zipcode = db.Column(db.Integer, nullable=False)
   business_type = db.Column(db.String, nullable=False)
-  opening_time = db.Column(db.String, nullable=False)
-  closing_time = db.Column(db.String, nullable=False)
+  opening_time = db.Column(db.String, nullable=False)  # Considering using db.Time
+  closing_time = db.Column(db.String, nullable=False)  # Considering using db.Time
   phone_num = db.Column(db.Integer, nullable=False)
   avg_rating = db.Column(db.Numeric(2, 1), nullable=False)
   num_reviews = db.Column(db.Integer, nullable=False)
