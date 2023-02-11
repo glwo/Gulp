@@ -5,6 +5,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import BusinessesIndex from "./components/BusinessIndex";
+import BusinessDetail from "./components/BusinessDetail";
 import CreateBusiness from "./components/CreateBusiness";
 import ProfilePage from "./components/ProfilePage";
 
@@ -25,6 +27,12 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path='/'>
+            <BusinessesIndex />
+          </Route>
+          <Route path='/business/:businessId'>
+            <BusinessDetail />
           </Route>
           <Route path="/business">
             <CreateBusiness />
