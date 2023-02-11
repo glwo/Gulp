@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now(), nullable=False)
-    filter = db.relationship("Filter", uselist=False, back_populates="user")
+    # filter = db.relationship("Filter", uselist=False, back_populates="user")
 
     @property
     def password(self):
@@ -42,5 +42,5 @@ class User(db.Model, UserMixin):
             'img_url': self.img_url,
             'bio': self.bio,
             'last_initial': (self.last_name[0]).upper(),
-            'filter': self.filter.to_dict()
+            # 'filter': self.filter.to_dict()
         }
