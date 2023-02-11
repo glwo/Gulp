@@ -7,7 +7,7 @@ const REMOVE_BUSINESS = 'business/REMOVE_BUSINESS';
 //Action
 export const loadAllBusinesses = (businesses) => {
   return {
-    type: LOAD_ALLBUSINESS,
+    type: LOAD_ALLBUSINESSES,
     payload: businesses
   }
 };
@@ -85,7 +85,7 @@ export const thunkUpdateBusiness = (data) => async (dispatch) => {
 }
 
 export const thunkRemoveBusiness = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/business/${id}`, {
+  const response = await fetch(`/api/business/${id}`, {
     method: "DELETE"
   });
 
