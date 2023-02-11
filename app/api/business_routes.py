@@ -13,7 +13,7 @@ def get_all_businesses():
   return {'businesses': [business.to_dict() for business in businesses]}
 
 
-@business_routes.route('/', method=["POST"])
+@business_routes.route('/', methods=["POST"])
 def post_business():
   """
   Create a new business and return that business in a dictionary

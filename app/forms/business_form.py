@@ -14,5 +14,5 @@ class BusinessForm(FlaskForm):
   opening_time = StringField('opening_time', validators=[DataRequired()])
   closing_time = StringField('closing_time', validators=[DataRequired()])
   phone_num = IntegerField('phone_num', validators=[DataRequired()])
-  image_url = StringField('image_url', validators=[DataRequired(), URL])
+  image_url = StringField('image_url', validators=[DataRequired(), URL()])
   preview = BooleanField('preview')
