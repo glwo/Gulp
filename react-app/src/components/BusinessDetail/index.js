@@ -12,7 +12,7 @@ const BusinessDetail = () => {
 
   useEffect(() => {
     dispatch(thunkLoadBusiness(businessId))
-  }, [dispatch])
+  }, [dispatch, businessId])
 
   if (Object.values(business).length === 0) {
     return null
