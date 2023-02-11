@@ -60,7 +60,7 @@ def get_business(id):
   Query for a business by id and returns that business in a dictionary
   """
   thisBusiness = Business.query.get(id)
-  # images = BusinessImage.query.filter_by(business_id = id).all()
+  images = BusinessImage.query.filter(BusinessImage.business_id == id).all()
 
   if not thisBusiness:
     return {'Error': 'Business not Found'}
