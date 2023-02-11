@@ -14,7 +14,7 @@ def matchType(form, field):
 
 def matchOtherList(form, field):
     select = field.data
-    if select nto in otherList:
+    if select not in otherList:
         raise ValidationError('Incorrect reviews/ratings selection')
 
 class FilterForm(FlaskForm):
