@@ -10,7 +10,13 @@ def get_all_businesses():
   Query for all businesses an return them in a list of business dictionaries
   """
   businesses = Business.query.all()
+  # data = [business.to_dict() for business in businesses]
+  for business in businesses:
+    # imagesData =  BusinessImage.query.filter_by(business_id = business.id).all()
+    # images = [image.to_dict() for image in imagesData]
+    business.business_images = []
   return {'businesses': [business.to_dict() for business in businesses]}
+
 
 
 @business_routes.route('/', methods=["POST"])

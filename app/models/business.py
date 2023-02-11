@@ -42,5 +42,6 @@ class Business(db.Model):
       "closing_time": self.closing_time,
       "phone_num": self.phone_num,
       "avg_rating": self.avg_rating,
-      "num_reviews": self.num_reviews
+      "num_reviews": self.num_reviews,
+      "business_images": self.business_images
     }

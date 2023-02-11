@@ -8,8 +8,14 @@ def seed_business_images():
     preview=True,
     business_id=1
   )
+  midas_image = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/businessregularlogo/UeQfzEYrof8Ig32RaZvMKA/348s.jpg",
+    preview=True,
+    business_id=2
+  )
 
   db.session.add(brandons_donuts_image)
+  db.session.add(midas_image)
   db.session.commit()
 
 def undo_business_images():
