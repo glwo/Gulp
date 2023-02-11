@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+<<<<<<< HEAD
 import session from './session'
 import profileReducer from './profile';
 import filter from './filter'
@@ -8,6 +9,14 @@ const rootReducer = combineReducers({
   session,
   filter,
   profileReducer
+=======
+import session from './session';
+import business from './business';
+
+const rootReducer = combineReducers({
+  session,
+  business
+>>>>>>> businesses-branch
 });
 
 
