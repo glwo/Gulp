@@ -8,8 +8,10 @@ function SignupFormModal() {
 	const dispatch = useDispatch();
 	const [first_name, setFirstName] = useState("");
 	const [last_name, setLastName] = useState("");
-	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
+	const [img_url, setImgUrl] = useState("");
+	const [bio, setBio] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
@@ -41,7 +43,34 @@ function SignupFormModal() {
 					))}
 				</ul>
 				<label>
-					Email
+					First Name :
+					<input
+						type="text"
+						value={first_name}
+						onChange={(e) => setFirstName(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					Last Name :
+					<input
+						type="text"
+						value={last_name}
+						onChange={(e) => setLastName(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					Username :
+					<input
+						type="text"
+						value={username}
+						onChange={(e) => setUsername(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					Email :
 					<input
 						type="text"
 						value={email}
@@ -50,11 +79,20 @@ function SignupFormModal() {
 					/>
 				</label>
 				<label>
-					Username
+					Profile Picture Url :
 					<input
 						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
+						value={img_url}
+						onChange={(e) => setImgUrl(e.target.value)}
+						required
+					/>
+				</label>
+				<label>
+					Biography :
+					<input
+						type="text"
+						value={bio}
+						onChange={(e) => setBio(e.target.value)}
 						required
 					/>
 				</label>
