@@ -5,7 +5,7 @@ from app.forms import FilterForm
 
 filter_routes = Blueprint('filter', __name__)
 
-@filter_routes.route('/<str:cat>')
+@filter_routes.route('/:cat')
 def getCategory(cat):
     businesses = Business.query.filter(businessType == cat).all()
 
