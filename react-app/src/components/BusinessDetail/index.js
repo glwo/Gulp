@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 const BusinessDetail = () => {
   const { businessId } = useParams();
   const dispatch = useDispatch();
-  const business = useSelector(state => state.business.businesses)
+  const business = useSelector(state => state.business.singleBusiness)
   // const { user } = useSelector(state => state.session);
 
   useEffect(() => {
