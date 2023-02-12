@@ -106,8 +106,9 @@ const businessReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
     case LOAD_ALLBUSINESSES:
+      newState = initialState
       newState.businesses = normalize(action.payload)
-      return newState;
+    return newState;
     case LOAD_BUSINESS:
       newState.businesses = action.payload
       return newState;

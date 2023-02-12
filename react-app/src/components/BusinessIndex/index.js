@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkLoadAllBusinesses } from "../../store/business";
+import BusinessCard from "../BusinessCard";
 
 
 const BusinessesIndex = () => {
@@ -12,14 +13,14 @@ const BusinessesIndex = () => {
   useEffect(() => {
     dispatch(thunkLoadAllBusinesses())
   }, [dispatch])
-
-  if (!allBusinesses) {
+  console.log(allBusinesses)
+  if (allBusinesses.length == 0) {
     return null
   }
 
   return (
     <div>
-      {allBusinesses.map(business => <li>{business.store_name}</li>)}
+      {allBusinesses.map(business => <BusinessCard business={business} key={business.id}/>)}
     </div>
   )
 };
