@@ -1,22 +1,17 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-<<<<<<< HEAD
 import session from './session'
 import profileReducer from './profile';
+import business from './business';
 import filter from './filter'
+import reviews from './review'
 
 const rootReducer = combineReducers({
   session,
   filter,
+  business,
+  reviews,
   profileReducer
-=======
-import session from './session';
-import business from './business';
-
-const rootReducer = combineReducers({
-  session,
-  business
->>>>>>> businesses-branch
 });
 
 

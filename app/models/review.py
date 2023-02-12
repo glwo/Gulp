@@ -21,8 +21,8 @@ class Review(db.Model):
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now(), nullable=False)
 
     business = relationship('Business', back_populates='reviews')
-    user = relationship('User', back_populates='reviews')
-    reviewImages = relationship('ReviewImage', back_populates='review')
+    # user = relationship('User', back_populates='reviews')
+    # reviewImages = relationship('ReviewImage', back_populates='review')
 
     def to_dict(self):
         return {
@@ -38,4 +38,22 @@ class Review(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
-    
+
+class Review_Image(db.Model):
+    __tablename__ = 'review_images'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    review_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("reviews.id")))
+    url = db.Column(db.String(500), nullable=False)
+
+    review = relationship('Review', back_populates='images')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "review_id": self.review_id,
+            "url": self.url,
+        }
