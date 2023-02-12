@@ -3,6 +3,7 @@ const LOAD_BUSINESS = 'business/LOAD_BUSINESS';
 const ADD_BUSINESS = 'business/ADD_BUSINESS';
 const UPDATE_BUSINESS = 'business/UPDATE_BUSINESS';
 const REMOVE_BUSINESS = 'business/REMOVE_BUSINESS';
+const RESET = 'business/RESET';
 
 //Action
 export const loadAllBusinesses = (businesses) => {
@@ -40,6 +41,12 @@ export const removeBusiness = (business) => {
   }
 }
 
+export const resetState = () => {
+  return {
+    type: RESET,
+  }
+}
+
 //Thunk
 export const thunkLoadAllBusinesses = () => async (dispatch) => {
   // const response = await fetch('/api/business');
@@ -59,10 +66,10 @@ export const thunkLoadBusiness = (id) => async (dispatch) => {
   }
 };
 
-export const thunkCreateBusiness = (data) => async (dispatch) => {
+export const thunkCreateBusiness = (business) => async (dispatch) => {
   const response  = await fetch(`/api/business`, {
     method: "POST",
-    body: JSON.stringify(data)
+    body: JSON.stringify(business)
   });
 
   if (response.ok) {
@@ -81,6 +88,11 @@ export const thunkUpdateBusiness = (data) => async (dispatch) => {
     const business = await response.json();
     dispatch(updateBusiness(business))
     return business;
+  } else if (!response.ok) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors
+    }
   }
 }
 
@@ -98,6 +110,8 @@ export const thunkRemoveBusiness = (id) => async (dispatch) => {
 //InitialState
 const initialState = {
   businesses: {
+  },
+  singleBusiness: {
   }
 };
 
@@ -106,10 +120,11 @@ const businessReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
     case LOAD_ALLBUSINESSES:
-      newState.businesses = normalize(action.payload)
-      return newState;
+      let firstState = initialState
+      firstState.businesses = normalize(action.payload)
+      return firstState;
     case LOAD_BUSINESS:
-      newState.businesses = action.payload
+      newState.singleBusiness = action.payload
       return newState;
     case ADD_BUSINESS:
       newState.businesses = {...state.businesses, [action.payload.id]: action.payload}
@@ -120,6 +135,9 @@ const businessReducer = (state = initialState, action) => {
     case REMOVE_BUSINESS:
       newState.businesses = {...state.businesses}
       delete newState.businesses[action.payload]
+      return newState;
+    case RESET:
+      newState.singleBusiness = {}
       return newState;
     default:
       return state;
