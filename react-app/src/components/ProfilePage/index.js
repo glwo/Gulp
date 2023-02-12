@@ -13,7 +13,9 @@ export default function ProfilePage() {
                 <div>
                 {sessionUser &&
                     <>
-                    <li>{sessionUser.img_url}</li>
+                    <li>
+                        <img id='profilepic' src={sessionUser.img_url} alt="Profile picture could not be found"></img>
+                    </li>
                     <li>User: {sessionUser.username}</li>
                     <li>Name: {sessionUser.first_name} {user.last_name}</li>
                     <li>Email: {sessionUser.email}</li>
