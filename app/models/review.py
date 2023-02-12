@@ -9,8 +9,8 @@ class Review(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    business_id = db.Column(db.Integer, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    business_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("businesses.id")), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     firstName = db.Column(db.String(40), nullable=False)
     lastInitial = db.Column(db.String(1), nullable=False)
     content = db.Column(db.String(255), nullable=False)
@@ -20,9 +20,9 @@ class Review(db.Model):
     created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now(), nullable=False)
 
-    business = relationship('Business', back_populates='reviews')
-    # user = relationship('User', back_populates='reviews')
-    # reviewImages = relationship('ReviewImage', back_populates='review')
+    business = db.relationship('Business', back_populates='reviews')
+    user = db.relationship('User', back_populates='reviews')
+    images = db.relationship('Review_Image', back_populates='review')
 
     def to_dict(self):
         return {
