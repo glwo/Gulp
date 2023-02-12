@@ -6,7 +6,7 @@ from ..forms .profile_form import Profile
 profile_routes = Blueprint('profile', __name__)
 
 # GET PROFILE
-@profile_routes.route('/<int:id>')
+@profile_routes.route('/')
 @login_required
 def get_user(id):
     user = User.query.get(id)
@@ -15,7 +15,7 @@ def get_user(id):
 
 
 # UPDATE PROFILE
-@profile_routes.route('/<int:id>', methods=['PUT'])
+@profile_routes.route('/', methods=['PUT'])
 @login_required
 def update_profile(id):
     to_update = User.query.get(id)

@@ -26,6 +26,7 @@ class Business(db.Model):
 
   owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
   business_images = db.relationship("BusinessImage", back_populates="business")
+  reviews = db.relationship("Review", back_populates="business")
 
   def to_dict(self):
     return {
@@ -43,5 +44,5 @@ class Business(db.Model):
       "phone_num": self.phone_num,
       "avg_rating": self.avg_rating,
       "num_reviews": self.num_reviews,
-      "business_images": self.business_images
+      "business_images": [image.to_dict() for image in self.business_images]
     }

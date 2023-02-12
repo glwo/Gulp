@@ -20,7 +20,7 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, password));
+			const data = await dispatch(signUp(first_name, last_name, username, email, img_url, bio, password));
 			if (data) {
 				setErrors(data);
 			} else {
@@ -97,7 +97,7 @@ function SignupFormModal() {
 					/>
 				</label>
 				<label>
-					Password
+					Password :
 					<input
 						type="password"
 						value={password}
@@ -106,7 +106,7 @@ function SignupFormModal() {
 					/>
 				</label>
 				<label>
-					Confirm Password
+					Confirm Password :
 					<input
 						type="password"
 						value={confirmPassword}

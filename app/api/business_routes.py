@@ -1,4 +1,5 @@
 from flask import Blueprint, redirect, request
+from flask_login import login_required, current_user
 from app.models import db, Business, BusinessImage
 from app.forms import BusinessForm
 
@@ -10,16 +11,11 @@ def get_all_businesses():
   Query for all businesses an return them in a list of business dictionaries
   """
   businesses = Business.query.all()
-  # data = [business.to_dict() for business in businesses]
-  for business in businesses:
-    # imagesData =  BusinessImage.query.filter_by(business_id = business.id).all()
-    # images = [image.to_dict() for image in imagesData]
-    business.business_images = []
-  return {'businesses': [business.to_dict() for business in businesses]}
-
+  return {"businesses": [business.to_dict() for business in businesses]}
 
 
 @business_routes.route('/', methods=["POST"])
+@login_required
 def post_business():
   """
   Create a new business and return that business in a dictionary
@@ -30,6 +26,7 @@ def post_business():
   if form.validate_on_submit():
     newBusiness = Business(
       store_name = form.data['store_name'],
+      owner_id = current_user.id,
       description = form.data['description'],
       city = form.data['city'],
       state = form.data['state'],
@@ -49,9 +46,10 @@ def post_business():
     db.session.add(newBusinessImage)
     db.session.commit()
 
-    return redirect(f'/business/{newBusiness.to_dict().id}/')
+    return redirect(f'/business/{newBusiness.to_dict().id}/'), 200
 
-  return {'Error': 'Create a new business failed'}
+  if form.errors:
+    return {'errors': form.errors}, 400
 
 
 @business_routes.route('/<int:id>')
@@ -60,15 +58,15 @@ def get_business(id):
   Query for a business by id and returns that business in a dictionary
   """
   thisBusiness = Business.query.get(id)
-  images = BusinessImage.query.filter(BusinessImage.business_id == id).all()
 
   if not thisBusiness:
-    return {'Error': 'Business not Found'}
-  thisBusiness.business_images = []
+    return {'Error': 'Business not Found'}, 404
+
   return thisBusiness.to_dict(), 200
 
 
 @business_routes.route('<int:id>', methods=["PUT"])
+@login_required
 def update_business(id):
   """
   Update business and return that business in a dictionary
@@ -78,7 +76,9 @@ def update_business(id):
   form['csrf_token'].data = request.cookies['csrf_token']
 
   if not thisBusiness:
-    return {"Error": "Business not Found"}
+    return {"Error": "Business not Found"}, 404
+  if current_user.id != thisBusiness.owner_id:
+    return {"Error": "Forbidden"}, 403
 
   if form.validate_on_submit():
     thisBusiness.store_name = form.data['store_name']
@@ -95,8 +95,8 @@ def update_business(id):
     db.session.commit()
 
     return thisBusiness.to_dict(), 200
-
-  return {'Error': 'Update business failed'}
+  if form.errors:
+    return {'errors': form.errors}, 400
 
 
 @business_routes.route('/<int:id>', methods=["DELETE"])
@@ -107,9 +107,11 @@ def delete_business(id):
   thisBusiness = Business.query.get(id)
 
   if not thisBusiness:
-    return {"Error": "Business not Found"}
+    return {"Error": "Business not Found"}, 404
+  if current_user.id != thisBusiness.owner_id:
+    return {"Error": "Forbidden"}, 403
 
   db.session.delete(thisBusiness)
   db.session.commit()
 
-  return {'Message': 'The business has been deleted!'}
+  return {'Message': 'The business has been deleted!'}, 200
