@@ -4,10 +4,12 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useParams, useHistory } from "react-router-dom";
 import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -35,6 +37,11 @@ function ProfileButton({ user }) {
     dispatch(logout());
   };
 
+  const handleProfile = (e) => {
+    e.preventDefault();
+    history.push("/profile")
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -53,6 +60,7 @@ function ProfileButton({ user }) {
             <li>Email: {user.email}</li>
             <li>
               <button className="logOutButton" onClick={handleLogout}>Log Out</button>
+              <button className="viewProfileButton" onClick={handleProfile}>View Profile</button>
             </li>
           </>
         ) : (
