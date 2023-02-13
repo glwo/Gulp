@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import UpdateProfileModal from "./editProfileModal"
 import OpenModalButton from "../OpenModalButton";
 import { updateProfile, getProfile } from '../../store/profile';
+import { getUser, updateUser } from '../../store/session';
 
 export default function ProfilePage() {
     const sessionUser = useSelector(state => state.session.user);
@@ -12,9 +13,9 @@ export default function ProfilePage() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getProfile(+sessionUser.id))
-        dispatch(updateProfile(+sessionUser.id))
-        // .then(dispatch(getProfile(+sessionUser.id)))
+        // dispatch(getUser(+sessionUser.id))
+        dispatch(updateUser(+sessionUser.id))
+        .then(dispatch(getUser(+sessionUser.id)))
         // dispatch(getProfile(+sessionUser.id))
     }, [dispatch, sessionUser])
 

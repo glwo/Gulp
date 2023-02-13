@@ -1,5 +1,6 @@
 import React, { useState} from "react";
-import { updateProfile } from "../../store/profile";
+// import { updateProfile } from "../../store/profile";
+import { updateUser } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { getProfile } from '../../store/profile';
@@ -29,14 +30,14 @@ function UpdateProfileModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(updateProfile({id, first_name, last_name, username, email, img_url, bio}))
+    const data = await dispatch(updateUser({id, first_name, last_name, username, email, img_url, bio}))
     // const data = await dispatch(updateProfile(profile))
     // const data = await dispatch(updateProfile({id}));
     .catch(async (_req, res) => {
       if (res && res.errors) setErrors(res.errors);
     })
     if(data) {
-        dispatch(getProfile(id))
+        // dispatch(getProfile(id))
         closeModal()
     }
   };
