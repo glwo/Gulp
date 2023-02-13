@@ -12,7 +12,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="9:00",
     closing_time="18:00",
-    phone_num=9293376354,
+    phone_num='9293376354',
     avg_rating=0,
     num_reviews=0,
     owner_id=1
@@ -27,7 +27,7 @@ def seed_businesses():
     business_type="auto",
     opening_time="8:00",
     closing_time="15:00",
-    phone_num=3479438504,
+    phone_num='3479438504',
     avg_rating=0,
     num_reviews=0,
     owner_id=2
@@ -42,5 +42,5 @@ def undo_businesses():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM businesses")
-        
+
     db.session.commit()
