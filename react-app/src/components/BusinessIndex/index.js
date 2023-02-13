@@ -1,7 +1,8 @@
 //react-app/src/components/BusinessIndex/index.js
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { thunkLoadAllBusinesses } from "../../store/business";
+import { thunkLoadAllBusinesses, resetState } from "../../store/business";
+import BusinessCard from "../BusinessCard";
 
 
 const BusinessesIndex = () => {
@@ -10,16 +11,17 @@ const BusinessesIndex = () => {
   let allBusinesses;
   if (allBusinessesData) allBusinesses = Object.values(allBusinessesData);
   useEffect(() => {
+    // dispatch(resetState())
     dispatch(thunkLoadAllBusinesses())
   }, [dispatch])
-
+  console.log(allBusinessesData)
   if (!allBusinesses) {
     return null
   }
 
   return (
     <div>
-      {allBusinesses.map(business => <li>{business.store_name}</li>)}
+      {allBusinesses.map(business => <BusinessCard business={business} key={business.id}/>)}
     </div>
   )
 };
