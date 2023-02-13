@@ -42,7 +42,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="11:00",
     closing_time="22:00",
-    phone_num=9293280041,
+    phone_num="9293280041",
     avg_rating=0,
     num_reviews=0,
     owner_id=3
@@ -57,7 +57,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="5:00",
     closing_time="21:00",
-    phone_num=7184539880,
+    phone_num="7184539880",
     avg_rating=0,
     num_reviews=0,
     owner_id=4
@@ -72,7 +72,7 @@ def seed_businesses():
     business_type="home",
     opening_time="7:00",
     closing_time="20:00",
-    phone_num=4154255224,
+    phone_num="4154255224",
     avg_rating=0,
     num_reviews=0,
     owner_id=3
