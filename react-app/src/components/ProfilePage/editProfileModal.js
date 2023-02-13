@@ -1,6 +1,6 @@
 import React, { useState} from "react";
 import { updateProfile } from "../../store/profile";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./editProfileModal.css";
 
@@ -17,13 +17,13 @@ function UpdateProfileModal() {
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = await dispatch(updateProfile(profile));
-    if (data) {
-      setErrors(data);
-    } else {
-        closeModal()
-    }
+    // e.preventDefault();
+    // const data = await dispatch(updateProfile(profile));
+    // if (data) {
+    //   setErrors(data);
+    // } else {
+    //     closeModal()
+    // }
   };
 
   return (
