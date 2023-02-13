@@ -5,6 +5,16 @@ from app.forms import BusinessForm
 
 business_routes = Blueprint('business', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 @business_routes.route('/')
 def get_all_businesses():
   """
@@ -15,13 +25,13 @@ def get_all_businesses():
 
 
 @business_routes.route('/', methods=["POST"])
-@login_required
+# @login_required
 def post_business():
   """
   Create a new business and return that business in a dictionary
   """
   form = BusinessForm()
-  form['csrf_token'].data = request.cookies['csrf_token']
+  # form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
     newBusiness = Business(
@@ -45,12 +55,10 @@ def post_business():
     db.session.add(newBusiness)
     db.session.add(newBusinessImage)
     db.session.commit()
-
-    return redirect(f'/business/{newBusiness.to_dict().id}/'), 200
+    return redirect(f'/business/{newBusiness.to_dict().id}/'), 201
 
   if form.errors:
-    return {'errors': form.errors}, 400
-
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 @business_routes.route('/<int:id>')
 def get_business(id):
@@ -96,7 +104,7 @@ def update_business(id):
 
     return thisBusiness.to_dict(), 200
   if form.errors:
-    return {'errors': form.errors}, 400
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 
 @business_routes.route('/<int:id>', methods=["DELETE"])
