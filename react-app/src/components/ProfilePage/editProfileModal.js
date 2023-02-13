@@ -1,6 +1,6 @@
 import React, { useState} from "react";
 // import { updateProfile } from "../../store/profile";
-import { updateUser } from "../../store/session";
+import { updateUser, getUser } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { getProfile } from '../../store/profile';
@@ -37,7 +37,7 @@ function UpdateProfileModal() {
       if (res && res.errors) setErrors(res.errors);
     })
     if(data) {
-        // dispatch(getProfile(id))
+        dispatch(getUser(id))
         closeModal()
     }
   };

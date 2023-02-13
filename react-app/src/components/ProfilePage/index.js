@@ -12,12 +12,14 @@ export default function ProfilePage() {
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        // dispatch(getUser(+sessionUser.id))
-        dispatch(updateUser(+sessionUser.id))
-        .then(dispatch(getUser(+sessionUser.id)))
-        // dispatch(getProfile(+sessionUser.id))
-    }, [dispatch, sessionUser])
+    // useEffect(() => {
+    //     // dispatch(getUser(+sessionUser.id))
+    //     if (sessionUser){
+    //     dispatch(updateUser(+sessionUser.id))
+    //     .then(dispatch(getUser(+sessionUser.id)))
+    //     }
+    //     // dispatch(getProfile(+sessionUser.id))
+    // }, [dispatch, sessionUser])
 
     return (
         <div>
