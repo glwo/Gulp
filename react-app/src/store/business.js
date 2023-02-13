@@ -67,14 +67,22 @@ export const thunkLoadBusiness = (id) => async (dispatch) => {
 };
 
 export const thunkCreateBusiness = (business) => async (dispatch) => {
-  const response  = await fetch(`/api/business`, {
+  const response  = await fetch(`/api/business/`, {
     method: "POST",
+    // headers: {
+    //   'Content-Type': 'application/json'
+    // },
     body: JSON.stringify(business)
   });
 
   if (response.ok) {
     const business = await response.json();
     dispatch(addBusiness(business))
+  } else {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors
+    }
   }
 }
 
@@ -88,7 +96,7 @@ export const thunkUpdateBusiness = (data) => async (dispatch) => {
     const business = await response.json();
     dispatch(updateBusiness(business))
     return business;
-  } else if (!response.ok) {
+  } else {
     const data = await response.json();
     if (data.errors) {
       return data.errors
@@ -111,8 +119,8 @@ export const thunkRemoveBusiness = (id) => async (dispatch) => {
 const initialState = {
   businesses: {
   },
-  singleBusiness: {
-  }
+  // singleBusiness: {
+  // }
 };
 
 //Reducer
@@ -120,11 +128,12 @@ const businessReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
     case LOAD_ALLBUSINESSES:
-      let firstState = initialState
-      firstState.businesses = normalize(action.payload)
-      return firstState;
+      // let firstState = initialState
+      // firstState.businesses = normalize(action.payload)
+      newState.businesses = normalize(action.payload)
+      return newState;
     case LOAD_BUSINESS:
-      newState.singleBusiness = action.payload
+      newState.businesses = action.payload
       return newState;
     case ADD_BUSINESS:
       newState.businesses = {...state.businesses, [action.payload.id]: action.payload}
@@ -136,9 +145,9 @@ const businessReducer = (state = initialState, action) => {
       newState.businesses = {...state.businesses}
       delete newState.businesses[action.payload]
       return newState;
-    case RESET:
-      newState.singleBusiness = {}
-      return newState;
+    // case RESET:
+    //   newState.singleBusiness = {}
+    //   return newState;
     default:
       return state;
   }

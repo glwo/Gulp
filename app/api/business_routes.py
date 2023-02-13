@@ -58,7 +58,7 @@ def post_business():
     return redirect(f'/business/{newBusiness.to_dict().id}/'), 201
 
   if form.errors:
-    return {"errors": form.errors}, 400
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 @business_routes.route('/<int:id>')
 def get_business(id):

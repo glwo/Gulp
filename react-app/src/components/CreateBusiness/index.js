@@ -24,21 +24,22 @@ export default function CreateBusiness() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(errors)
     setErrors([]);
 
     let business = {
-        storeName,
-        description,
-        city,
-        state,
-        address,
-        zipcode,
-        businessType,
-        openingTime,
-        closingTime,
-        phoneNum,
-        imageUrl
-      };
+      storeName,
+      description,
+      city,
+      state,
+      address,
+      zipcode,
+      businessType,
+      openingTime,
+      closingTime,
+      phoneNum,
+      imageUrl
+    };
 
     const data = await dispatch(thunkCreateBusiness(business))
     if (data) {
@@ -61,6 +62,7 @@ export default function CreateBusiness() {
             type='text'
             value={storeName}
             onChange={(e) => setStoreName(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -69,6 +71,7 @@ export default function CreateBusiness() {
             type='text'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -77,6 +80,7 @@ export default function CreateBusiness() {
             type='text'
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -85,6 +89,7 @@ export default function CreateBusiness() {
             type='text'
             value={state}
             onChange={(e) => setState(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -93,6 +98,7 @@ export default function CreateBusiness() {
             type='text'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -101,6 +107,7 @@ export default function CreateBusiness() {
             type='number'
             value={zipcode}
             onChange={(e) => setZipcode(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -109,6 +116,7 @@ export default function CreateBusiness() {
             type='text'
             value={businessType}
             onChange={(e) => setBusinessType(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -117,6 +125,7 @@ export default function CreateBusiness() {
             type='text'
             value={openingTime}
             onChange={(e) => setOpeningTime(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -125,6 +134,7 @@ export default function CreateBusiness() {
             type='text'
             value={closingTime}
             onChange={(e) => setClosingTime(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -133,6 +143,7 @@ export default function CreateBusiness() {
             type='text'
             value={phoneNum}
             onChange={(e) => setPhoneNum(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -141,6 +152,7 @@ export default function CreateBusiness() {
             type='text'
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
+            required
           />
         </div>
         <button type="submit">Create New Business</button>
