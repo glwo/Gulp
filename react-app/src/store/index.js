@@ -1,7 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
-import profileReducer from './profile';
 import filter from './filter'
 import business from './business';
 import key from './map'
@@ -9,9 +8,13 @@ import key from './map'
 const rootReducer = combineReducers({
   session,
   filter,
+<<<<<<< HEAD
   profileReducer,
   business,
   key
+=======
+  business
+>>>>>>> 6de431fa489822ff76c98624e9d6190abb1acb87
 });
 
 

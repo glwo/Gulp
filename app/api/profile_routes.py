@@ -23,9 +23,16 @@ def update_profile(id):
         form = Profile()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
-            form.populate_obj(to_update)
+            data = form.data
+            updated_user = User(first_name=data["first_name"],
+                              last_name=data["last_name"],
+                              username=data["username"],
+                              email=data["email"],
+                              img_url=data["img_url"],
+                              bio=data["bio"])
+            db.session.add(updated_user)
             db.session.commit()
-            return to_update.to_dict(), 201
+            return updated_user.to_dict(), 201
 
     else:
         return {
