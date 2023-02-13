@@ -17,13 +17,13 @@ function UpdateProfileModal() {
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // const data = await dispatch(updateProfile(profile));
-    // if (data) {
-    //   setErrors(data);
-    // } else {
-    //     closeModal()
-    // }
+    e.preventDefault();
+    const data = await dispatch(updateProfile(first_name, last_name, username, email, img_url, bio));
+    if (data) {
+      setErrors(data);
+    } else {
+        closeModal()
+    }
   };
 
   return (

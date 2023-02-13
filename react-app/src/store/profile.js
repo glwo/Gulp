@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux"
+
 // TYPES
 const LOAD_PROFILE = 'profiles/LOAD'
 const EDIT_PROFILE = 'profiles/EDIT'
@@ -25,10 +27,25 @@ export const getProfile = (userId) => async dispatch => {
 }
 
 export const updateProfile = (profile) => async dispatch => {
+    const {
+        first_name,
+        last_name,
+        username,
+        email,
+        img_url,
+        bio
+        } = profile
     const res = await fetch(`api/users/${profile.id}` , {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(profile)
+        body: JSON.stringify({
+            first_name,
+            last_name,
+            username,
+            email,
+            img_url,
+            bio
+        })
     })
 
     if (res.ok){
