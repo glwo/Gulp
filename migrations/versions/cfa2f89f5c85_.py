@@ -47,7 +47,7 @@ def upgrade():
     sa.Column('business_type', sa.String(), nullable=False),
     sa.Column('opening_time', sa.String(), nullable=False),
     sa.Column('closing_time', sa.String(), nullable=False),
-    sa.Column('phone_num', sa.Integer(), nullable=False),
+    sa.Column('phone_num', sa.String(), nullable=False),
     sa.Column('avg_rating', sa.Numeric(precision=2, scale=1), nullable=False),
     sa.Column('num_reviews', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
