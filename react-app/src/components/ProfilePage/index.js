@@ -33,8 +33,8 @@ export default function ProfilePage() {
     //     // dispatch(getProfile(+sessionUser.id))
     // }, [dispatch, sessionUser])
 
-    const removeBusiness = () => {
-      // dispatch(thunkRemoveBusiness())
+    const removeBusiness = (e) => {
+      return dispatch(thunkRemoveBusiness(e))
     }
     return (
         <div>
@@ -72,7 +72,7 @@ export default function ProfilePage() {
                       buttonText="Update Business"
                       modalComponent={<UpdateBusinessModal business={business} key={business.id}/>}
                     />
-                    <button onClick={removeBusiness(business.id)}>Delete business</button>
+                    <button onClick={() => removeBusiness(business.id)}>Delete business</button>
                   <BusinessCard business={business} key={business.id} />
                 </div>)
                 }
