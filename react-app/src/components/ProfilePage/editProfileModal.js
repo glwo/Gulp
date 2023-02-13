@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { updateProfile } from "../../store/profile";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./editProfileModal.css";
 
-function updateProfileModal() {
+function UpdateProfileModal() {
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const [first_name, setFirstName] = useState(sessionUser.first_name);
@@ -95,4 +95,4 @@ function updateProfileModal() {
   );
 }
 
-export default updateProfileModal;
+export default UpdateProfileModal;

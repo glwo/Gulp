@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import updateProfileModal from './editProfileModal'
+import UpdateProfileModal from "./editProfileModal"
+import OpenModalButton from "../OpenModalButton";
 
 export default function ProfilePage() {
     const sessionUser = useSelector(state => state.session.user);
+
     return (
         <div>
             <h1>
@@ -21,7 +23,11 @@ export default function ProfilePage() {
                     <li>Name: {sessionUser.first_name} {sessionUser.last_name}</li>
                     <li>Email: {sessionUser.email}</li>
                     <li>Biography: {sessionUser.bio}</li>
-                    <button>Update Profile</button>
+                    <OpenModalButton
+                    buttonText="Update Profile"
+                    // onItemClick={closeMenu}
+                    modalComponent={<UpdateProfileModal />}
+                    />
                     </>
                     }
                 </div>
