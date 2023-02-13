@@ -78,10 +78,11 @@ export const thunkCreateBusiness = (business) => async (dispatch) => {
   if (response.ok) {
     const business = await response.json();
     dispatch(addBusiness(business))
+    return business
   } else {
     const data = await response.json();
     if (data.errors) {
-      return data.errors
+      return data
     }
   }
 }

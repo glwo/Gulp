@@ -14,7 +14,7 @@ export default function CreateBusiness() {
   const [state, setState] = useState('');
   const [address, setAddress] = useState('');
   const [zipcode, setZipcode] = useState();
-  const [business_type, setBusinessType] = useState('');
+  const [business_type, setBusinessType] = useState('restaurant');
   const [opening_time, setOpeningTime] = useState('')
   const [closing_time, setClosingTime] = useState('');
   const [phone_num, setPhoneNum] = useState();
@@ -41,10 +41,11 @@ export default function CreateBusiness() {
     };
 
     const data = await dispatch(thunkCreateBusiness(business))
-    if (data && data.errors) {
-      setErrors(data)
+    if (data.errors) {
+      setErrors(data.errors)
     } else {
-      console.log(data)
+      setErrors([]);
+      history.push(`/business/${data.id}`);
     }
   }
 
@@ -63,7 +64,7 @@ export default function CreateBusiness() {
             type='text'
             value={store_name}
             onChange={(e) => setStoreName(e.target.value)}
-            // required
+            required
           />
         </div>
         <div>
@@ -72,7 +73,7 @@ export default function CreateBusiness() {
             type='text'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            // required
+            required
           />
         </div>
         <div>
@@ -81,7 +82,7 @@ export default function CreateBusiness() {
             type='text'
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            // required
+            required
           />
         </div>
         <div>
@@ -90,7 +91,7 @@ export default function CreateBusiness() {
             type='text'
             value={state}
             onChange={(e) => setState(e.target.value)}
-            // required
+            required
           />
         </div>
         <div>
@@ -99,7 +100,7 @@ export default function CreateBusiness() {
             type='text'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-            // required
+            required
           />
         </div>
         <div>
@@ -108,17 +109,20 @@ export default function CreateBusiness() {
             type='number'
             value={zipcode}
             onChange={(e) => setZipcode(e.target.value)}
-            // required
+            required
           />
         </div>
         <div>
           <label>Business Type:</label>
-          <input
-            type='text'
+          <select
             value={business_type}
             onChange={(e) => setBusinessType(e.target.value)}
-            // required
-          />
+          >
+            <option value="restaurant">Restaurant</option>
+            <option value="auto">Auto Service</option>
+            <option value="home">Home Service</option>
+            <option value="salon">Hair Salon</option>
+          </select>
         </div>
         <div>
           <label>Opening Time:</label>
@@ -126,7 +130,7 @@ export default function CreateBusiness() {
             type='text'
             value={opening_time}
             onChange={(e) => setOpeningTime(e.target.value)}
-            // required
+            required
           />
         </div>
         <div>
@@ -135,7 +139,7 @@ export default function CreateBusiness() {
             type='text'
             value={closing_time}
             onChange={(e) => setClosingTime(e.target.value)}
-            // required
+            required
           />
         </div>
         <div>
@@ -144,7 +148,7 @@ export default function CreateBusiness() {
             type='text'
             value={phone_num}
             onChange={(e) => setPhoneNum(e.target.value)}
-            // required
+            required
           />
         </div>
         <div>
@@ -153,7 +157,7 @@ export default function CreateBusiness() {
             type='text'
             value={image_url}
             onChange={(e) => setImageUrl(e.target.value)}
-            // required
+            required
           />
         </div>
         <button type="submit">Create New Business</button>

@@ -32,7 +32,7 @@ def post_business():
   """
   form = BusinessForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-
+  # Add and commit new business
   if form.validate_on_submit():
     newBusiness = Business(
       store_name = form.data['store_name'],
@@ -51,7 +51,7 @@ def post_business():
     )
     db.session.add(newBusiness)
     db.session.commit()
-    print("BUSINESS FORM -------------", newBusiness.to_dict())
+    # Add and commit business image
     newBusinessImage = BusinessImage(
       image_url = form.data['image_url'],
       preview = form.data['preview'],
