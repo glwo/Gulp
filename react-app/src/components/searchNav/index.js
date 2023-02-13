@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import ProfileButton from './ProfileButton';
 import './searchNav.css';
@@ -29,11 +29,19 @@ export default function SearchNav() {
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>
-            <div className='categoryBar'>
-                <div>Restaurants <i class="fa fa-caret-down"></i></div>
-                <div>Home Services <i class="fa fa-caret-down"></i></div>
-                <div>Auto Services <i class="fa fa-caret-down"></i></div>
-                <div>Hair Salons <i class="fa fa-caret-down"></i></div>
+            <div className='categoryBar' id='categoryBar'>
+                <Link exact to='/category/restaurants'>
+                    <div>Restaurants <i class="fa fa-caret-down"></i></div>
+                </Link>
+                <Link exact to='/category/homeServices'>
+                    <div>Home Services <i class="fa fa-caret-down"></i></div>
+                </Link>
+                <Link exact to='/category/autoServices'>
+                    <div>Auto Services <i class="fa fa-caret-down"></i></div>
+                </Link>
+                <Link exact to='/category/hairSalons'>
+                    <div>Hair Salons <i class="fa fa-caret-down"></i></div>
+                </Link>
             </div>
         </div>
     )
