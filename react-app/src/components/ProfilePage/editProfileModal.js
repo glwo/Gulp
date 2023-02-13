@@ -6,6 +6,7 @@ import "./editProfileModal.css";
 
 function UpdateProfileModal() {
   const sessionUser = useSelector(state => state.session.user);
+  const id = sessionUser.id
   const dispatch = useDispatch();
   const [first_name, setFirstName] = useState(sessionUser.first_name);
   const [last_name, setLastName] = useState(sessionUser.last_name);
@@ -18,7 +19,7 @@ function UpdateProfileModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(updateProfile(first_name, last_name, username, email, img_url, bio));
+    const data = await dispatch(updateProfile({ id, first_name, last_name, username, email, img_url, bio}));
     if (data) {
       setErrors(data);
     } else {

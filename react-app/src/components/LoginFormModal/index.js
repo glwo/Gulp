@@ -21,6 +21,23 @@ function LoginFormModal() {
     }
   };
 
+  const demolitionUser = (e) => {
+    e.preventDefault();
+    dispatch(
+      login(
+        'demo@aa.io',
+        'password'
+      )
+    )
+    .then(closeModal())
+    .catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    );
+  }
+
   return (
     <>
       <h1>Log In</h1>
@@ -48,7 +65,8 @@ function LoginFormModal() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className="loginModalButtons" type="submit">Log In</button>
+        <button className="loginModalButtons" type="submit" onClick={demolitionUser}>Demo User Login</button>
       </form>
     </>
   );

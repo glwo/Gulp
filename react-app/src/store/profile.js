@@ -28,6 +28,7 @@ export const getProfile = (userId) => async dispatch => {
 
 export const updateProfile = (profile) => async dispatch => {
     const {
+        id,
         first_name,
         last_name,
         username,
@@ -35,7 +36,7 @@ export const updateProfile = (profile) => async dispatch => {
         img_url,
         bio
         } = profile
-    const res = await fetch(`api/users/${profile.id}` , {
+    const res = await fetch(`api/users/${id}` , {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -48,11 +49,12 @@ export const updateProfile = (profile) => async dispatch => {
         })
     })
 
-    if (res.ok){
-        const profile = await res.json()
-        dispatch(editProfile(profile))
-        return profile
-    }
+    // if (res.ok){
+    //     const profile = await res.json()
+    //     dispatch(editProfile(profile))
+    //     return profile
+    // }
+    return res
 }
 
 // REDUCER
@@ -69,9 +71,9 @@ const profileReducer = (state = initialState, action) => {
             newState = { ...state }
             newState.profile = { ...action.profile}
             return newState
-        case EDIT_PROFILE:
-            newState = { ...state, [action.profile.id]: action.profile }
-            return newState
+        // case EDIT_PROFILE:
+        //     newState = { ...state, [action.profile.id]: action.profile }
+        //     return newState
 
         default:
             return state
