@@ -49,12 +49,12 @@ export const resetState = () => {
 
 //Thunk
 export const thunkLoadAllBusinesses = () => async (dispatch) => {
-  // const response = await fetch('/api/business');
+  const response = await fetch('/api/business');
 
-  // if (response.ok) {
-  //   const data = await response.json();
-  //   dispatch(loadAllBusinesses(data.businesses))
-  // }
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(loadAllBusinesses(data.businesses))
+  }
 };
 
 export const thunkLoadBusiness = (id) => async (dispatch) => {
