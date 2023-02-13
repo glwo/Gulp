@@ -24,6 +24,7 @@ export default function ProfilePage() {
                     <li>Email: {sessionUser.email}</li>
                     <li>Biography: {sessionUser.bio}</li>
                     <OpenModalButton
+                    className= "updateProfileButton"
                     buttonText="Update Profile"
                     // onItemClick={closeMenu}
                     modalComponent={<UpdateProfileModal />}
