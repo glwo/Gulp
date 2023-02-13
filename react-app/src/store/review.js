@@ -85,7 +85,7 @@ export const userReviews = () => async dispatch => {
 
 export const allReviews = () => async dispatch => {
     const response = await fetch(`/api/reviews`)
-    
+
 
     if(response.ok){
         const reviews = await response.json()
@@ -107,7 +107,7 @@ export const reviewUpdate = (reviewId, review) => async dispatch => {
     }
 }
 
-export const removeReview = (reviewId, bizId) => async dispatch => {
+export const removeReview = (reviewId) => async dispatch => {
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: 'DELETE',
         headers: {"Content-Type": "application/json"}
