@@ -12,7 +12,9 @@ import ProfilePage from "./components/ProfilePage";
 
 // import Review from './components/Reviews'
 import { allReviews } from './store/review';
-import CreateReviewForm from './components/Reviews/CreateReviewForm';
+// import CreateReviewForm from './components/Reviews/CreateReviewForm';
+import CreateReviewModal from "./components/Reviews/ReviewModal";
+import CreateReviewForm from "./components/Reviews/CreateReviewForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,20 +40,22 @@ function App() {
           <Route exact path='/'>
             <BusinessesIndex />
           </Route>
-          <Route path='/business/:businessId'>
+          <Route exact path='/business/:businessId'>
             <BusinessDetail />
           </Route>
-          <Route path="/business">
+          <Route exact path="/business">
             <CreateBusiness />
           </Route>
-          <Route path="/profile">
+          <Route exact path="/profile">
             <ProfilePage />
           </Route>
-          <Route path='/writeareview' exact={true} >
+          <Route exact path='/reviews'>
+            <CreateReviewModal />
         </Route>
-        <Route path='/business/:businessId/writeareview' exact={true} >
+        <Route exact path='/business/:businessId/writeareview'>
           <div style={{"display":"flex", 'justifyContent':"center"}}>
-            <CreateReviewForm />
+            <CreateReviewModal />
+            {/* <CreateReviewForm /> */}
           </div>
         </Route>
         </Switch>

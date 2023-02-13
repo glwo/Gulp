@@ -13,7 +13,7 @@ function CreateReviewForm() {
     const [ errors, setErrors ] = useState([])
 
     const { business_id } = useParams()
-    const business = useSelector(state => state.businesses.singleBusiness)
+    const business = useSelector(state => state.businesses.business)
     useEffect(() => {
         dispatch(loadBusiness(business_id))
     }, [dispatch, business_id])
