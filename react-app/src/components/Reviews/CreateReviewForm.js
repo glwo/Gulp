@@ -35,7 +35,7 @@ function CreateReviewForm() {
         setStars('')
         setErrors([])
 
-        history.push(`/biz/${newReview.business_id}`)
+        history.push(`/business/${newReview.business_id}`)
     }
 
     const handleSubmit = async (e) => {
