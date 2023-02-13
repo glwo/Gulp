@@ -32,7 +32,7 @@ function App() {
           <Route exact path='/'>
             <BusinessesIndex />
           </Route>
-          <Route path='/category/:category'>
+          <Route path='/category/:category/:location?'>
             <BusinessCategory />
           </Route>
           <Route path='/business/:businessId'>

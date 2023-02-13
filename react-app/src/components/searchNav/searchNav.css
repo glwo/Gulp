@@ -10,7 +10,8 @@
     margin-top: 12px;
 }
 
-.mainSearchNav>input {
+.mainSearchNav>input,
+select {
     width: 412px;
     height: 48px;
 
