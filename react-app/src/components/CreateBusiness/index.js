@@ -8,17 +8,17 @@ export default function CreateBusiness() {
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.session)
   const history = useHistory();
-  const [storeName, setStoreName] = useState('');
+  const [store_name, setStoreName] = useState('');
   const [description, setDescription] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [address, setAddress] = useState('');
   const [zipcode, setZipcode] = useState();
-  const [businessType, setBusinessType] = useState('');
-  const [openingTime, setOpeningTime] = useState('')
-  const [closingTime, setClosingTime] = useState('');
-  const [phoneNum, setPhoneNum] = useState();
-  const [imageUrl, setImageUrl] = useState('');
+  const [business_type, setBusinessType] = useState('');
+  const [opening_time, setOpeningTime] = useState('')
+  const [closing_time, setClosingTime] = useState('');
+  const [phone_num, setPhoneNum] = useState();
+  const [image_url, setImageUrl] = useState('');
   const [preview, setPreview] = useState("True");
   const [errors, setErrors] = useState([]);
 
@@ -26,23 +26,25 @@ export default function CreateBusiness() {
     e.preventDefault();
     setErrors([]);
 
-    let business = {
-        storeName,
-        description,
-        city,
-        state,
-        address,
-        zipcode,
-        businessType,
-        openingTime,
-        closingTime,
-        phoneNum,
-        imageUrl
-      };
+    const business = {
+      store_name,
+      description,
+      city,
+      state,
+      address,
+      zipcode,
+      business_type,
+      opening_time,
+      closing_time,
+      phone_num,
+      image_url
+    };
 
     const data = await dispatch(thunkCreateBusiness(business))
-    if (data) {
+    if (data && data.errors) {
       setErrors(data)
+    } else {
+      console.log(data)
     }
   }
 
@@ -59,8 +61,9 @@ export default function CreateBusiness() {
           <label>Business Name:</label>
           <input
             type='text'
-            value={storeName}
+            value={store_name}
             onChange={(e) => setStoreName(e.target.value)}
+            // required
           />
         </div>
         <div>
@@ -69,6 +72,7 @@ export default function CreateBusiness() {
             type='text'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            // required
           />
         </div>
         <div>
@@ -77,6 +81,7 @@ export default function CreateBusiness() {
             type='text'
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            // required
           />
         </div>
         <div>
@@ -85,6 +90,7 @@ export default function CreateBusiness() {
             type='text'
             value={state}
             onChange={(e) => setState(e.target.value)}
+            // required
           />
         </div>
         <div>
@@ -93,6 +99,7 @@ export default function CreateBusiness() {
             type='text'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            // required
           />
         </div>
         <div>
@@ -101,46 +108,52 @@ export default function CreateBusiness() {
             type='number'
             value={zipcode}
             onChange={(e) => setZipcode(e.target.value)}
+            // required
           />
         </div>
         <div>
           <label>Business Type:</label>
           <input
             type='text'
-            value={businessType}
+            value={business_type}
             onChange={(e) => setBusinessType(e.target.value)}
+            // required
           />
         </div>
         <div>
           <label>Opening Time:</label>
           <input
             type='text'
-            value={openingTime}
+            value={opening_time}
             onChange={(e) => setOpeningTime(e.target.value)}
+            // required
           />
         </div>
         <div>
           <label>Closing Time:</label>
           <input
             type='text'
-            value={closingTime}
+            value={closing_time}
             onChange={(e) => setClosingTime(e.target.value)}
+            // required
           />
         </div>
         <div>
           <label>Phone Number:</label>
           <input
             type='text'
-            value={phoneNum}
+            value={phone_num}
             onChange={(e) => setPhoneNum(e.target.value)}
+            // required
           />
         </div>
         <div>
           <label>Business Image:</label>
           <input
             type='text'
-            value={imageUrl}
+            value={image_url}
             onChange={(e) => setImageUrl(e.target.value)}
+            // required
           />
         </div>
         <button type="submit">Create New Business</button>
