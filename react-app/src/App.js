@@ -9,6 +9,7 @@ import BusinessesIndex from "./components/BusinessIndex";
 import BusinessDetail from "./components/BusinessDetail";
 import CreateBusiness from "./components/CreateBusiness";
 import ProfilePage from "./components/ProfilePage";
+import BusinessCategory from "./components/BusinessCategory";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route exact path='/'>
             <BusinessesIndex />
+          </Route>
+          <Route path='/category/:category/:location?'>
+            <BusinessCategory />
           </Route>
           <Route path='/business/:businessId'>
             <BusinessDetail />

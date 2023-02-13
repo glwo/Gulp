@@ -15,7 +15,6 @@ class BusinessForm(FlaskForm):
   closing_time = StringField('closing_time', validators=[DataRequired()])
   phone_num = IntegerField('phone_num', validators=[DataRequired()])
   image_url = StringField('image_url', validators=[DataRequired(), URL()])
-  # image_url = StringField('image_url', validators=[URL()])
   preview = BooleanField('preview')
   avg_rating = FloatField('avg_rating', default=0)
   num_reviews = IntegerField('num_reviews', default=0)
