@@ -8,13 +8,8 @@ import key from './map'
 const rootReducer = combineReducers({
   session,
   filter,
-<<<<<<< HEAD
-  profileReducer,
   business,
   key
-=======
-  business
->>>>>>> 6de431fa489822ff76c98624e9d6190abb1acb87
 });
 
 
