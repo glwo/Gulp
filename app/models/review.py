@@ -16,12 +16,12 @@ class Review(db.Model):
     content = db.Column(db.String(255), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     imgUrl = db.Column(db.String(255), nullable=False)
-    reviewImages = db.Column(db.String(255), nullable=False)
+    reviewImages = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now(), nullable=False)
 
     business = db.relationship('Business', back_populates='reviews')
-    user = db.relationship('User', back_populates='reviews')
+    # user = db.relationship('User', back_populates='reviews')
     images = db.relationship('Review_Image', back_populates='review')
 
     def to_dict(self):

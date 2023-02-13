@@ -10,6 +10,10 @@ import BusinessDetail from "./components/BusinessDetail";
 import CreateBusiness from "./components/CreateBusiness";
 import ProfilePage from "./components/ProfilePage";
 
+import Review from './components/Reviews'
+import { allReviews } from './store/review';
+import CreateReviewForm from './components/Reviews/CreateReviewForm';
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -40,6 +44,13 @@ function App() {
           <Route path="/profile">
             <ProfilePage />
           </Route>
+          <Route path='/writeareview' exact={true} >
+        </Route>
+        <Route path='/business/:businessId/writeareview' exact={true} >
+          <div style={{"display":"flex", 'justifyContent':"center"}}>
+            <CreateReviewForm />
+          </div>
+        </Route>
         </Switch>
       )}
     </>

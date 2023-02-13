@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { updateProfile} from '../../store/profile'
 
 export default function ProfilePage() {
     const sessionUser = useSelector(state => state.session.user);
@@ -13,10 +14,13 @@ export default function ProfilePage() {
                 <div>
                 {sessionUser &&
                     <>
-                    <li>{sessionUser.img_url}</li>
+                    <li>
+                        <img id='profilepic' src={sessionUser.img_url} alt="Profile picture could not be found"></img>
+                    </li>
                     <li>User: {sessionUser.username}</li>
-                    <li>Name: {sessionUser.first_name} {user.last_name}</li>
+                    <li>Name: {sessionUser.first_name} {sessionUser.last_name}</li>
                     <li>Email: {sessionUser.email}</li>
+                    <button>Update Profile</button>
                     </>
                     }
                 </div>
