@@ -13,9 +13,27 @@ def seed_business_images():
     preview=True,
     business_id=2
   )
+  poke_burrito_image = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/businessregularlogo/UeQfzEYrof8Ig32RaZvMKA/348s.jpg",
+    preview=True,
+    business_id=3
+  )
+  dunkins_image = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/businessregularlogo/UeQfzEYrof8Ig32RaZvMKA/348s.jpg",
+    preview=True,
+    business_id=4
+  )
+  dicken_thomas_image = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/businessregularlogo/UeQfzEYrof8Ig32RaZvMKA/348s.jpg",
+    preview=True,
+    business_id=5
+  )
 
   db.session.add(brandons_donuts_image)
   db.session.add(midas_image)
+  db.session.add(poke_burrito_image)
+  db.session.add(dunkins_image)
+  db.session.add(dicken_thomas_image)
   db.session.commit()
 
 def undo_business_images():

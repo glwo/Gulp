@@ -9,6 +9,7 @@ import BusinessesIndex from "./components/BusinessIndex";
 import BusinessDetail from "./components/BusinessDetail";
 import CreateBusiness from "./components/CreateBusiness";
 import ProfilePage from "./components/ProfilePage";
+import BusinessCategory from "./components/BusinessCategory";
 
 // import Review from './components/Reviews'
 import { allReviews } from './store/review';
@@ -41,6 +42,10 @@ function App() {
             <BusinessesIndex />
           </Route>
           <Route exact path='/business/:businessId'>
+          <Route path='/category/:category/:location?'>
+            <BusinessCategory />
+          </Route>
+          <Route path='/business/:businessId'>
             <BusinessDetail />
           </Route>
           <Route exact path="/business">

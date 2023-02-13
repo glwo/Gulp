@@ -1,31 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { thunkCreateBusiness } from '../../store/business';
-import { useHistory } from 'react-router-dom';
+import React, { useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useModal } from "../../context/Modal";
+import { thunkUpdateBusiness } from "../../store/business";
 
-export default function CreateBusiness() {
+function UpdateBusinessModal({ business }) {
+  console.log(business)
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.session)
-  const history = useHistory();
-  const [store_name, setStoreName] = useState('');
-  const [description, setDescription] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [address, setAddress] = useState('');
-  const [zipcode, setZipcode] = useState();
-  const [business_type, setBusinessType] = useState('restaurant');
-  const [opening_time, setOpeningTime] = useState('')
-  const [closing_time, setClosingTime] = useState('');
-  const [phone_num, setPhoneNum] = useState();
-  const [image_url, setImageUrl] = useState('');
-  const [preview, setPreview] = useState("True");
+  const [store_name, setStoreName] = useState(business.store_name);
+  const [description, setDescription] = useState(business.description);
+  const [city, setCity] = useState(business.city);
+  const [state, setState] = useState(business.state);
+  const [address, setAddress] = useState(business.address);
+  const [zipcode, setZipcode] = useState(business.zipcode);
+  const [business_type, setBusinessType] = useState(business.business_type);
+  const [opening_time, setOpeningTime] = useState(business.opening_time)
+  const [closing_time, setClosingTime] = useState(business.closing_time);
+  const [phone_num, setPhoneNum] = useState(business.phone_num);
+  const [image_url, setImageUrl] = useState(business.business_images[0].image_url);
+  const [preview, setPreview] = useState(business.preview);
   const [errors, setErrors] = useState([]);
+  const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
 
-    const business = {
+    const businessData = {
+      ...business,
+      id: business.id,
       store_name,
       description,
       city,
@@ -39,19 +42,19 @@ export default function CreateBusiness() {
       image_url
     };
 
-    const data = await dispatch(thunkCreateBusiness(business))
+    const data = await dispatch(thunkUpdateBusiness(businessData))
     if (data.errors) {
       setErrors(data.errors)
     } else {
       setErrors([]);
-      history.push(`/business/${data.id}`);
+      closeModal();
     }
   }
 
   return (
     <div>
       <h1>
-        Create Business Page
+        Update Business
       </h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -159,8 +162,10 @@ export default function CreateBusiness() {
             required
           />
         </div>
-        <button type="submit">Create New Business</button>
+        <button type="submit">Update Business</button>
       </form>
     </div>
   )
-}
+};
+
+export default UpdateBusinessModal;

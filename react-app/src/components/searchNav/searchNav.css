@@ -10,7 +10,8 @@
     margin-top: 12px;
 }
 
-.mainSearchNav>input {
+.mainSearchNav>input,
+select {
     width: 412px;
     height: 48px;
 
@@ -57,6 +58,12 @@
     /* display: block; */
     margin-top: 24px;
     margin-left: 14px;
+    display: flex;
+    column-gap: 26px;
+}
+
+#categoryBar>a {
+    color: black;
 }
 
 .categoryBar>div {
