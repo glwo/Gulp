@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateProfile} from '../../store/profile'
+import updateProfileModal from './editProfileModal'
 
 export default function ProfilePage() {
     const sessionUser = useSelector(state => state.session.user);
@@ -20,6 +20,7 @@ export default function ProfilePage() {
                     <li>User: {sessionUser.username}</li>
                     <li>Name: {sessionUser.first_name} {sessionUser.last_name}</li>
                     <li>Email: {sessionUser.email}</li>
+                    <li>Biography: {sessionUser.bio}</li>
                     <button>Update Profile</button>
                     </>
                     }
