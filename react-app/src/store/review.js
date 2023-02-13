@@ -85,6 +85,7 @@ export const userReviews = () => async dispatch => {
 
 export const allReviews = () => async dispatch => {
     const response = await fetch(`/api/reviews`)
+    
 
     if(response.ok){
         const reviews = await response.json()

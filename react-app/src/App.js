@@ -10,7 +10,7 @@ import BusinessDetail from "./components/BusinessDetail";
 import CreateBusiness from "./components/CreateBusiness";
 import ProfilePage from "./components/ProfilePage";
 
-import Review from './components/Reviews'
+// import Review from './components/Reviews'
 import { allReviews } from './store/review';
 import CreateReviewForm from './components/Reviews/CreateReviewForm';
 
@@ -19,7 +19,10 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
+    dispatch(allReviews())
   }, [dispatch]);
+
+
 
   return (
     <>

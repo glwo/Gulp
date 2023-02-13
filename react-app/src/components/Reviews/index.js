@@ -6,9 +6,8 @@ import { getAllReviews } from '../../store/review'
 function Reviews() {
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch()
+        dispatch(getAllReviews())
     }, [dispatch])
-
 
 
     const totalReviews = useSelector(state => state.reviews.allReviews)

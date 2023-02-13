@@ -62,6 +62,43 @@ function CreateReviewForm() {
 
     return (
         <div className='reviewForm'>
+            <button onClick={() => history.push(`/business/${business_id}`)}>Back</button>
+            <form onSubmit={handleSubmit} className='reviewCreateContainer'>
+            <div>
+                <h4 className={!errors.length ? 'reviewFormHeader' : ''}>{business.name}</h4>
+            </div>
+            {errors.length !== 0 &&
+                <ul style={{"marginBottom":"0px"}}>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
+            }
+            <textarea style={{"borderRadius":"10px 10px 0px 0px"}}
+                className='reviewText'
+                type={'text'}
+                placeholder={'Review'}
+                required
+                value={review}
+                onChange={updateReview}
+            />
+            <input
+                className='formChildren'
+                type={'number'}
+                placeholder={'Stars'}
+                required
+                min={1}
+                max={5}
+                value={stars}
+                onChange={updateStars}
+            />
+            <input style={{"borderRadius":"0px 0px 10px 10px"}}
+                className='formChildren'
+                type={'url'}
+                placeholder={'Image (optional)'}
+                value={image}
+                onChange={updateImage}
+            />
+            <button className='reviewSubmit'>Submit</button>
+            </form>
         </div>
     )
 }
