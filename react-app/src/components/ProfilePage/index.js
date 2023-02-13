@@ -10,7 +10,7 @@ export default function ProfilePage() {
     const sessionUser = useSelector(state => state.session.user);
     // const sessionUser = useSelector(state => state.profileReducer.profile);
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     // useEffect(() => {
     //     // dispatch(getUser(+sessionUser.id))
