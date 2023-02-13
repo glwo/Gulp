@@ -11,10 +11,8 @@ const BusinessesIndex = () => {
   let allBusinesses;
   if (allBusinessesData) allBusinesses = Object.values(allBusinessesData);
   useEffect(() => {
-    // dispatch(resetState())
     dispatch(thunkLoadAllBusinesses())
   }, [dispatch])
-  console.log(allBusinessesData)
   if (!allBusinesses) {
     return null
   }

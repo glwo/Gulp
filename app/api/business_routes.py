@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, request
+from flask import Blueprint, redirect,session, request
 from flask_login import login_required, current_user
 from app.models import db, Business, BusinessImage
 from app.forms import BusinessForm
@@ -25,13 +25,13 @@ def get_all_businesses():
 
 
 @business_routes.route('/', methods=["POST"])
-# @login_required
+@login_required
 def post_business():
   """
   Create a new business and return that business in a dictionary
   """
   form = BusinessForm()
-  # form['csrf_token'].data = request.cookies['csrf_token']
+  form['csrf_token'].data = request.cookies['csrf_token']
 
   if form.validate_on_submit():
     newBusiness = Business(
@@ -45,17 +45,22 @@ def post_business():
       business_type = form.data['business_type'],
       opening_time = form.data['opening_time'],
       closing_time = form.data['closing_time'],
-      phone_num = form.data['phone_num']
+      phone_num = form.data['phone_num'],
+      avg_rating = form.data['avg_rating'],
+      num_reviews = form.data['num_reviews']
     )
+    db.session.add(newBusiness)
+    db.session.commit()
+    print("BUSINESS FORM -------------", newBusiness.to_dict())
     newBusinessImage = BusinessImage(
       image_url = form.data['image_url'],
       preview = form.data['preview'],
-      business_id = newBusiness.to_dict().id
+      business_id = newBusiness.id
     )
-    db.session.add(newBusiness)
     db.session.add(newBusinessImage)
     db.session.commit()
-    return redirect(f'/business/{newBusiness.to_dict().id}/'), 201
+    
+    return newBusiness.to_dict(), 201
 
   if form.errors:
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400

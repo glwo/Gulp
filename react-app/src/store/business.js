@@ -49,12 +49,12 @@ export const resetState = () => {
 
 //Thunk
 export const thunkLoadAllBusinesses = () => async (dispatch) => {
-  // const response = await fetch('/api/business');
+  const response = await fetch('/api/business');
 
-  // if (response.ok) {
-  //   const data = await response.json();
-  //   dispatch(loadAllBusinesses(data.businesses))
-  // }
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(loadAllBusinesses(data.businesses))
+  }
 };
 
 export const thunkLoadBusiness = (id) => async (dispatch) => {
@@ -69,9 +69,9 @@ export const thunkLoadBusiness = (id) => async (dispatch) => {
 export const thunkCreateBusiness = (business) => async (dispatch) => {
   const response  = await fetch(`/api/business/`, {
     method: "POST",
-    // headers: {
-    //   'Content-Type': 'application/json'
-    // },
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(business)
   });
 
@@ -89,6 +89,9 @@ export const thunkCreateBusiness = (business) => async (dispatch) => {
 export const thunkUpdateBusiness = (data) => async (dispatch) => {
   const response = await fetch(`/api/business/${data.id}`, {
     method: "PUT",
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(data)
   });
 
@@ -118,9 +121,7 @@ export const thunkRemoveBusiness = (id) => async (dispatch) => {
 //InitialState
 const initialState = {
   businesses: {
-  },
-  // singleBusiness: {
-  // }
+  }
 };
 
 //Reducer
@@ -128,12 +129,7 @@ const businessReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
     case LOAD_ALLBUSINESSES:
-      // let firstState = initialState
-      // firstState.businesses = normalize(action.payload)
       newState.businesses = normalize(action.payload)
-      return newState;
-    case LOAD_BUSINESS:
-      newState.businesses = action.payload
       return newState;
     case ADD_BUSINESS:
       newState.businesses = {...state.businesses, [action.payload.id]: action.payload}
