@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from sqlalchemy.sql import func
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -10,9 +10,16 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(40), nullable=False)
+    last_name = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    img_url= db.Column(db.String, nullable=False)
+    bio = db.Column(db.String(2000), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
+    updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now(), nullable=False)
+    filter = db.relationship("Filter", uselist=False, back_populates="user")
 
     @property
     def password(self):
@@ -28,6 +35,12 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'img_url': self.img_url,
+            'bio': self.bio,
+            'last_initial': (self.last_name[0]).upper(),
+            # 'filter': self.filter.to_dict()
         }

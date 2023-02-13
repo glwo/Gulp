@@ -4,9 +4,12 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useParams, useHistory } from "react-router-dom";
+import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -34,25 +37,35 @@ function ProfileButton({ user }) {
     dispatch(logout());
   };
 
+  const handleProfile = (e) => {
+    e.preventDefault();
+    history.push("/profile")
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button className="openMenuButton" onClick={openMenu}>
+        <div className="profileIcon">
         <i className="fas fa-user-circle" />
+        </div>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
+            <li>User: {user.username}</li>
+            <li>Name: {user.first_name} {user.last_name}</li>
+            <li>Email: {user.email}</li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              <button className="viewProfileButton" onClick={handleProfile}>View Profile</button>
+              <button className="logOutButton" onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (
           <>
+          <div className="loginSignUp">
             <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
@@ -64,6 +77,7 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
+            </div>
           </>
         )}
       </ul>

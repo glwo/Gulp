@@ -1,7 +1,74 @@
-.profile-dropdown {
-  position: absolute;
-}
-
 .hidden {
   display: none;
+}
+
+
+.navButtonProfile {
+  border-radius: 5px;
+  align-items: flex-end;
+  list-style: none;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 85px;
+  right: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px black;
+  padding: 15px;
+}
+
+.profile-dropdown li {
+  list-style: none;
+  padding: 10px 0;
+  list-style-type: none;
+}
+
+
+
+#permanentNavBar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 0 30px;
+}
+
+#permanentNavBar a {
+  text-decoration: none;
+  color: grey;
+}
+
+#nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+#homeicon {
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+#homeicon i {
+  font-size: 23px;
+}
+
+.openMenuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 17px;
+  border: none;
+}
+
+.openMenuButton:hover {
+  box-shadow: 0px 2px 6px black;
+}
+
+.addBusinessNav {
+  margin-top: 28px;
 }
