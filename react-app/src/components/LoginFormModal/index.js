@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+// import User from "../../"
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -23,6 +24,7 @@ function LoginFormModal() {
 
   const demolitionUser = (e) => {
     e.preventDefault();
+    // const demouser = User
     dispatch(
       login(
         'demo@aa.io',

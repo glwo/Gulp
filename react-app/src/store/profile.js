@@ -49,12 +49,12 @@ export const updateProfile = (profile) => async dispatch => {
         })
     })
 
-    // if (res.ok){
-    //     const profile = await res.json()
-    //     dispatch(editProfile(profile))
-    //     return profile
-    // }
-    return res
+    if (res.ok){
+        const profile = await res.json()
+        dispatch(editProfile(profile))
+        return profile
+    }
+    throw res
 }
 
 // REDUCER
@@ -71,9 +71,9 @@ const profileReducer = (state = initialState, action) => {
             newState = { ...state }
             newState.profile = { ...action.profile}
             return newState
-        // case EDIT_PROFILE:
-        //     newState = { ...state, [action.profile.id]: action.profile }
-        //     return newState
+        case EDIT_PROFILE:
+            newState = { ...state, [action.profile.id]: action.profile }
+            return newState
 
         default:
             return state

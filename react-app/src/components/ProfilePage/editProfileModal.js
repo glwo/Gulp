@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { updateProfile } from "../../store/profile";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { getProfile } from '../../store/profile';
 import "./editProfileModal.css";
 
 function UpdateProfileModal() {
@@ -16,13 +17,26 @@ function UpdateProfileModal() {
   const [bio, setBio] = useState(sessionUser.bio);
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
+  // const profile = {
+  //   id,
+  //   first_name,
+  //   last_name,
+  //   username,
+  //   email,
+  //   img_url,
+  //   bio
+  //   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(updateProfile({ id, first_name, last_name, username, email, img_url, bio}));
-    if (data) {
-      setErrors(data);
-    } else {
+    const data = await dispatch(updateProfile({id, first_name, last_name, username, email, img_url, bio}))
+    // const data = await dispatch(updateProfile(profile))
+    // const data = await dispatch(updateProfile({id}));
+    .catch(async (_req, res) => {
+      if (res && res.errors) setErrors(res.errors);
+    })
+    if(data) {
+        dispatch(getProfile(id))
         closeModal()
     }
   };
@@ -32,7 +46,7 @@ function UpdateProfileModal() {
       <h1>Update Your Profile</h1>
       <form onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
+          {errors?.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
