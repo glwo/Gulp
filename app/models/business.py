@@ -18,7 +18,7 @@ class Business(db.Model):
   business_type = db.Column(db.String, nullable=False)
   opening_time = db.Column(db.String, nullable=False)  # Considering using db.Time
   closing_time = db.Column(db.String, nullable=False)  # Considering using db.Time
-  phone_num = db.Column(db.Integer, nullable=False)
+  phone_num = db.Column(db.String, nullable=False)
   avg_rating = db.Column(db.Numeric(2, 1), nullable=False)
   num_reviews = db.Column(db.Integer, nullable=False)
   created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
