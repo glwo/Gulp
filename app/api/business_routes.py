@@ -78,13 +78,14 @@ def get_business(id):
   return thisBusiness.to_dict(), 200
 
 
-@business_routes.route('<int:id>', methods=["PUT"])
+@business_routes.route('/<int:id>', methods=["PUT"])
 @login_required
 def update_business(id):
   """
   Update business and return that business in a dictionary
   """
   thisBusiness = Business.query.get(id)
+  thisBusinessImage = BusinessImage.query.get(thisBusiness.business_images[0].id)
   form = BusinessForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -104,6 +105,9 @@ def update_business(id):
     thisBusiness.opening_time = form.data['opening_time']
     thisBusiness.closing_time = form.data['closing_time']
     thisBusiness.phone_num = form.data['phone_num']
+    thisBusinessImage.image_url = form.data['image_url']
+
+    # form.populate_obj(thisBusiness)
 
     db.session.commit()
 

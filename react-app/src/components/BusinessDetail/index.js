@@ -11,7 +11,7 @@ const BusinessDetail = () => {
   const currentBusiness = Object.values(business).find(business => business.id == businessId)
 
   useEffect(() => {
-    dispatch(thunkLoadAllBusinesses(businessId))
+    dispatch(thunkLoadAllBusinesses())
   }, [dispatch, businessId])
 
   if (!currentBusiness) {
