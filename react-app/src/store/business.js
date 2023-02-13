@@ -78,10 +78,11 @@ export const thunkCreateBusiness = (business) => async (dispatch) => {
   if (response.ok) {
     const business = await response.json();
     dispatch(addBusiness(business))
+    return business
   } else {
     const data = await response.json();
     if (data.errors) {
-      return data.errors
+      return data
     }
   }
 }
@@ -102,7 +103,7 @@ export const thunkUpdateBusiness = (data) => async (dispatch) => {
   } else {
     const data = await response.json();
     if (data.errors) {
-      return data.errors
+      return data
     }
   }
 }
@@ -120,8 +121,7 @@ export const thunkRemoveBusiness = (id) => async (dispatch) => {
 };
 //InitialState
 const initialState = {
-  businesses: {
-  }
+  businesses: {}
 };
 
 //Reducer
@@ -141,9 +141,6 @@ const businessReducer = (state = initialState, action) => {
       newState.businesses = {...state.businesses}
       delete newState.businesses[action.payload]
       return newState;
-    // case RESET:
-    //   newState.singleBusiness = {}
-    //   return newState;
     default:
       return state;
   }
