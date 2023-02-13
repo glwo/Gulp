@@ -1,11 +1,25 @@
-import React, { useState, useEffect, useRef  } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import UpdateProfileModal from "./editProfileModal"
 import OpenModalButton from "../OpenModalButton";
+import { updateProfile, getProfile } from '../../store/profile';
+import { getUser, updateUser } from '../../store/session';
 
 export default function ProfilePage() {
     const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.profileReducer.profile);
+
+    // const dispatch = useDispatch()
+
+    // useEffect(() => {
+    //     // dispatch(getUser(+sessionUser.id))
+    //     if (sessionUser){
+    //     dispatch(updateUser(+sessionUser.id))
+    //     .then(dispatch(getUser(+sessionUser.id)))
+    //     }
+    //     // dispatch(getProfile(+sessionUser.id))
+    // }, [dispatch, sessionUser])
 
     return (
         <div>
