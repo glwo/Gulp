@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -8,7 +8,8 @@ import CreateBusiness from '../CreateBusiness';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
-
+	console.log(useParams(), 'praramsnav main')
+	const { category, location } = useParams()
 	return (
 		<div id='permanentNavBar'>
 			<NavLink exact to="/">

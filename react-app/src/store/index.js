@@ -4,12 +4,14 @@ import session from './session'
 import profileReducer from './profile';
 import filter from './filter'
 import business from './business';
+import key from './map'
 
 const rootReducer = combineReducers({
   session,
   filter,
   profileReducer,
-  business
+  business,
+  key
 });
 
 
