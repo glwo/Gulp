@@ -10,19 +10,17 @@ import { useModal } from '../../context/Modal';
 import BusinessCard from "../BusinessCard";
 import { updateProfile, getProfile } from '../../store/profile';
 import { getUser, updateUser } from '../../store/session';
+import "./profilePage.css";
 
 export default function ProfilePage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const business = useSelector(state => state.business.businesses);
     const userBusinesses = Object.values(business).filter(business => business.owner_id == sessionUser.id)
-    
+
     useEffect(() => {
       dispatch(thunkLoadAllBusinesses())
     }, [dispatch])
-    // const sessionUser = useSelector(state => state.profileReducer.profile);
-
-    // const dispatch = useDispatch()
 
     // useEffect(() => {
     //     // dispatch(getUser(+sessionUser.id))
@@ -38,35 +36,44 @@ export default function ProfilePage() {
     }
     return (
         <div>
-            <h1>
-                Profile Page
-            </h1>
+          <div className='profileStats'>
             <ul className="profilepageul">
                 <div>
                 {sessionUser &&
                     <>
-                    <li>
+                    <div className='picandname'>
+                    <div>
                         <img id='profilepic' src={sessionUser.img_url} alt="Profile picture could not be found"></img>
-                    </li>
+                    </div>
+                    <div className='profilebox'>
+                    <h1>
+            {sessionUser.first_name} {sessionUser.last_name[0] + "."}
+            </h1>
+
+                    <div className='profileInfo'>
+                    <h2>{sessionUser.first_name}'s Profile</h2>
                     <li>User: {sessionUser.username}</li>
-                    <li>Name: {sessionUser.first_name} {sessionUser.last_name}</li>
                     <li>Email: {sessionUser.email}</li>
                     <li>Biography: {sessionUser.bio}</li>
                     <OpenModalButton
                     className= "updateProfileButton"
-                    buttonText="Update Profile"
+                    buttonText="Update Your Profile"
                     // onItemClick={closeMenu}
                     modalComponent={<UpdateBusinessModal />}
                     />
+                    </div>
+                    </div>
+                    </div>
                     </>
                     }
                 </div>
             </ul>
+            </div>
             <div>
               <h3>User's businesses</h3>
               <div>
                 {userBusinesses &&
-                userBusinesses.map(business => 
+                userBusinesses.map(business =>
                   <div>
                     <OpenModalButton
                       buttonText="Update Business"
