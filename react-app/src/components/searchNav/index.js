@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Link, useParams } from 'react-router-dom';
+import { NavLink, Link, useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import ProfileButton from './ProfileButton';
 import './searchNav.css';
 
 export default function SearchNav() {
     const dispatch = useDispatch();
+    const currentPath = useLocation().pathname.slice(1, 9)
     const [search, setSearch] = useState("");
     const [city, setCity] = useState("");
     const { location } = useParams()
     // console.log(useParams(), 'prarams')
+    const [bar, setBar] = useState("")
     useEffect(() => {
         console.log(location, 'locaiton')
     }, [dispatch])
+
+    const barClick = (businessCat) => {
+        setBar(businessCat)
+    }
+    // console.log(bar)
+    // console.log(currentPath)
     return (
         <div >
             <div className='mainSearchNav'>
@@ -38,17 +46,21 @@ export default function SearchNav() {
                 </button>
             </div>
             <div className='categoryBar' id='categoryBar'>
-                <Link to={`/category/restaurants`}>
+                <Link to={`/category/restaurants`} onClick={() => barClick('restaurants')}>
                     <div>Restaurants <i class="fa fa-caret-down"></i></div>
+                    {bar == 'restaurants' && currentPath == 'category' ? <hr className='cat-bar'></hr> : null}
                 </Link>
-                <Link exact to={`/category/homeServices`}>
+                <Link exact to={`/category/homeServices`} onClick={() => barClick('home')} >
                     <div>Home Services <i class="fa fa-caret-down"></i></div>
+                    {bar == 'home' && currentPath == 'category' ? <hr className='cat-bar'></hr> : null}
                 </Link>
-                <Link exact to={`/category/autoServices`}>
+                <Link exact to={`/category/autoServices`} onClick={() => barClick('auto')}>
                     <div>Auto Services <i class="fa fa-caret-down"></i></div>
+                    {bar == 'auto' && currentPath == 'category' ? <hr className='cat-bar'></hr> : null}
                 </Link>
-                <Link exact to={`/category/hairSalons`}>
+                <Link exact to={`/category/hairSalons`} onClick={() => barClick('hair')}>
                     <div>Hair Salons <i class="fa fa-caret-down"></i></div>
+                    {bar == 'hair' && currentPath == 'category' ? <hr className='cat-bar'></hr> : null}
                 </Link>
             </div>
         </div >
