@@ -33,7 +33,7 @@ export default function ProfilePage() {
                 {sessionUser &&
                     <>
                     <div className='picandname'>
-                    <div>
+                    <div className="profileImgDiv">
                         <img id='profilepic' src={sessionUser.img_url} alt="Profile picture could not be found"></img>
                     </div>
                     <div className='profilebox'>
@@ -61,11 +61,11 @@ export default function ProfilePage() {
             </ul>
             </div>
             <div className='businessH3'>
-              <h3>User's businesses</h3>
+              <h3>User's Businesses</h3>
               <div className='businessesBox'>
                 {!sessionUser ? "Please Login to see this page" : userBusinesses &&
                 userBusinesses.map(business =>
-                  <div>
+                  <div className='indivbusinessCard'>
                     {/* <OpenModalButton
                       buttonText="Update Business"
                       modalComponent={<UpdateBusinessModal business={business} key={business.id}/>}
@@ -76,7 +76,7 @@ export default function ProfilePage() {
                       buttonText="Update Business"
                       modalComponent={<UpdateBusinessModal business={business} key={business.id}/>}
                     />
-                    <button onClick={() => removeBusiness(business.id)}>Delete business</button>
+                    <button onClick={() => removeBusiness(business.id)}>Delete Business</button>
                 </div>)
                 }
               </div>

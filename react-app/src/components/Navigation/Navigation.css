@@ -53,6 +53,11 @@
 
 #homeicon i {
   font-size: 32px;
+  color: #ff1a1a;
+}
+
+#homeicon h1 {
+  color: black;
 }
 
 .openMenuButton {
