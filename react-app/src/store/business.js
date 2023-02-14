@@ -34,16 +34,10 @@ export const updateBusiness = (business) => {
   }
 };
 
-export const removeBusiness = (business) => {
+export const removeBusiness = (id) => {
   return {
     type: REMOVE_BUSINESS,
-    payload: business
-  }
-}
-
-export const resetState = () => {
-  return {
-    type: RESET,
+    payload: id
   }
 }
 
@@ -115,7 +109,7 @@ export const thunkRemoveBusiness = (id) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(removeBusiness(data))
+    dispatch(removeBusiness(id))
     return data;
   }
 };

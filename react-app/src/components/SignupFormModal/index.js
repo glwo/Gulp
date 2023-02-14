@@ -35,13 +35,15 @@ function SignupFormModal() {
 
 	return (
 		<>
-			<h1>Sign Up</h1>
+		<div className="signUpModal">
+			<h1>Sign Up for Gulp</h1>
 			<form onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
+				<div>
 				<label>
 					First Name :
 					<input
@@ -51,6 +53,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Last Name :
 					<input
@@ -60,6 +64,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Username :
 					<input
@@ -69,6 +75,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Email :
 					<input
@@ -78,6 +86,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Profile Picture Url :
 					<input
@@ -87,6 +97,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Biography :
 					<input
@@ -96,6 +108,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Password :
 					<input
@@ -105,6 +119,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Confirm Password :
 					<input
@@ -114,8 +130,12 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				</div>
+				<div>
+				<button className="signUpButton" type="submit">Sign Up</button>
+				</div>
 			</form>
+			</div>
 		</>
 	);
 }
