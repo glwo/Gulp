@@ -50,11 +50,11 @@ function App() {
           <Route exact path="/profile">
             <ProfilePage />
           </Route>
-          <Route exact path='/reviews'>
+          {/* <Route exact path='/reviews'>
             <CreateReviewForm />
             <ReviewDetails />
-        </Route>
-        <Route path='/business/:businessId/writeareview'>
+        </Route> */}
+        <Route path='/business/:business_id/writeareview'>
           <div style={{"display":"flex", 'justifyContent':"center"}}>
             <CreateReviewForm />
           </div>

@@ -15,8 +15,8 @@ class Review(db.Model):
     lastInitial = db.Column(db.String(1), nullable=False)
     content = db.Column(db.String(255), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
-    imgUrl = db.Column(db.String(255), nullable=False)
-    reviewImages = db.Column(db.String(255), nullable=True)
+    # imgUrl = db.Column(db.String(255), nullable=False)
+    # reviewImages = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now(), nullable=False)
 
@@ -33,8 +33,8 @@ class Review(db.Model):
             'lastInitial': self.lastInitial,
             'content': self.content,
             'rating': self.rating,
-            'imgUrl': self.imgUrl,
-            'reviewImages': self.reviewImages,
+            # 'imgUrl': self.imgUrl,
+            'reviewImages': [image.to_dict() for image in self.images],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

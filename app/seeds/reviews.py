@@ -8,7 +8,7 @@ def seed_reviews():
         lastInitial="H",
         content="This is a review",
         rating=5,
-        imgUrl="https://i.imgur.com/4ZQZQ0C.png",
+        # imgUrl="https://i.imgur.com/4ZQZQ0C.png",
     )
     midas = Review(
         business_id=2,
@@ -17,7 +17,7 @@ def seed_reviews():
         lastInitial="H",
         content="This is a review",
         rating=5,
-        imgUrl="https://i.imgur.com/4ZQZQ0C.png",
+        # imgUrl="https://i.imgur.com/4ZQZQ0C.png",
     )
 
 

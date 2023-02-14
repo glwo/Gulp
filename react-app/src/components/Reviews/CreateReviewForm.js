@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { reviewCreate } from '../../store/review'
-import { loadBusiness } from '../../store/business'
+import { thunkLoadAllBusinesses } from '../../store/business'
 
 function CreateReviewForm() {
     const dispatch = useDispatch()
@@ -13,10 +13,13 @@ function CreateReviewForm() {
     const [ errors, setErrors ] = useState([])
 
     const { business_id } = useParams()
-    const business = useSelector(state => state.business[business_id])
+    const business = useSelector(state => state.business.businesses)
+    // console.log(business)
+    const currentBusiness = Object.values(business).find(business => business.id == business_id)
+    // console.log(currentBusiness)
     useEffect(() => {
-        dispatch(loadBusiness(business_id))
-    }, [dispatch, business_id])
+        dispatch(thunkLoadAllBusinesses())
+    }, [dispatch])
 
 
     const updateReview = (e) => setReview(e.target.value)
@@ -42,22 +45,30 @@ function CreateReviewForm() {
         e.preventDefault()
 
         let payload;
-        if(image){
+        // if(image){
+
             payload= {
+                business_id:business_id,
                 review,
                 stars,
-                image
+                url:image,
             }
-        } else {
-            payload= {
-                review,
-                stars
-            }
-        }
+
+        // }
+        // } else {
+        //     payload= {
+        //         review,
+        //         stars
+        //     }
+        // }
 
         let newReview = await dispatch(reviewCreate(business_id, payload))
 
-        if(newReview) clearData(newReview)
+        if(newReview.errors){
+            setErrors(newReview.errors)
+        } else {
+            clearData(newReview)
+        }
     }
 
 

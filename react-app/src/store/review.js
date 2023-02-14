@@ -40,8 +40,9 @@ const deleteReview = (reviewId) => {
     }
 }
 
-export const reviewCreate = (businessId, review) => async dispatch => {
-    const res = await fetch(`/api/business/${businessId}/reviews`, {
+export const reviewCreate = (business_id, review) => async dispatch => {
+    // console.log('buiness_id', business_id)
+    const res = await fetch(`/api/review/business/${business_id}/reviews`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(review)
@@ -49,29 +50,35 @@ export const reviewCreate = (businessId, review) => async dispatch => {
 
     if (res.ok) {
         const newReview = await res.json()
-        if (review.image) {
-            const payload = {
-                "review_id": newReview.id,
-                "url": review.image
-            }
+        // if (review.image) {
+        //     const payload = {
+        //         "review_id": newReview.id,
+        //         "url": review.image
+            // }
 
-            const imageRes = await fetch(`/api/business/${businessId}/reviews/${newReview.id}/images`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            })
+            // const imageRes = await fetch(`/api/business/${businessId}/reviews/${newReview.id}/images`, {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(payload)
+            // })
 
-            if (imageRes.ok) {
-                const image = await imageRes.json()
-                newReview.image = [image]
-                dispatch(createReview(newReview))
-                return newReview
-            }
-        }
+            // if (imageRes.ok) {
+            //     const image = await imageRes.json()
+            //     newReview.image = [image]
+            //     dispatch(createReview(newReview))
+            //     return newReview
+            // }
+
         dispatch(createReview(newReview))
         return newReview
+    }   else if (res.status < 500) {
+        const data = await res.json()
+        if (data.errors) {
+            return data
+        }
     }
 }
+
 
 export const userReviews = () => async dispatch => {
     const response = await fetch(`/api/reviews/current`)
