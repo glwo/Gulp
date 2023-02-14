@@ -10,9 +10,10 @@ const rootReducer = combineReducers({
   session,
   filter,
   business,
-  reviews
+  reviews,
   key
 });
+
 
 
 let enhancer;

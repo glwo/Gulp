@@ -10,12 +10,8 @@ import BusinessDetail from "./components/BusinessDetail";
 import CreateBusiness from "./components/CreateBusiness";
 import ProfilePage from "./components/ProfilePage";
 import BusinessCategory from "./components/BusinessCategory";
-
-// import Review from './components/Reviews'
 import { allReviews } from './store/review';
-// import CreateReviewForm from './components/Reviews/CreateReviewForm';
 import CreateReviewModal from "./components/Reviews/ReviewModal";
-import CreateReviewForm from "./components/Reviews/CreateReviewForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,7 +20,6 @@ function App() {
     dispatch(authenticate()).then(() => setIsLoaded(true));
     dispatch(allReviews())
   }, [dispatch]);
-
 
 
   return (
@@ -41,11 +36,10 @@ function App() {
           <Route exact path='/'>
             <BusinessesIndex />
           </Route>
-          <Route exact path='/business/:businessId'>
           <Route path='/category/:category/:location?'>
             <BusinessCategory />
           </Route>
-          <Route path='/business/:businessId'>
+          <Route exact path='/business/:businessId'>
             <BusinessDetail />
           </Route>
           <Route exact path="/business">
@@ -57,10 +51,9 @@ function App() {
           <Route exact path='/reviews'>
             <CreateReviewModal />
         </Route>
-        <Route exact path='/business/:businessId/writeareview'>
+        <Route path='/business/:businessId/writeareview'>
           <div style={{"display":"flex", 'justifyContent':"center"}}>
             <CreateReviewModal />
-            {/* <CreateReviewForm /> */}
           </div>
         </Route>
         </Switch>
