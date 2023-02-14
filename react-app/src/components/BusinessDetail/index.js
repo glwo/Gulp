@@ -81,17 +81,45 @@ const BusinessDetail = () => {
               <div>Direction: {currentBusiness.address} {currentBusiness.city}, {currentBusiness.state} {currentBusiness.zipcode}</div>
             </div>
             <h4>You might also consider</h4>
-            <div>
+            <div className="suggest-business-main-div">
               {suggestBusiness[0] && 
+              <div  className="suggest-business-single-div">
+                <img className="suggest-business-image" src={suggestBusiness[0].business_images[0].image_url}/>
                 <div className="suggest-business-div">
-                  <img className="suggest-business-image" src={suggestBusiness[0].business_images[0].image_url}/>
-                  {suggestBusiness[0].store_name}
+                  <div>
+                    {suggestBusiness[0].store_name}
+                  </div>
+                  <div>
+                    {suggestBusiness[0].avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                    {suggestBusiness[0].avg_rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                    {suggestBusiness[0].avg_rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                    {suggestBusiness[0].avg_rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                    {suggestBusiness[0].avg_rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                  </div>
+                  <div>
+                    {suggestBusiness[0].num_reviews} reviews
+                  </div>
                 </div>
+              </div>
               }
               {suggestBusiness[1] && 
-                <div className="suggest-business-div">
+                <div  className="suggest-business-single-div">
                   <img className="suggest-business-image" src={suggestBusiness[1].business_images[0].image_url}/>
-                  {suggestBusiness[1].store_name}
+                  <div className="suggest-business-div">
+                    <div>
+                      {suggestBusiness[1].store_name}
+                    </div>
+                    <div>
+                      {suggestBusiness[1].avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      {suggestBusiness[1].avg_rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      {suggestBusiness[1].avg_rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      {suggestBusiness[1].avg_rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      {suggestBusiness[1].avg_rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                    </div>
+                    <div>
+                      {suggestBusiness[1].num_reviews} reviews
+                    </div>
+                  </div>
                 </div>
               }
             </div>

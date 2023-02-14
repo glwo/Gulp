@@ -58,15 +58,27 @@
   border: 1px solid gray;
   padding: 10px;
   row-gap: 10px;
+  border-radius: 5px;
 }
 
+.suggest-business-main-div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+.suggest-business-single-div {
+  display: flex;
+  column-gap: 10px;
+}
 .suggest-business-div {
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
-
 .suggest-business-image {
   width: 30%;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .red {
