@@ -70,3 +70,8 @@ select {
     width: 159px;
     display: inline-block;
 }
+
+.cat-bar {
+    color: rgba(224, 7, 7, 1);
+    border: 1.5px solid;
+}
