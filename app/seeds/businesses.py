@@ -17,6 +17,21 @@ def seed_businesses():
     num_reviews=0,
     owner_id=1
   )
+  da_andrea = Business(
+    store_name="Da Andrea",
+    description="Italian, Mediterranean, Breakfast and Brunch",
+    city="New York",
+    state="NY",
+    address="35 W 13th St",
+    zipcode=10011,
+    business_type="restaurant",
+    opening_time="11:30",
+    closing_time="22:00",
+    phone_num='2123671979',
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=1
+  )
   midas = Business(
     store_name="Midas",
     description="Auto Repair, Oil Change Station, Tires",
@@ -77,12 +92,45 @@ def seed_businesses():
     num_reviews=0,
     owner_id=3
   )
+  ariari = Business(
+    store_name="ARIARI",
+    description="Korean, Tapas/Small Plates, Gastropubs",
+    city="New York",
+    state="NY",
+    address="119 1st Ave",
+    zipcode=10003,
+    business_type="restaurant",
+    opening_time="17:00",
+    closing_time="22:00",
+    phone_num="6464227466",
+    avg_rating=4.6,
+    num_reviews=20,
+    owner_id=3
+  )
+  honeybliss = Business(
+    store_name="Honeybliss Salon",
+    description="Hair Salons",
+    city="New York",
+    state="NY",
+    address="128 E 84th St",
+    zipcode=10028,
+    business_type="salon",
+    opening_time="17:00",
+    closing_time="22:00",
+    phone_num="2122881676",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=1
+  )
 
   db.session.add(brandons_donuts)
+  db.session.add(da_andrea)
+  db.session.add(midas)
   db.session.add(poke_burrito)
   db.session.add(dunkins)
-  db.session.add(midas)
   db.session.add(dicken_thomas_construction)
+  db.session.add(ariari)
+  db.session.add(honeybliss)
   db.session.commit()
 
 def undo_businesses():
