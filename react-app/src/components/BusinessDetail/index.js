@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkLoadAllBusinesses } from "../../store/business";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./BusinessDetail.css"
 
 const BusinessDetail = () => {
@@ -47,7 +47,7 @@ const BusinessDetail = () => {
               <button>Write a review</button>
             </div>
             <h4>Location & Hours</h4>
-            <div className="location-hour-maindiv">
+            <div className="location-hour-main-div">
               <div>
                 <div>Google map here</div>
                 <ul className="nl">
@@ -55,7 +55,7 @@ const BusinessDetail = () => {
                   <li>{currentBusiness.city}, {currentBusiness.state} {currentBusiness.zipcode}</li>
                 </ul>
               </div>
-              <ul className="nl">
+              <ul className="nl open-close">
                 <li>Mon</li>
                 <li>Tue</li>
                 <li>Wed</li>
@@ -64,7 +64,7 @@ const BusinessDetail = () => {
                 <li>Sat</li>
                 <li>Sun</li>
               </ul>
-              <ul className="nl">
+              <ul className="nl open-close">
                 <li>{currentBusiness.opening_time} - {currentBusiness.closing_time}</li>
                 <li>{currentBusiness.opening_time} - {currentBusiness.closing_time}</li>
                 <li>{currentBusiness.opening_time} - {currentBusiness.closing_time}</li>
@@ -81,18 +81,42 @@ const BusinessDetail = () => {
               <div>Direction: {currentBusiness.address} {currentBusiness.city}, {currentBusiness.state} {currentBusiness.zipcode}</div>
             </div>
             <h4>You might also consider</h4>
-            <div>
+            <div className="suggest-business-main-div">
               {suggestBusiness[0] && 
-                <div className="suggest-business-div">
-                  <img className="suggest-business-image" src={suggestBusiness[0].business_images[0].image_url}/>
-                  {suggestBusiness[0].store_name}
-                </div>
+                <Link to={`/business/${suggestBusiness[0].id}`}>
+                  <div className="suggest-business-div">
+                    <img className="suggest-business-image" src={suggestBusiness[0].business_images[0].image_url}/>
+                    <div>
+                      {suggestBusiness[0].store_name}
+                      <div>
+                        {suggestBusiness[0].avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[0].avg_rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[0].avg_rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[0].avg_rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[0].avg_rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      </div>
+                      {suggestBusiness[0].num_reviews} reviews
+                    </div>
+                  </div>
+                </Link>
               }
-              {suggestBusiness[1] && 
-                <div className="suggest-business-div">
-                  <img className="suggest-business-image" src={suggestBusiness[1].business_images[0].image_url}/>
-                  {suggestBusiness[1].store_name}
-                </div>
+              {suggestBusiness[1] &&              
+                <Link to={`/business/${suggestBusiness[1].id}`}>
+                  <div className="suggest-business-div">
+                    <img className="suggest-business-image" src={suggestBusiness[1].business_images[0].image_url}/>
+                    <div>
+                      {suggestBusiness[1].store_name}
+                      <div>
+                        {suggestBusiness[1].avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[1].avg_rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[1].avg_rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[1].avg_rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[1].avg_rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      </div>  
+                      {suggestBusiness[1].num_reviews} reviews
+                    </div>
+                  </div>
+                </Link>
               }
             </div>
           </div>

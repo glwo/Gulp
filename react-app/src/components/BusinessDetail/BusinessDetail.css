@@ -40,39 +40,50 @@
 
 .review-button-div {
   display: flex;
-  padding-top: 3%;
+  padding-top: 2%;
   padding-bottom: 3%;
 }
-
-.location-hour-maindiv {
+.location-hour-main-div {
   display: flex;
+}
+.open-close {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  font-weight: 500;
 }
 
 .side-info-div {
   width: 500px;
 }
-
 .side-info-top-div {
   display: flex;
   flex-direction: column;
   border: 1px solid gray;
+  border-radius: 5px;
   padding: 10px;
   row-gap: 10px;
 }
 
+.suggest-business-main-div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
 .suggest-business-div {
   width: 100%;
+  display: flex;
+  column-gap: 20px;
 }
-
 .suggest-business-image {
   width: 30%;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .red {
   color: red ;
 }
-
 .gray {
   color: gray;
 }
