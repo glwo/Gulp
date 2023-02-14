@@ -25,7 +25,6 @@
 .signUpButton:hover {
     background-color: #ef2b2b;
     transition-duration: 1000ms;
-    transition-delay: 1000ms;
 }
 
 .signUpModal div {
