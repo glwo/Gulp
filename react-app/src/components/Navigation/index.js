@@ -14,8 +14,8 @@ function Navigation({ isLoaded }) {
 		<div id='permanentNavBar'>
 			<NavLink exact to="/">
 				<div id='homeicon'>
-					<h1>Yelp</h1>
-					<i class="fa-solid fa-eye"></i>
+					<h1>Gulp</h1>
+					<i class="fa-solid fa-otter"></i>
 				</div>
 			</NavLink>
 			<SearchNav />
