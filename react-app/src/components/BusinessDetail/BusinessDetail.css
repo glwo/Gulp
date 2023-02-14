@@ -1,0 +1,78 @@
+.detail-business-div {
+  padding-left: 15vw;
+  padding-right: 15vw;
+}
+
+.title-description-maindiv {
+  display: flex;
+  flex-direction: column;
+  padding-top: 240px;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 1.4em;
+  row-gap: 5px;
+}
+
+.title-store-name {
+  margin: 0;
+}
+
+.main-div {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.business-image-div {
+  display: flex;
+  height: 400px;
+  z-index: -1;
+  position: absolute;
+}
+
+.business-image {
+  height: 400px;
+}
+
+.business-div {
+  width: 100%;
+}
+
+.review-button-div {
+  display: flex;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.location-hour-maindiv {
+  display: flex;
+}
+
+.side-info-div {
+  width: 500px;
+}
+
+.side-info-top-div {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  padding: 10px;
+  row-gap: 10px;
+}
+
+.suggest-business-div {
+  width: 100%;
+}
+
+.suggest-business-image {
+  width: 30%;
+  object-fit: cover;
+}
+
+.red {
+  color: red ;
+}
+
+.gray {
+  color: gray;
+}

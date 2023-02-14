@@ -33,8 +33,13 @@ def seed_business_images():
     preview=True,
     business_id=6
   )
-  ariari_image = BusinessImage(
+  ariari_image_1 = BusinessImage(
     image_url="https://s3-media0.fl.yelpcdn.com/bphoto/x5UIZSKaoM09z4r_ASxp-A/o.jpg",
+    preview=True,
+    business_id=7
+  )
+  ariari_image_2 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/6cVV3JhgBHlnUoJLGJXW_Q/o.jpg",
     preview=True,
     business_id=7
   )
@@ -50,7 +55,8 @@ def seed_business_images():
   db.session.add(poke_burrito_image)
   db.session.add(dunkins_image)
   db.session.add(dicken_thomas_image)
-  db.session.add(ariari_image)
+  db.session.add(ariari_image_1)
+  db.session.add(ariari_image_2)
   db.session.add(honeybliss_image)
   db.session.commit()
 

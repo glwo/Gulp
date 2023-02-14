@@ -93,7 +93,7 @@ def seed_businesses():
     owner_id=3
   )
   ariari = Business(
-    store_name="El Paso Mexican Grill",
+    store_name="ARIARI",
     description="Korean, Tapas/Small Plates, Gastropubs",
     city="New York",
     state="NY",
@@ -103,8 +103,8 @@ def seed_businesses():
     opening_time="17:00",
     closing_time="22:00",
     phone_num="6464227466",
-    avg_rating=0,
-    num_reviews=0,
+    avg_rating=4.6,
+    num_reviews=20,
     owner_id=3
   )
   honeybliss = Business(
@@ -125,9 +125,9 @@ def seed_businesses():
 
   db.session.add(brandons_donuts)
   db.session.add(da_andrea)
+  db.session.add(midas)
   db.session.add(poke_burrito)
   db.session.add(dunkins)
-  db.session.add(midas)
   db.session.add(dicken_thomas_construction)
   db.session.add(ariari)
   db.session.add(honeybliss)
