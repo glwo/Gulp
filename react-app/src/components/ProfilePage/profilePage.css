@@ -62,3 +62,24 @@
 .profileInfo button:hover {
     background-color: #ebebeb;
 }
+
+.businessesBox {
+    padding: 45px 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 80%;
+}
+
+.businessH3 h3{
+    padding: 45px 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 80%;
+    color: #d32323;
+}
