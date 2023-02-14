@@ -16,13 +16,10 @@ export default function ProfilePage() {
     const sessionUser = useSelector(state => state.session.user);
     const business = useSelector(state => state.business.businesses);
     const userBusinesses = Object.values(business).filter(business => business.owner_id == sessionUser.id)
-    
+
     useEffect(() => {
       dispatch(thunkLoadAllBusinesses())
     }, [dispatch])
-    // const sessionUser = useSelector(state => state.profileReducer.profile);
-
-    // const dispatch = useDispatch()
 
     // useEffect(() => {
     //     // dispatch(getUser(+sessionUser.id))
@@ -66,7 +63,7 @@ export default function ProfilePage() {
               <h3>User's businesses</h3>
               <div>
                 {userBusinesses &&
-                userBusinesses.map(business => 
+                userBusinesses.map(business =>
                   <div>
                     <OpenModalButton
                       buttonText="Update Business"
