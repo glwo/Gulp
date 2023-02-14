@@ -20,14 +20,14 @@ def seed():
         # command, which will  truncate all tables prefixed with
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
-        # undo_reviews()
+        undo_reviews()
         undo_business_images()
         undo_businesses()
         undo_users()
     seed_users()
     seed_businesses()
     seed_business_images()
-    # seed_reviews()
+    seed_reviews()
     # Add other seed functions here
 
 
@@ -35,7 +35,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    # undo_reviews()
+    undo_reviews()
     undo_businesses()
     undo_business_images()
     # Add other undo functions here

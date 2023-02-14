@@ -20,7 +20,7 @@ class Review(db.Model):
     created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now(), nullable=False)
 
-    # business = db.relationship('Business', back_populates='reviews')
+    business = db.relationship('Business', back_populates='reviews')
     # user = db.relationship('User', back_populates='reviews')
     images = db.relationship('Review_Image', back_populates='review', cascade="all, delete-orphan")
 
