@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
 import { login } from "../../store/session";
+import { getFilter } from "../../store/filter";
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -36,6 +37,7 @@ function SignupFormModal() {
 			} else {
 				closeModal();
 			}
+			dispatch(getFilter())
 		} else {
 			setErrors([
 				"Confirm Password field must be the same as the Password field",
