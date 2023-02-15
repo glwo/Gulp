@@ -81,6 +81,7 @@
     flex-wrap: wrap;
     gap: 20px;
     width: 80%;
+    /* border-top: 1px solid #808080; */
 }
 
 .businessH3 h3{
