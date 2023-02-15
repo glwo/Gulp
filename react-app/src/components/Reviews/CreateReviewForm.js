@@ -86,7 +86,7 @@ function CreateReviewForm() {
 
                 </ul>
             }
-            <textarea style={{"borderRadius":"10px 10px 10px 10px"}}
+            <textarea style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
                 className='reviewText'
                 type={'text'}
                 placeholder={'Review'}
@@ -94,7 +94,7 @@ function CreateReviewForm() {
                 value={review}
                 onChange={updateReview}
             />
-            <input
+            <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
                 className='formChildren'
                 type={'number'}
                 placeholder={'Stars'}
@@ -104,7 +104,7 @@ function CreateReviewForm() {
                 value={stars}
                 onChange={updateStars}
             />
-            <input style={{"borderRadius":"10px 10px 10px 10px"}}
+            <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
                 className='formChildren'
                 type={'url'}
                 placeholder={'Image (optional)'}

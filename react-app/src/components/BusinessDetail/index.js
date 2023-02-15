@@ -2,8 +2,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkLoadAllBusinesses } from "../../store/business";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./BusinessDetail.css"
+import CreateReviewForm from "../Reviews/CreateReviewForm";
 
 const BusinessDetail = () => {
   const { businessId } = useParams();
@@ -31,11 +32,11 @@ const BusinessDetail = () => {
         <div className="title-description-maindiv">
           <h1 className="title-store-name">{currentBusiness.store_name}</h1>
           <div>
-            {currentBusiness.avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-            {currentBusiness.avg_rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-            {currentBusiness.avg_rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-            {currentBusiness.avg_rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-            {currentBusiness.avg_rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+            {currentBusiness.avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
+            {currentBusiness.avg_rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
+            {currentBusiness.avg_rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
+            {currentBusiness.avg_rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
+            {currentBusiness.avg_rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
             |  {currentBusiness.num_reviews} reviews
           </div>
           <div>{currentBusiness.description}</div>
@@ -44,7 +45,7 @@ const BusinessDetail = () => {
         <div className="main-div">
           <div className="business-div">
             <div className="review-button-div">
-              <button>Write a review</button>
+              <Link to={`/business/${currentBusiness.id}/writeareview`}>Write a review</Link>
             </div>
             <h4>Location & Hours</h4>
             <div className="location-hour-maindiv">
@@ -82,13 +83,13 @@ const BusinessDetail = () => {
             </div>
             <h4>You might also consider</h4>
             <div>
-              {suggestBusiness[0] && 
+              {suggestBusiness[0] &&
                 <div className="suggest-business-div">
                   <img className="suggest-business-image" src={suggestBusiness[0].business_images[0].image_url}/>
                   {suggestBusiness[0].store_name}
                 </div>
               }
-              {suggestBusiness[1] && 
+              {suggestBusiness[1] &&
                 <div className="suggest-business-div">
                   <img className="suggest-business-image" src={suggestBusiness[1].business_images[0].image_url}/>
                   {suggestBusiness[1].store_name}

@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
+import { useModal } from '../../context/Modal';
 import CreateReviewForm from './CreateReviewForm';
+import './CreateReviewForm.css';
 
 function CreateReviewModal() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { closeModal } = useModal();
 
   return (
-    <div>
-      <button onClick={() => setModalIsOpen(true)}>Write a Review</button>
-
-      {modalIsOpen && (
-        <Modal onClose={() => setModalIsOpen(false)}>
-          <CreateReviewForm />
-        </Modal>
-      )}
+    <div className="review-modal">
+      <button className="exit-button" onClick={closeModal}>X</button>
+      <CreateReviewForm />
     </div>
   );
 }
-
-
 
 export default CreateReviewModal;

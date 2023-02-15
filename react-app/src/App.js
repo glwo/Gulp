@@ -11,7 +11,7 @@ import CreateBusiness from "./components/CreateBusiness";
 import ProfilePage from "./components/ProfilePage";
 import BusinessCategory from "./components/BusinessCategory";
 import { allReviews } from './store/review';
-// import CreateReviewModal from "./components/Reviews/ReviewModal";
+import CreateReviewModal from "./components/Reviews/ReviewModal";
 import CreateReviewForm from "./components/Reviews/CreateReviewForm";
 import ReviewDetails from "./components/Reviews/ReviewDetails";
 
@@ -43,6 +43,7 @@ function App() {
           </Route>
           <Route exact path='/business/:businessId'>
             <BusinessDetail />
+            {/* <ReviewDetails /> */}
           </Route>
           <Route exact path="/business">
             <CreateBusiness />
@@ -50,10 +51,11 @@ function App() {
           <Route exact path="/profile">
             <ProfilePage />
           </Route>
-          {/* <Route exact path='/reviews'>
-            <CreateReviewForm />
+          <Route exact path='/reviews'>
+            {/* <CreateReviewForm />
             <ReviewDetails />
-        </Route> */}
+            <CreateReviewModal /> */}
+        </Route>
         <Route path='/business/:business_id/writeareview'>
           <div style={{"display":"flex", 'justifyContent':"center"}}>
             <CreateReviewForm />
