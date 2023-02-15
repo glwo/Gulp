@@ -44,6 +44,7 @@ function UpdateProfileModal() {
 
   return (
     <>
+    <div className="editProfileModal">
       <h1>Update Your Profile</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -51,6 +52,7 @@ function UpdateProfileModal() {
             <li key={idx}>{error}</li>
           ))}
         </ul>
+        <div>
         <label>
           First Name :
           <input
@@ -60,6 +62,8 @@ function UpdateProfileModal() {
             required
           />
         </label>
+        </div>
+        <div>
         <label>
           Last Name :
           <input
@@ -69,8 +73,10 @@ function UpdateProfileModal() {
             required
           />
         </label>
+        </div>
+        <div>
         <label>
-          Username
+          Username :
           <input
             type="text"
             value={username}
@@ -78,8 +84,10 @@ function UpdateProfileModal() {
             required
           />
         </label>
+        </div>
+        <div>
         <label>
-          Email
+          Email :
           <input
             type="text"
             value={email}
@@ -87,8 +95,10 @@ function UpdateProfileModal() {
             required
           />
         </label>
+        </div>
+        <div>
         <label>
-          Profile Picture
+          Profile Picture :
           <input
             type="text"
             value={img_url}
@@ -96,8 +106,10 @@ function UpdateProfileModal() {
             required
           />
         </label>
+        </div>
+        <div>
         <label>
-          Biography
+          Biography :
           <input
             type="text"
             value={bio}
@@ -105,8 +117,12 @@ function UpdateProfileModal() {
             required
           />
         </label>
-        <button type="submit">Update Profile</button>
+        </div>
+        <div>
+        <button className="updateProfileButton" type="submit">Update Profile</button>
+        </div>
       </form>
+      </div>
     </>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
+import { login } from "../../store/session";
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -32,6 +33,24 @@ function SignupFormModal() {
 			]);
 		}
 	};
+
+	const demolitionUser = (e) => {
+		e.preventDefault();
+		// const demouser = User
+		dispatch(
+		  login(
+			'demo@aa.io',
+			'password'
+		  )
+		)
+		.then(closeModal())
+		.catch(
+		  async (res) => {
+			const data = await res.json();
+			if (data && data.errors) setErrors(data.errors);
+		  }
+		);
+	}
 
 	return (
 		<>
@@ -132,7 +151,10 @@ function SignupFormModal() {
 				</label>
 				</div>
 				<div>
-				<button className="signUpButton" type="submit">Sign Up</button>
+				<button className="signUpButtons" type="submit">Sign Up</button>
+				</div>
+				<div>
+				<button className="signUpButtons" onClick={demolitionUser}>Demo User Login</button>
 				</div>
 			</form>
 			</div>
