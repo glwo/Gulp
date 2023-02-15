@@ -16,9 +16,9 @@ export default function BusinessCategory() {
 
     const key = useSelector(state => state.key)
     const realKey = key?.key
-    console.log(realKey, 'real key now')
+    // console.log(realKey, 'real key now')
     const businesses = useSelector(state => state.business.businesses)
-    console.log(businesses, 'check if emphty')
+    // console.log(businesses, 'check if emphty')
     const derivedBusinessType = category == 'restaurants' ? 'restaurant' : category == 'autoServices' ? 'auto' : category == 'homeServices' ? 'home' : category == 'hairSalons' ? 'salon' : 'restaurants'
 
     useEffect(() => {
@@ -33,9 +33,8 @@ export default function BusinessCategory() {
     }, [checkLocation, businesses, derivedBusinessType, key])
 
     const currentCat = Object.values(businesses).filter(curr => curr.business_type == derivedBusinessType)
-    // console.log(derivedBusinessType, 'derived')
-    // console.log(businesses)
-    console.log(currentCat, 'current businesses')
+
+    // console.log(currentCat, 'current businesses')
 
     const bussinessList = currentCat?.map(curr => {
         return (
@@ -92,7 +91,7 @@ export default function BusinessCategory() {
             {/* <h2>{checkType ? 'Found type' : 'No type found'}</h2> */}
             <h2>location</h2>
             {bussinessList}
-            <CurrentMap />
+            {/* <CurrentMap /> */}
         </div>
     )
 }

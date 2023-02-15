@@ -41,10 +41,16 @@ export const setFilter = (load) => async (dispatch) => {
         const data = await res.json()
         dispatch(set_filter(load))
         return 'Successful'
+    } else {
+        const data = await res.json();
+        if (data.errors) {
+            return data
+        }
     }
 }
 
 export const editFilter = (load) => async (dispatch) => {
+    console.log(load, 'editfilter load from frontend')
     const res = await fetch('/api/filter/editFilter', {
         method: 'PUT',
         headers: {
@@ -56,6 +62,11 @@ export const editFilter = (load) => async (dispatch) => {
         const data = await res.json()
         dispatch(put_filter(load))
         return 'Successful'
+    } else {
+        const data = await res.json();
+        if (data.errors) {
+            return data
+        }
     }
 }
 
@@ -65,11 +76,11 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_FILTER:
-            return { action }
+            return action.f
         case SET_FILTER:
-            return { action }
+            return action.f
         case PUT_FILTER:
-            return { action }
+            return action.f
         default:
             return state
     }

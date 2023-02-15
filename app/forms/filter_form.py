@@ -3,7 +3,7 @@ from wtforms import StringField
 from wtforms.validators import DataRequired, ValidationError
 from app.models import User
 
-typeList = ['noInput', ]
+typeList = ['noInput', 'restaurant', 'auto', 'home', 'salon']
 
 otherList = ['noInput', 'fromHigh', 'fromLow']
 
