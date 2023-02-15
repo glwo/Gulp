@@ -45,7 +45,10 @@ const BusinessDetail = () => {
         <div className="main-div">
           <div className="business-div">
             <div className="review-button-div">
-              <Link to={`/business/${currentBusiness.id}/writeareview`}>Write a review</Link>
+              <Link to={`/business/${currentBusiness.id}/writeareview`}><button className="review-button">Write a Review</button></Link>
+
+
+
             </div>
             <h4>Location & Hours</h4>
             <div className="location-hour-maindiv">

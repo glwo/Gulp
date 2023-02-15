@@ -71,13 +71,9 @@ export const reviewCreate = (business_id, review) => async dispatch => {
 
         dispatch(createReview(newReview))
         return newReview
-    }   else if (res.status < 500) {
-        const data = await res.json()
-        if (data.errors) {
-            return data
-        }
     }
 }
+
 
 
 export const userReviews = () => async dispatch => {
@@ -92,6 +88,8 @@ export const userReviews = () => async dispatch => {
 
 export const allReviews = () => async dispatch => {
     const response = await fetch(`/api/reviews`)
+
+
 
 
     if(response.ok){

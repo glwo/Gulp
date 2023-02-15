@@ -14,6 +14,8 @@ import { allReviews } from './store/review';
 import CreateReviewModal from "./components/Reviews/ReviewModal";
 import CreateReviewForm from "./components/Reviews/CreateReviewForm";
 import ReviewDetails from "./components/Reviews/ReviewDetails";
+import Reviews from "./components/Reviews";
+import BusinessReviews from "./components/Reviews/BusinessReviews";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,7 +45,9 @@ function App() {
           </Route>
           <Route exact path='/business/:businessId'>
             <BusinessDetail />
+            <CreateReviewModal />
             {/* <ReviewDetails /> */}
+            {/* <BusinessReviews /> */}
           </Route>
           <Route exact path="/business">
             <CreateBusiness />
@@ -52,11 +56,11 @@ function App() {
             <ProfilePage />
           </Route>
           <Route exact path='/reviews'>
-            {/* <CreateReviewForm />
+            {/* <CreateReviewForm /> */}
             <ReviewDetails />
-            <CreateReviewModal /> */}
+            {/* <CreateReviewModal /> */}
         </Route>
-        <Route path='/business/:business_id/writeareview'>
+        <Route exact path='/business/:business_id/writeareview'>
           <div style={{"display":"flex", 'justifyContent':"center"}}>
             <CreateReviewForm />
           </div>

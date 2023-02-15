@@ -75,7 +75,7 @@ function CreateReviewForm() {
 
     return (
         <div className='reviewForm'>
-            <button onClick={() => history.push(`/business/${business_id}`)}>Back</button>
+            <div onClick={() => history.push(`/business/${business_id}`)}></div>
             <form onSubmit={handleSubmit} className='reviewCreateContainer'>
             <div>
                 <h4 className={!errors.length ? 'reviewFormHeader' : ''}>{business_id ? business.name : 'Reviews'}</h4>
@@ -118,65 +118,3 @@ function CreateReviewForm() {
 }
 
 export default CreateReviewForm
-
-// import React, { useState, useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useHistory, useParams } from 'react-router-dom';
-// import { reviewCreate } from '../../store/review';
-// import { loadBusiness } from '../../store/business';
-
-// const CreateReviewForm = () => {
-//     const dispatch = useDispatch();
-//     const history = useHistory();
-//     const { id } = useParams();
-//     const business = useSelector((state) => state.business[id]);
-//     const [review, setReview] = useState('');
-//     const [rating, setRating] = useState(0);
-//     const [errors, setErrors] = useState([]);
-
-//     useEffect(() => {
-//         dispatch(loadBusiness(id));
-//     }, [dispatch, id]);
-
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//         const data = await dispatch(reviewCreate({ review, rating, business_id: id }));
-//         if (data.errors) {
-//         setErrors(data.errors);
-//         } else {
-//         history.push(`/business/${id}`);
-//         }
-//     };
-
-//     return (
-//         <div className="create-review-form">
-//         <h1>Review {business?.store_name}</h1>
-//         <form onSubmit={handleSubmit}>
-//             <div className="review-form-input">
-//             <label>Review</label>
-//             <textarea
-//                 type="text"
-//                 value={review}
-//                 onChange={(e) => setReview(e.target.value)}
-//                 required
-//             />
-//             </div>
-//             <div className="review-form-input">
-//             <label>Rating</label>
-//             <input
-//                 type="number"
-//                 value={rating}
-//                 onChange={(e) => setRating(e.target.value)}
-//                 required
-//             />
-//             </div>
-//             <button type="submit">Submit</button>
-//         </form>
-//         {errors.map((error) => (
-//             <div>{error}</div>
-//         ))}
-//         </div>
-//     );
-//     }
-
-//     export default CreateReviewForm;

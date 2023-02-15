@@ -67,30 +67,6 @@ def create_review(id):
         }, 400
 
 
-# @review_routes.route('/<int:id>/images', methods=["POST"])
-# @login_required
-# def review_image(id):
-
-#     # Create a review image to the review
-
-#     review = Review.query.get_or_404(id)
-#     if not review:
-#         return { "errors": "Review not found"}, 404
-#     form = ReviewForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         new_review_image = Review_Image()
-#         form.populate_obj(new_review_image)
-#         review.images.append(new_review_image)
-#         db.session.add(new_review_image)
-#         db.session.commit()
-#         return new_review_image.to_dict(), 200
-#     if form.errors:
-#         return {
-#             "errors": form.errors
-#         }, 400
-
-
 @review_routes.route('/<int:id>', methods=["PUT"])
 @login_required
 def edit_review(id):
