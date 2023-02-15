@@ -1,0 +1,55 @@
+.main-div {
+  display: flex;
+  column-gap: 20px;
+}
+
+.create-business-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 550px;
+  height: 80vh;
+  padding-bottom: 10px;
+}
+.input-form {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+}
+.create-business-form div {
+  padding: 5px;
+}
+
+.create-business-form select {
+  width: 100%;
+  height: 23px;
+  border: 1px black solid;
+  border-radius: 2px;
+}
+
+.create-business-form ul {
+  color: red;
+}
+
+.create-business-form h1 {
+  color: #d32383;
+}
+
+.create-button {
+  background-color: #d32323;
+  width: 100%;
+  color: white;
+  border: none;
+  height: 23px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.create-button:hover {
+  background-color: #ef2b2b;
+  transition-duration: 1000ms;
+}
+.image-splash {
+  background-color: #f5f5f5;
+}
