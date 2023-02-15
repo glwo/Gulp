@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkUpdateBusiness } from "../../store/business";
+import './UpdateBusinessModal.css'
 
 function UpdateBusinessModal({ business }) {
   console.log(business)
@@ -52,10 +53,10 @@ function UpdateBusinessModal({ business }) {
   }
 
   return (
-    <div>
-      <h1>
-        Update Business
-      </h1>
+    <div className="update-business-modal">
+      <div>
+        <h1>Update Business</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -162,7 +163,7 @@ function UpdateBusinessModal({ business }) {
             required
           />
         </div>
-        <button type="submit">Update Business</button>
+        <button className="update-button" type="submit">Update Business</button>
       </form>
     </div>
   )
