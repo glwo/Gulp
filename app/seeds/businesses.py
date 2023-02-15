@@ -47,17 +47,17 @@ def seed_businesses():
     num_reviews=0,
     owner_id=2
   )
-  poke_burrito = Business(
-    store_name="Poke Burrito",
-    description="Hawaiian, Poke, Seafood",
-    city="Astoria",
+  joe_shanghai = Business(
+    store_name="Joe's Shanghai",
+    description="Shanghainese, Seafood, Noodles",
+    city="New York",
     state="NY",
-    address="3707 30th Ave",
-    zipcode=11103,
+    address="46 Bowery St",
+    zipcode=10013,
     business_type="restaurant",
     opening_time="11:00",
     closing_time="22:00",
-    phone_num="9293280041",
+    phone_num="2122338888",
     avg_rating=0,
     num_reviews=0,
     owner_id=3
@@ -122,15 +122,79 @@ def seed_businesses():
     num_reviews=0,
     owner_id=1
   )
+  nytdr = Business(
+    store_name="New York Total Damage Restoration",
+    description="Damage Restoration, General Contractors, Environmental Abatement",
+    city="New York",
+    state="NY",
+    address="1115 Broadway Ave",
+    zipcode=10010,
+    business_type="home",
+    opening_time="10:00",
+    closing_time="19:00",
+    phone_num="(646) 690-2283",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=5
+  )
+  zy = Business(
+    store_name="Z & Y Restaurant",
+    description="Chinese, Seafood, Soup",
+    city="San Francisco",
+    state="CA",
+    address="655 Jackson St",
+    zipcode=94133,
+    business_type="restaurant",
+    opening_time="11:30",
+    closing_time="21:00",
+    phone_num="(415) 981-8988",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=3
+  )
+  moe_tire = Business(
+    store_name="Moe's Tires & Auto Repair",
+    description="Auto Repair",
+    city="San Francisco",
+    state="CA",
+    address="375 Vermont St",
+    zipcode=94103,
+    business_type="auto",
+    opening_time="7:00",
+    closing_time="20:00",
+    phone_num="(650) 910-6946",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=1
+  )
+  enzi = Business(
+    store_name="Enzi Hair",
+    description="Hair Salons",
+    city="San Francisco",
+    state="CA",
+    address="4448 18th St at Douglass",
+    zipcode=94114,
+    business_type="salon",
+    opening_time="14:00",
+    closing_time="19:00",
+    phone_num="(650) 910-6946",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=1
+  )
 
   db.session.add(brandons_donuts)
   db.session.add(da_andrea)
   db.session.add(midas)
-  db.session.add(poke_burrito)
+  db.session.add(joe_shanghai)
   db.session.add(dunkins)
   db.session.add(dicken_thomas_construction)
   db.session.add(ariari)
   db.session.add(honeybliss)
+  db.session.add(nytdr)
+  db.session.add(zy)
+  db.session.add(moe_tire)
+  db.session.add(enzi)
   db.session.commit()
 
 def undo_businesses():
