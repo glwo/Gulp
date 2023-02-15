@@ -1,12 +1,16 @@
 //react-app/src/components/BusinessDetail/index.js
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkLoadAllBusinesses } from "../../store/business";
 import { Link, useParams } from "react-router-dom";
 import "./BusinessDetail.css"
 import CreateReviewForm from "../Reviews/CreateReviewForm";
+import CreateReviewModal from "../Reviews/ReviewModal";
+import OpenModalButton from "../OpenModalButton";
+import ReviewDetails from "../Reviews/ReviewDetails";
 
 const BusinessDetail = () => {
+  const [openModal, setOpenModal] = useState(false);
   const { businessId } = useParams();
   const dispatch = useDispatch();
   const business = useSelector(state => state.business.businesses)
@@ -22,6 +26,7 @@ const BusinessDetail = () => {
   if (!currentBusiness) {
     return null
   }
+
 
   return (
     <>
@@ -45,11 +50,15 @@ const BusinessDetail = () => {
         <div className="main-div">
           <div className="business-div">
             <div className="review-button-div">
-              <Link to={`/business/${currentBusiness.id}/writeareview`}><button className="review-button">Write a Review</button></Link>
-
-
-
+              <Link to={`/business/${currentBusiness.id}/writeareview`}><button className="review-button">Write a Review Link</button></Link>
+              <OpenModalButton
+        buttonText="Write a Review Modal"
+        modalComponent={<CreateReviewForm />}
+        onButtonClick={() => setOpenModal(true)}
+        onModalClose={() => setOpenModal(false)}
+      />
             </div>
+            <ReviewDetails />
             <h4>Location & Hours</h4>
             <div className="location-hour-maindiv">
               <div>

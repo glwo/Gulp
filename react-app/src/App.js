@@ -45,8 +45,7 @@ function App() {
           </Route>
           <Route exact path='/business/:businessId'>
             <BusinessDetail />
-            <CreateReviewModal />
-            {/* <ReviewDetails /> */}
+            <ReviewDetails />
             {/* <BusinessReviews /> */}
           </Route>
           <Route exact path="/business">
