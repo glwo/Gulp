@@ -20,10 +20,11 @@ def validation_errors_to_error_messages(validation_errors):
 @review_routes.route('')
 def all_reviews():
     reviews = Review.query.all()
-    all_reviews = []
-    for review in reviews:
-        all_reviews.append(review.to_dict())
-    return {"Reviews": all_reviews}
+    # all_reviews = []
+    # for review in reviews:
+    #     all_reviews.append(review.to_dict())
+    # return {"Reviews": all_reviews}
+    return {"Reviews": [review.to_dict() for review in reviews]}
 
 
 @review_routes.route('/current')

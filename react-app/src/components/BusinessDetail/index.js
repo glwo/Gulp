@@ -22,7 +22,7 @@ const BusinessDetail = () => {
   useEffect(() => {
     dispatch(thunkLoadAllBusinesses())
   }, [dispatch, businessId])
-
+// console.log(currentBusiness, 'current business')
   if (!currentBusiness) {
     return null
   }
@@ -58,7 +58,8 @@ const BusinessDetail = () => {
         onModalClose={() => setOpenModal(false)}
       />
             </div>
-            <ReviewDetails />
+            < ReviewDetails businessId={currentBusiness.id} />
+
             <h4>Location & Hours</h4>
             <div className="location-hour-maindiv">
               <div>

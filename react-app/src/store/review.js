@@ -87,14 +87,15 @@ export const userReviews = () => async dispatch => {
 }
 
 export const allReviews = () => async dispatch => {
-    const response = await fetch(`/api/reviews`)
+    const response = await fetch(`/api/review`)
 
 
 
 
     if(response.ok){
         const reviews = await response.json()
-        dispatch(loadAllReviews(reviews))
+        console.log('reviews', reviews)
+        dispatch(loadAllReviews(reviews.Reviews))
     }
 }
 

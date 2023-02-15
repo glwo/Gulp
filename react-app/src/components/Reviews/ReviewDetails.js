@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { allReviews } from '../../store/review'
+import SingleReview from './SingleReview'
 
 
-function ReviewDetails() {
+function ReviewDetails({businessId}) {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(allReviews())
     }, [dispatch])
 
 
+
+
     const totalReviews = useSelector(state => state.reviews.allReviews)
 
-    const reviews = Object.values(totalReviews)
+    console.log('review details', totalReviews)
+    const reviews = Object.values(totalReviews).filter(review => review.business_id == businessId)
+    if (!totalReviews) return null
 
     return (
         <div>
@@ -20,7 +25,7 @@ function ReviewDetails() {
             </h3>
             <div className='reviewsContainer'>
                 {reviews.map((review) => (
-                    <ReviewDetails key={review.id} {...review} />
+                    <SingleReview key={review.id} review={review} />
                 ))}
             </div>
         </div>
