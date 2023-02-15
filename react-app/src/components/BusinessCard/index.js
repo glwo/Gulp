@@ -13,7 +13,7 @@ const BusinessCard = ({ business }) => {
       <Link to={`/business/${business.id}`}>
         <img className="business-preview-image" src={business.business_images[0].image_url} />
         <div>
-          <div>{business.store_name}</div>
+          <div className="businessStoreName">{business.store_name}</div>
         </div>
       </Link>
     </div>

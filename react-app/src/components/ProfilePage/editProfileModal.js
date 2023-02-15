@@ -85,7 +85,7 @@ function UpdateProfileModal() {
           />
         </label>
         </div>
-        <div>
+        <div hidden={(sessionUser.id !== 1 ? false : true)}>
         <label>
           Email :
           <input

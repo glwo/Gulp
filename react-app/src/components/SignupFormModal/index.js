@@ -18,8 +18,17 @@ function SignupFormModal() {
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
+	function validateEmail(email) {
+		var re = /\S+@\S+\.\S+/;
+		return re.test(email);
+	  }
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		if(validateEmail(email) === false){
+			setErrors(["Please provide a valid email"])
+			return
+		}
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(first_name, last_name, username, email, img_url, bio, password));
 			if (data) {
