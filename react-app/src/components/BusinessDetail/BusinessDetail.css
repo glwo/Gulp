@@ -75,9 +75,24 @@
   flex-direction: column;
   border: 1px solid gray;
   border-radius: 5px;
-  padding: 10px;
+  font-weight: 600;
   row-gap: 10px;
   border-radius: 5px;
+}
+.side-info-top-div p {
+  margin: 0;
+}
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px;
+  border-bottom: 1px gray solid;
+}
+.sticky {
+  position: sticky;
+  top: 20px;
 }
 
 /* Suggest business under You might consider */
@@ -85,11 +100,13 @@
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+  font-weight: 600;
 }
 .suggest-business-single-div {
   display: flex;
   column-gap: 10px;
   text-decoration: none;
+  color: black;
 }
 .suggest-business-div {
   display: flex;
@@ -117,12 +134,50 @@
   display: flex;
   flex-direction: column;
 }
+
 .review-user-info-div {
   border: 1px red solid;
 }
+
 .review-overall-rating-div {
+  display: flex;
   border: 1px blue solid;
+  height: 200px;
 }
+.review-overall-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 150px;
+  align-items: center;
+}
+.review-rating-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 20px;
+  width: 100%;
+}
+.rating-bar {
+  display: flex;
+  column-gap: 20px;
+  justify-content: space-around;
+}
+meter {
+  width: 70%;
+  height: 20px;
+}
+meter::-webkit-meter-bar {
+  background: #eee;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2) inset;
+  border-radius: 3px;
+  /* width: 100%; */
+}
+meter::-webkit-meter-optimum-value {
+  background-color: red;
+}
+
+
 .all-review-div {
   border: 1px yellow solid;
 }
