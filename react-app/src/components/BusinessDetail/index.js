@@ -26,7 +26,7 @@ const BusinessDetail = () => {
         {currentBusiness && currentBusiness.business_images.map(image => <img className="business-image" src={image.image_url}/>)}
       </div>
       <div className="main-div">
-        <div className="title-description-maindiv">
+        <div className="title-description-main-div">
           <h1 className="title-store-name">{currentBusiness.store_name}</h1>
           <div>
             {currentBusiness.avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
@@ -101,7 +101,7 @@ const BusinessDetail = () => {
             <h3>You might also consider</h3>
             <div className="suggest-business-main-div">
               {suggestBusiness[0] && 
-              <div  className="suggest-business-single-div">
+              <Link className="suggest-business-single-div" to={`/business/${suggestBusiness[0].id}`}>
                 <img className="suggest-business-image" src={suggestBusiness[0].business_images[0].image_url}/>
                 <div className="suggest-business-div">
                   <div>
@@ -118,10 +118,10 @@ const BusinessDetail = () => {
                     {suggestBusiness[0].num_reviews} reviews
                   </div>
                 </div>
-              </div>
+              </Link>
               }
               {suggestBusiness[1] && 
-                <div  className="suggest-business-single-div">
+                <Link className="suggest-business-single-div" to={`/business/${suggestBusiness[1].id}`}>
                   <img className="suggest-business-image" src={suggestBusiness[1].business_images[0].image_url}/>
                   <div className="suggest-business-div">
                     <div>
@@ -138,7 +138,7 @@ const BusinessDetail = () => {
                       {suggestBusiness[1].num_reviews} reviews
                     </div>
                   </div>
-                </div>
+                </Link>
               }
             </div>
           </div>
