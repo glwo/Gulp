@@ -29,7 +29,7 @@ def seed_business_images():
     business_id=4
   )
   joe_shanghai_image3 = BusinessImage(
-    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/gkp9bzPqrcaWIvgOJbatQw/o.jpgg",
+    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/gkp9bzPqrcaWIvgOJbatQw/o.jpg",
     preview=True,
     business_id=4
   )
@@ -56,7 +56,7 @@ def seed_business_images():
   honeybliss_image = BusinessImage(
     image_url="https://s3-media0.fl.yelpcdn.com/bphoto/RTiLrVr5LjGGnPBGCQzxSQ/o.jpg",
     preview=True,
-    business_id=9
+    business_id=8
   )
   nytdr_image1 = BusinessImage(
     image_url="https://s3-media0.fl.yelpcdn.com/projectphoto/o5T0J-LUe6blAJ3D_8-5iA/o.jpg",
