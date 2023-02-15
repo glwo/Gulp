@@ -16,20 +16,11 @@ export default function ProfilePage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const business = useSelector(state => state.business.businesses);
-    const userBusinesses = Object.values(business).filter(business => business.owner_id == sessionUser.id)
+    const userBusinesses = Object.values(business).filter(business => business?.owner_id == sessionUser?.id)
 
     useEffect(() => {
       dispatch(thunkLoadAllBusinesses())
     }, [dispatch])
-
-    // useEffect(() => {
-    //     // dispatch(getUser(+sessionUser.id))
-    //     if (sessionUser){
-    //     dispatch(updateUser(+sessionUser.id))
-    //     .then(dispatch(getUser(+sessionUser.id)))
-    //     }
-    //     // dispatch(getProfile(+sessionUser.id))
-    // }, [dispatch, sessionUser])
 
     const removeBusiness = (e) => {
       return dispatch(thunkRemoveBusiness(e))
@@ -42,12 +33,12 @@ export default function ProfilePage() {
                 {sessionUser &&
                     <>
                     <div className='picandname'>
-                    <div>
+                    <div className="profileImgDiv">
                         <img id='profilepic' src={sessionUser.img_url} alt="Profile picture could not be found"></img>
                     </div>
                     <div className='profilebox'>
                     <h1>
-            {sessionUser.first_name} {sessionUser.last_name[0] + "."}
+            {sessionUser.first_name} {sessionUser.last_name}
             </h1>
 
                     <div className='profileInfo'>
@@ -59,7 +50,7 @@ export default function ProfilePage() {
                     className= "updateProfileButton"
                     buttonText="Update Your Profile"
                     // onItemClick={closeMenu}
-                    modalComponent={<UpdateBusinessModal />}
+                    modalComponent={<UpdateProfileModal />}
                     />
                     </div>
                     </div>
@@ -69,18 +60,23 @@ export default function ProfilePage() {
                 </div>
             </ul>
             </div>
-            <div>
-              <h3>User's businesses</h3>
-              <div>
-                {userBusinesses &&
+            <div className='businessH3'>
+              <h3>User's Businesses</h3>
+              <div className='businessesBox'>
+                {!sessionUser ? "Please Login to see this page" : userBusinesses &&
                 userBusinesses.map(business =>
-                  <div>
-                    <OpenModalButton
+                  <div className='indivbusinessCard'>
+                    {/* <OpenModalButton
                       buttonText="Update Business"
                       modalComponent={<UpdateBusinessModal business={business} key={business.id}/>}
                     />
-                    <button onClick={() => removeBusiness(business.id)}>Delete business</button>
+                    <button onClick={() => removeBusiness(business.id)}>Delete business</button> */}
                   <BusinessCard business={business} key={business.id} />
+                  <OpenModalButton
+                      buttonText="Update Business"
+                      modalComponent={<UpdateBusinessModal business={business} key={business.id}/>}
+                    />
+                    <button onClick={() => removeBusiness(business.id)}>Delete Business</button>
                 </div>)
                 }
               </div>

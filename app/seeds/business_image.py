@@ -18,8 +18,18 @@ def seed_business_images():
     preview=True,
     business_id=3
   )
-  poke_burrito_image = BusinessImage(
-    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/VbxE9WXisPau74418W4q1A/o.jpg",
+  joe_shanghai_image1 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/uvRuBT-uL1JZn0K-wSj4IA/o.jpg",
+    preview=True,
+    business_id=4
+  )
+  joe_shanghai_image2 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/fnHr4B2YEnRKlrJ6I7ZF_Q/o.jpg",
+    preview=True,
+    business_id=4
+  )
+  joe_shanghai_image3 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/gkp9bzPqrcaWIvgOJbatQw/o.jpg",
     preview=True,
     business_id=4
   )
@@ -48,16 +58,78 @@ def seed_business_images():
     preview=True,
     business_id=8
   )
+  nytdr_image1 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/projectphoto/o5T0J-LUe6blAJ3D_8-5iA/o.jpg",
+    preview=True,
+    business_id=9
+  )
+  nytdr_image2 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/projectphoto/lzenTPwpjat7kmbXzfIUsQ/o.jpg",
+    preview=True,
+    business_id=9
+  )
+  nytdr_image3 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/projectphoto/BBZvwWX1sqTWnO7ktCyT6Q/o.jpg",
+    preview=True,
+    business_id=9
+  )
+  zy_image1 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/lusQgqxS5pjZiBL2e50K7g/o.jpg",
+    preview=True,
+    business_id=10
+  )
+  zy_image2 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/LIXy6QH1VLizICEZV6CIFw/o.jpg",
+    preview=True,
+    business_id=10
+  )
+  zy_image3 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/2a5Obb8qu_JRAXy8_kpPVA/o.jpg",
+    preview=True,
+    business_id=10
+  )
+  moe_image1 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/projectphoto/bJrwPfB_BTb_sRjSArgMmA/o.jpg",
+    preview=True,
+    business_id=11
+  )
+  moe_image2 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/projectphoto/L4ukfog-cSitIdb6exw-tw/o.jpg",
+    preview=True,
+    business_id=11
+  )
+  enzi_image1 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/k5spWpACt5fL9Akxhe8tqQ/l.jpg",
+    preview=True,
+    business_id=12
+  )
+  enzi_image2 = BusinessImage(
+    image_url="https://s3-media0.fl.yelpcdn.com/bphoto/EhsX3wbvO6wIVo1q1tjLUQ/o.jpg",
+    preview=True,
+    business_id=12
+  )
 
   db.session.add(brandons_donuts_image)
   db.session.add(da_andrea_image)
   db.session.add(midas_image)
-  db.session.add(poke_burrito_image)
+  db.session.add(joe_shanghai_image1)
+  db.session.add(joe_shanghai_image2)
+  db.session.add(joe_shanghai_image3)
   db.session.add(dunkins_image)
   db.session.add(dicken_thomas_image)
   db.session.add(ariari_image_1)
   db.session.add(ariari_image_2)
   db.session.add(honeybliss_image)
+  db.session.add(nytdr_image1)
+  db.session.add(nytdr_image2)
+  db.session.add(nytdr_image3)
+  db.session.add(zy_image1)
+  db.session.add(zy_image2)
+  db.session.add(zy_image3)
+  db.session.add(moe_image1)
+  db.session.add(moe_image2)
+  db.session.add(enzi_image1)
+  db.session.add(enzi_image2)
   db.session.commit()
 
 def undo_business_images():

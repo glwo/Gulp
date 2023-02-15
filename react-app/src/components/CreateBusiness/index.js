@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkCreateBusiness } from '../../store/business';
 import { useHistory } from 'react-router-dom';
+import createBusinessImage from '../../images/create-business.png'
+import './CreateBusiness.css'
 
 export default function CreateBusiness() {
   const dispatch = useDispatch();
@@ -49,118 +51,125 @@ export default function CreateBusiness() {
   }
 
   return (
-    <div>
-      <h1>
-        Create Business Page
-      </h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <div>
-          <label>Business Name:</label>
-          <input
-            type='text'
-            value={store_name}
-            onChange={(e) => setStoreName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Description:</label>
-          <input
-            type='text'
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>City:</label>
-          <input
-            type='text'
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>State:</label>
-          <input
-            type='text'
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Address:</label>
-          <input
-            type='text'
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Zipcode:</label>
-          <input
-            type='number'
-            value={zipcode}
-            onChange={(e) => setZipcode(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Business Type:</label>
-          <select
-            value={business_type}
-            onChange={(e) => setBusinessType(e.target.value)}
-          >
-            <option value="restaurant">Restaurant</option>
-            <option value="auto">Auto Service</option>
-            <option value="home">Home Service</option>
-            <option value="salon">Hair Salon</option>
-          </select>
-        </div>
-        <div>
-          <label>Opening Time:</label>
-          <input
-            type='text'
-            value={opening_time}
-            onChange={(e) => setOpeningTime(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Closing Time:</label>
-          <input
-            type='text'
-            value={closing_time}
-            onChange={(e) => setClosingTime(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Phone Number:</label>
-          <input
-            type='text'
-            value={phone_num}
-            onChange={(e) => setPhoneNum(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Business Image:</label>
-          <input
-            type='text'
-            value={image_url}
-            onChange={(e) => setImageUrl(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Create New Business</button>
-      </form>
+    <div className='main-div'>
+      <div className='create-business-form'>
+        <h1>
+          Create Business Page
+        </h1>
+        <form onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          <div className="input-form">
+            <label>Business Name:</label>
+            <input
+              type='text'
+              value={store_name}
+              onChange={(e) => setStoreName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-form">
+            <label>Description:</label>
+            <input
+              type='text'
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-form">
+            <label>City:</label>
+            <input
+              type='text'
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-form">
+            <label>State:</label>
+            <input
+              type='text'
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-form">
+            <label>Address:</label>
+            <input
+              type='text'
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-form">
+            <label>Zipcode:</label>
+            <input
+              type='number'
+              value={zipcode}
+              onChange={(e) => setZipcode(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-form">
+            <label>Business Type:</label>
+            <select
+              value={business_type}
+              onChange={(e) => setBusinessType(e.target.value)}
+            >
+              <option value="restaurant">Restaurant</option>
+              <option value="auto">Auto Service</option>
+              <option value="home">Home Service</option>
+              <option value="salon">Hair Salon</option>
+            </select>
+          </div>
+          <div className="input-form">
+            <label>Opening Time:</label>
+            <input
+              type='text'
+              value={opening_time}
+              onChange={(e) => setOpeningTime(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-form">
+            <label>Closing Time:</label>
+            <input
+              type='text'
+              value={closing_time}
+              onChange={(e) => setClosingTime(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-form">
+            <label>Phone Number:</label>
+            <input
+              type='text'
+              value={phone_num}
+              onChange={(e) => setPhoneNum(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-form">
+            <label>Business Image:</label>
+            <input
+              type='text'
+              value={image_url}
+              onChange={(e) => setImageUrl(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <button className='create-button' type="submit">Create New Business</button>
+          </div>
+        </form>
+      </div>
+      <div className='image-splash'>
+        <img src={createBusinessImage} />
+      </div>
     </div>
   )
 }

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
+import { login } from "../../store/session";
+import { getFilter } from "../../store/filter";
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -17,8 +19,17 @@ function SignupFormModal() {
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
+	function validateEmail(email) {
+		var re = /\S+@\S+\.\S+/;
+		return re.test(email);
+	  }
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		if(validateEmail(email) === false){
+			setErrors(["Please provide a valid email"])
+			return
+		}
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(first_name, last_name, username, email, img_url, bio, password));
 			if (data) {
@@ -26,12 +37,31 @@ function SignupFormModal() {
 			} else {
 				closeModal();
 			}
+			dispatch(getFilter())
 		} else {
 			setErrors([
 				"Confirm Password field must be the same as the Password field",
 			]);
 		}
 	};
+
+	const demolitionUser = (e) => {
+		e.preventDefault();
+		// const demouser = User
+		dispatch(
+		  login(
+			'demo@aa.io',
+			'password'
+		  )
+		)
+		.then(closeModal())
+		.catch(
+		  async (res) => {
+			const data = await res.json();
+			if (data && data.errors) setErrors(data.errors);
+		  }
+		);
+	}
 
 	return (
 		<>
@@ -132,7 +162,10 @@ function SignupFormModal() {
 				</label>
 				</div>
 				<div>
-				<button className="signUpButton" type="submit">Sign Up</button>
+				<button className="signUpButtons" type="submit">Sign Up</button>
+				</div>
+				<div>
+				<button className="signUpButtons" onClick={demolitionUser}>Demo User Login</button>
 				</div>
 			</form>
 			</div>

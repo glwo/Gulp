@@ -1,9 +1,11 @@
-.detail-business-div {
+.main-div {
   padding-left: 15vw;
   padding-right: 15vw;
+  display: flex;
+  flex-direction: column;
 }
 
-.title-description-maindiv {
+.title-description-main-div {
   display: flex;
   flex-direction: column;
   padding-top: 240px;
@@ -17,10 +19,11 @@
   margin: 0;
 }
 
-.main-div {
+.detail-business-div {
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
+  column-gap: 20px;
 }
 
 .business-image-div {
@@ -40,39 +43,141 @@
 
 .review-button-div {
   display: flex;
-  padding-top: 3%;
+  padding-top: 2%;
   padding-bottom: 3%;
 }
-
-.location-hour-maindiv {
-  display: flex;
+.write-review-button {
+  color: white;
+  background-color: rgb(238, 0, 0);
+  border: 0;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 5px;
 }
+
+/* Location and hours div */
+.location-hour-main-div {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px gray solid;
+  border-top: 1px gray solid;
+  font-weight: 500;
+}
+
 
 .side-info-div {
   width: 500px;
 }
-
 .side-info-top-div {
   display: flex;
   flex-direction: column;
   border: 1px solid gray;
-  padding: 10px;
+  border-radius: 5px;
+  font-weight: 600;
   row-gap: 10px;
+  border-radius: 5px;
+}
+.side-info-top-div p {
+  margin: 0;
+}
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px;
+  border-bottom: 1px gray solid;
+}
+.sticky {
+  position: sticky;
+  top: 20px;
 }
 
+/* Suggest business under You might consider */
+.suggest-business-main-div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  font-weight: 600;
+}
+.suggest-business-single-div {
+  display: flex;
+  column-gap: 10px;
+  text-decoration: none;
+  color: black;
+}
 .suggest-business-div {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  display: flex;
+  column-gap: 20px;
 }
-
 .suggest-business-image {
   width: 30%;
   object-fit: cover;
+  border-radius: 5px;
 }
 
+/* Stars color */
 .red {
   color: red ;
 }
-
 .gray {
   color: gray;
+}
+
+/* Recommended Reviews Div */
+.review-main-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-user-info-div {
+  border: 1px red solid;
+}
+
+.review-overall-rating-div {
+  display: flex;
+  border: 1px blue solid;
+  height: 200px;
+}
+.review-overall-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 150px;
+  align-items: center;
+}
+.review-rating-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 20px;
+  width: 100%;
+}
+.rating-bar {
+  display: flex;
+  column-gap: 20px;
+  justify-content: space-around;
+}
+meter {
+  width: 70%;
+  height: 20px;
+}
+meter::-webkit-meter-bar {
+  background: #eee;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2) inset;
+  border-radius: 3px;
+  /* width: 100%; */
+}
+meter::-webkit-meter-optimum-value {
+  background-color: red;
+}
+
+
+.all-review-div {
+  border: 1px yellow solid;
 }
