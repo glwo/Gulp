@@ -6,6 +6,8 @@ import { getGeocode, getLatLng } from 'use-places-autocomplete'
 import { useParams } from "react-router-dom";
 import BusinessCard from "../BusinessCard";
 import { getKey } from "../../store/map";
+import { getFilter } from "../../store/filter";
+import('./businessCat.css')
 
 
 export default function BusinessCategory() {
@@ -18,9 +20,8 @@ export default function BusinessCategory() {
     const realKey = key?.key
     // console.log(realKey, 'real key now')
     const businesses = useSelector(state => state.business.businesses)
+    const currentFilter = useSelector(state => state.filter?.filter)
     // console.log(businesses, 'check if emphty')
-    const derivedBusinessType = category == 'restaurants' ? 'restaurant' : category == 'autoServices' ? 'auto' : category == 'homeServices' ? 'home' : category == 'hairSalons' ? 'salon' : 'restaurants'
-
     useEffect(() => {
         if (!location) {
             setCheckLocation(false)
@@ -30,9 +31,26 @@ export default function BusinessCategory() {
         }
         if ((Object.keys(key).length === 0)) dispatch(getKey())
         // setCheckType(category || '')
-    }, [checkLocation, businesses, derivedBusinessType, key])
+        if (!currentFilter) {
+            dispatch(getFilter())
+        }
+    }, [checkLocation, businesses, key, currentFilter])
+    const derivedBusinessType = category == 'filter' ? true : category == 'autoServices' ? 'auto' : category == 'homeServices' ? 'home' : category == 'hairSalons' ? 'salon' : 'restaurant'
+    const catList = (() => {
+        const list = []
+        if (derivedBusinessType === true) {
+            if (currentFilter?.category1 || '' != 'noInput') list.push(currentFilter.category1)
+            if (currentFilter?.category2 || '' != 'noInput') list.push(currentFilter.category2)
+            if (currentFilter?.category3 || '' != 'noInput') list.push(currentFilter.category3)
+            return list
+        }
+        return [derivedBusinessType]
+    })();
 
-    const currentCat = Object.values(businesses).filter(curr => curr.business_type == derivedBusinessType)
+    console.log(catList, 'catList')
+
+    // const currentCat = Object.values(businesses).filter(curr => curr.business_type == derivedBusinessType)
+    const currentCat = Object.values(businesses).filter(curr => catList?.includes(curr.business_type))
 
     // console.log(currentCat, 'current businesses')
 
@@ -55,18 +73,19 @@ export default function BusinessCategory() {
             lat: 40.7128
         }), [])
         const containerStyle = {
-            width: '400px',
-            height: '600px'
+            width: '1000px',
+            height: '800px'
         };
         return (
-            <div>
+            <div >
                 {isLoaded && (
                     <GoogleMap
                         mapContainerStyle={containerStyle}
                         center={center}
                         zoom={10}
+
                     >
-                        <MarkerClusterer>
+                        {/* <MarkerClusterer>
                             {currentCat?.map((curr) => (
 
                                 <Marker
@@ -76,7 +95,7 @@ export default function BusinessCategory() {
                                 </Marker>
                             ))}
 
-                        </MarkerClusterer>
+                        </MarkerClusterer> */}
                     </GoogleMap>
 
                 )}
@@ -85,13 +104,17 @@ export default function BusinessCategory() {
     }
 
     return (
-        <div>
-            <h1>{category}</h1>
-            <h2>{checkLocation ? 'Found location' : 'No location found'}</h2>
-            {/* <h2>{checkType ? 'Found type' : 'No type found'}</h2> */}
-            <h2>location</h2>
-            {bussinessList}
-            {/* <CurrentMap /> */}
+        <div className='mainCatPage'>
+            <div className='singleBusinessCat'>
+                <h1>{category}</h1>
+                <h2>{checkLocation ? 'Found location' : 'No location found'}</h2>
+                {/* <h2>{checkType ? 'Found type' : 'No type found'}</h2> */}
+                <h2>location</h2>
+                {bussinessList}
+            </div>
+            <div className='bigMap'>
+                <CurrentMap />
+            </div>
         </div>
     )
 }

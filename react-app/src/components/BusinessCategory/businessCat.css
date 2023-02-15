@@ -1,0 +1,21 @@
+.mainCatPage {
+    display: flex;
+    /* position: relative; */
+
+}
+
+.singleBusinessCat {
+    width: 800px;
+    outline: auto;
+    outline-color: violet;
+}
+
+.bigMap {
+    /* display: inline-block; */
+    outline: auto;
+    outline-color: violet;
+    position: sticky;
+    top: 120px;
+    margin-bottom: auto;
+    /* z-index: 0; */
+}

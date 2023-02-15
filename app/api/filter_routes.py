@@ -48,7 +48,7 @@ def createFilter():
         db.session.commit()
 
         return newFilter.to_dict(), 200
-    return {'errors': form.errors}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 @filter_routes.route('/editFilter', methods=['PUT'])
 @login_required
@@ -74,7 +74,7 @@ def updateFilter():
 
         return oldFilter.to_dict(), 200
     # print('checkmate')
-    return {'errors': form.errors}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # @filter_routes.route('/deleteFilter', methods=['DELETE'])
 # @login_required

@@ -52,7 +52,7 @@ export default function SearchNav() {
     // console.log(bar)
     // console.log(currentPath)
     return (
-        <div >
+        <div className='godNav'>
             <div className='mainSearchNav'>
                 <input
                     placeholder="tacos, cheap dinner, Max's"
@@ -92,25 +92,27 @@ export default function SearchNav() {
                     <div>Hair Salons <i class="fa fa-caret-down"></i></div>
                     {bar == 'hairSalons' && currentPath == 'category' ? <hr className='cat-bar'></hr> : null}
                 </Link>
-                <div className='search-filter-bar' id='categoryBar'>
+                <div className='search-filter-bar' >
                     {sessionUser ? currentFilter ?
-                        (<>
+                        (<div id='categoryBar' className='editFilter'>
                             <Link exact to={`/category/filter`}>
-                                <div>Use Filter <i class="fa fa-caret-down"></i></div>
+                                <div className='filterLink'>Use Filter <i class="fa fa-caret-down"></i></div>
                                 {bar == 'filter' && currentPath == 'category' ? <hr className='cat-bar'></hr> : null}
                             </Link>
                             <OpenModalButton
+                                className='filterModal'
                                 buttonText='Edit your filter!'
                                 modalComponent={<FilterModal />}
-                                className='nav-FilterModal'
                             />
-                        </>)
+                        </div>)
                         :
-                        <OpenModalButton
-                            buttonText='Add your filter!'
-                            modalComponent={<FilterModal />}
-                            className='nav-FilterModal'
-                        />
+                        (<div id='categoryBar' className='editFilter'>
+                            <OpenModalButton
+
+                                buttonText='Add your filter!'
+                                modalComponent={<FilterModal />}
+                            />
+                        </div>)
                         : 'Sign-in to add your custom filter!'}
                 </div>
 

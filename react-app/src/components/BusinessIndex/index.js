@@ -19,7 +19,7 @@ const BusinessesIndex = () => {
 
   return (
     <div>
-      {allBusinesses.map(business => <BusinessCard business={business} key={business.id}/>)}
+      {allBusinesses.map(business => <BusinessCard business={business} key={business.id} />)}
     </div>
   )
 };
