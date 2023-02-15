@@ -11,9 +11,7 @@ const BusinessDetail = () => {
   const business = useSelector(state => state.business.businesses)
   const currentBusiness = Object.values(business).find(business => business.id == businessId)
   const suggestBusiness = Object.values(business).filter(business => business.city == currentBusiness.city && business != currentBusiness)
-  if (currentBusiness) {
-    console.log(Math.floor(currentBusiness.avg_rating))
-  }
+
   useEffect(() => {
     dispatch(thunkLoadAllBusinesses())
   }, [dispatch, businessId])
@@ -27,7 +25,7 @@ const BusinessDetail = () => {
       <div className="business-image-div">
         {currentBusiness && currentBusiness.business_images.map(image => <img className="business-image" src={image.image_url}/>)}
       </div>
-      <div className="detail-business-div">
+      <div className="main-div">
         <div className="title-description-maindiv">
           <h1 className="title-store-name">{currentBusiness.store_name}</h1>
           <div>
@@ -41,13 +39,13 @@ const BusinessDetail = () => {
           <div>{currentBusiness.description}</div>
           <div>{currentBusiness.opening_time} - {currentBusiness.closing_time}</div>
         </div>
-        <div className="main-div">
+        <div className="detail-business-div">
           <div className="business-div">
             <div className="review-button-div">
-              <button>Write a review</button>
+              <button className="write-review-button">{<i class="fa-regular fa-star"></i>} Write a review</button>
             </div>
-            <h4>Location & Hours</h4>
-            <div className="location-hour-maindiv">
+            <h3>Location & Hours</h3>
+            <div className="location-hour-main-div">
               <div>
                 <div>Google map here</div>
                 <ul className="nl">
@@ -74,13 +72,33 @@ const BusinessDetail = () => {
                 <li>{currentBusiness.opening_time} - {currentBusiness.closing_time}</li>
               </ul>
             </div>
+            <div className="review-main-div">
+              <h3>Recommended Reviews</h3>
+              <div className="review-user-info-div">
+                <p>User info</p>
+              </div>
+              <div className="review-overall-rating-div">
+                <p>Overall rating</p>
+              </div>
+              <div className="all-review-div">
+                <div>
+                  <p>user's review info</p>
+                </div>
+                <div>
+                  <p>Stars rating</p>
+                </div>
+                <div>
+                  <p>review</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="side-info-div">
             <div className="side-info-top-div">
               <div>Phone Number: {currentBusiness.phone_num}</div>
               <div>Direction: {currentBusiness.address} {currentBusiness.city}, {currentBusiness.state} {currentBusiness.zipcode}</div>
             </div>
-            <h4>You might also consider</h4>
+            <h3>You might also consider</h3>
             <div className="suggest-business-main-div">
               {suggestBusiness[0] && 
               <div  className="suggest-business-single-div">

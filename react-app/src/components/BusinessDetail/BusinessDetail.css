@@ -1,4 +1,4 @@
-.detail-business-div {
+.main-div {
   padding-left: 15vw;
   padding-right: 15vw;
 }
@@ -17,10 +17,11 @@
   margin: 0;
 }
 
-.main-div {
+.detail-business-div {
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
+  column-gap: 20px;
 }
 
 .business-image-div {
@@ -43,15 +44,29 @@
   padding-top: 3%;
   padding-bottom: 3%;
 }
-
-.location-hour-maindiv {
-  display: flex;
+.write-review-button {
+  color: white;
+  background-color: rgb(238, 0, 0);
+  border: 0;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 5px;
 }
+
+/* Location and hours div */
+.location-hour-main-div {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px gray solid;
+  border-top: 1px gray solid;
+}
+
 
 .side-info-div {
   width: 500px;
 }
-
 .side-info-top-div {
   display: flex;
   flex-direction: column;
@@ -61,6 +76,7 @@
   border-radius: 5px;
 }
 
+/* Suggest business under You might consider */
 .suggest-business-main-div {
   display: flex;
   flex-direction: column;
@@ -81,10 +97,25 @@
   border-radius: 5px;
 }
 
+/* Stars color */
 .red {
   color: red ;
 }
-
 .gray {
   color: gray;
+}
+
+/* Recommended Reviews Div */
+.review-main-div {
+  display: flex;
+  flex-direction: column;
+}
+.review-user-info-div {
+  border: 1px red solid;
+}
+.review-overall-rating-div {
+  border: 1px blue solid;
+}
+.all-review-div {
+  border: 1px yellow solid;
 }
