@@ -78,7 +78,53 @@ const BusinessDetail = () => {
                 <p>User info</p>
               </div>
               <div className="review-overall-rating-div">
-                <p>Overall rating</p>
+                <div className="review-overall-div">
+                  <div>
+                    Overall rating
+                  </div>
+                  <div>
+                    {currentBusiness.avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                    {currentBusiness.avg_rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                    {currentBusiness.avg_rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                    {currentBusiness.avg_rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                    {currentBusiness.avg_rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
+                  </div>
+                  <div>
+                    {currentBusiness.num_reviews} reviews
+                  </div>
+                </div>
+                <div className="review-rating-div">
+                  <div className="rating-bar">
+                    <div>
+                      5 stars
+                    </div>
+                    <meter min="0" max={currentBusiness.num_reviews} value="6">Score out of 10</meter>
+                  </div>
+                  <div className="rating-bar">
+                    <div>
+                      4 stars
+                    </div>
+                    <meter min="0" max={currentBusiness.num_reviews} value="6">Score out of 10</meter>
+                  </div>
+                  <div className="rating-bar">
+                    <div>
+                      3 stars
+                    </div>
+                    <meter min="0" max={currentBusiness.num_reviews} value="6">Score out of 10</meter>
+                  </div>
+                  <div className="rating-bar">
+                    <div>
+                      2 stars
+                    </div>
+                    <meter min="0" max={currentBusiness.num_reviews} value="6">Score out of 10</meter>
+                  </div>
+                  <div className="rating-bar">
+                    <div>
+                      1 star
+                    </div>
+                    <meter min="0" max={currentBusiness.num_reviews} value="6">Score out of 10</meter>
+                  </div>
+                </div>
               </div>
               <div className="all-review-div">
                 <div>
@@ -94,52 +140,69 @@ const BusinessDetail = () => {
             </div>
           </div>
           <div className="side-info-div">
-            <div className="side-info-top-div">
-              <div>Phone Number: {currentBusiness.phone_num}</div>
-              <div>Direction: {currentBusiness.address} {currentBusiness.city}, {currentBusiness.state} {currentBusiness.zipcode}</div>
-            </div>
-            <h3>You might also consider</h3>
-            <div className="suggest-business-main-div">
-              {suggestBusiness[0] && 
-              <Link className="suggest-business-single-div" to={`/business/${suggestBusiness[0].id}`}>
-                <img className="suggest-business-image" src={suggestBusiness[0].business_images[0].image_url}/>
-                <div className="suggest-business-div">
+            <div className="sticky">
+              <div className="side-info-top-div">
+                <div className="info-container">
                   <div>
-                    {suggestBusiness[0].store_name}
+                    {currentBusiness.phone_num}
                   </div>
                   <div>
-                    {suggestBusiness[0].avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-                    {suggestBusiness[0].avg_rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-                    {suggestBusiness[0].avg_rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-                    {suggestBusiness[0].avg_rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-                    {suggestBusiness[0].avg_rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-                  </div>
-                  <div>
-                    {suggestBusiness[0].num_reviews} reviews
+                    <i class="fa-solid fa-phone"></i>
                   </div>
                 </div>
-              </Link>
-              }
-              {suggestBusiness[1] && 
-                <Link className="suggest-business-single-div" to={`/business/${suggestBusiness[1].id}`}>
-                  <img className="suggest-business-image" src={suggestBusiness[1].business_images[0].image_url}/>
+                <div className="info-container">
+                  <div>
+                    <p>Direction: </p>
+                    <p>{currentBusiness.address} {currentBusiness.city}, {currentBusiness.state} {currentBusiness.zipcode}</p>
+                  </div>
+                  <div>
+                    <i class="fa-solid fa-diamond-turn-right"></i>
+                  </div>
+                </div>
+              </div>
+              <h3>You might also consider</h3>
+              <div className="suggest-business-main-div">
+                {suggestBusiness[0] && 
+                <Link className="suggest-business-single-div" to={`/business/${suggestBusiness[0].id}`}>
+                  <img className="suggest-business-image" src={suggestBusiness[0].business_images[0].image_url}/>
                   <div className="suggest-business-div">
                     <div>
-                      {suggestBusiness[1].store_name}
+                      {suggestBusiness[0].store_name}
                     </div>
                     <div>
-                      {suggestBusiness[1].avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-                      {suggestBusiness[1].avg_rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-                      {suggestBusiness[1].avg_rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-                      {suggestBusiness[1].avg_rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
-                      {suggestBusiness[1].avg_rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      {suggestBusiness[0].avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      {suggestBusiness[0].avg_rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      {suggestBusiness[0].avg_rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      {suggestBusiness[0].avg_rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      {suggestBusiness[0].avg_rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
                     </div>
                     <div>
-                      {suggestBusiness[1].num_reviews} reviews
+                      {suggestBusiness[0].num_reviews} reviews
                     </div>
                   </div>
                 </Link>
-              }
+                }
+                {suggestBusiness[1] && 
+                  <Link className="suggest-business-single-div" to={`/business/${suggestBusiness[1].id}`}>
+                    <img className="suggest-business-image" src={suggestBusiness[1].business_images[0].image_url}/>
+                    <div className="suggest-business-div">
+                      <div>
+                        {suggestBusiness[1].store_name}
+                      </div>
+                      <div>
+                        {suggestBusiness[1].avg_rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[1].avg_rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[1].avg_rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[1].avg_rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                        {suggestBusiness[1].avg_rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>} 
+                      </div>
+                      <div>
+                        {suggestBusiness[1].num_reviews} reviews
+                      </div>
+                    </div>
+                  </Link>
+                }
+              </div>
             </div>
           </div>
         </div>
