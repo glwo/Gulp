@@ -49,3 +49,25 @@
 #nav-buttons i{
     font-size: 23px;
 }
+
+.loginSignUp button{
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    border-radius: 15px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.loginSignUp button:hover{
+    background-color: #f0f0f0;
+}
+
+.loginSignUp {
+    width: 100px
+}

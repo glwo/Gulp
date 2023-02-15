@@ -12,7 +12,7 @@
     width: 220px;
     object-fit: cover;
     border-radius: 5%;
-    box-shadow: 0px 0px 1px grey;
+    box-shadow: 0px 0px 2px grey;
 }
 
 .profileStats {
@@ -117,6 +117,6 @@
     box-shadow: 0px 0px 1px grey;
 }
 
-.indivbusinessCard div{
+/* .indivbusinessCard p{
     text-decoration: none;
-}
+} */
