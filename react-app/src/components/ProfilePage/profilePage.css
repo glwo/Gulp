@@ -125,3 +125,18 @@
 .profilebox h1{
     margin-top: 0px;
 }
+
+.reviewsBox {
+    padding: 45px 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 80%;
+}
+
+/* .businessandReviewbox {
+    display: flex;
+    flex-direction: row;
+} */

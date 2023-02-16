@@ -68,6 +68,7 @@ export default function ProfilePage() {
             </div>
             <div className='businessH3'>
               <h3>User's Businesses</h3>
+              <div className='businessandReviewbox'>
               <div className='businessesBox'>
                 {!sessionUser ? "Please Login to see this page" : userBusinesses &&
                 userBusinesses.map(business =>
@@ -86,9 +87,17 @@ export default function ProfilePage() {
                 {!sessionUser ? "Please Login to see this page" : userReviews &&
                   userReviews.map(review =>
                   <div className='indivreviewCard'>
-                    <div> {review.content} {review.rating}</div>
+                    <div> {review.content}</div>
+                    <div>
+                      {review.rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
+                      {review.rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
+                      {review.rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
+                      {review.rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
+                      {review.rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
+                    </div>
                 </div>)
                 }
+                </div>
                 </div>
             </div>
         </div>
