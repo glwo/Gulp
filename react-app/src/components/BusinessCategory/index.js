@@ -56,19 +56,19 @@ export default function BusinessCategory() {
     // })()
     // console.log(Temp, 'temp')
 
-    const Temp = useEffect(() => {
-        const locationList = []
-        currentCat?.forEach((curr) => {
-            const res = getGeocode({ address: curr.address + curr.city }).then((res) => {
-                const { lat, lng } = getLatLng(res[0])
-                console.log(lat, lng, 'res map')
-                locationList.push({ lat, lng })
-            })
-        })
-        console.log(locationList, 'locationList')
-        return locationList
-    }, [])
-    console.log(Temp, 'temp')
+    // const Temp = useEffect(() => {
+    //     const locationList = []
+    //     currentCat?.forEach((curr) => {
+    //         const res = getGeocode({ address: curr.address + curr.city }).then((res) => {
+    //             const { lat, lng } = getLatLng(res[0])
+    //             console.log(lat, lng, 'res map')
+    //             locationList.push({ lat, lng })
+    //         })
+    //     })
+    //     console.log(locationList, 'locationList')
+    //     return locationList
+    // }, [])
+    // console.log(Temp, 'temp')
 
 
 
