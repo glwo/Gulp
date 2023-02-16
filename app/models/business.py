@@ -46,3 +46,4 @@ class Business(db.Model):
       "num_reviews": self.num_reviews,
       "business_images": [image.to_dict() for image in self.business_images]
     }
+

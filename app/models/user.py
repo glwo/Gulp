@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now(), nullable=False)
     filter = db.relationship("Filter", uselist=False, back_populates="user")
+    # reviews = db.relationship("Review", back_populates="user")
 
     @property
     def password(self):
