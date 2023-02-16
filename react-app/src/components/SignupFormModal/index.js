@@ -30,6 +30,10 @@ function SignupFormModal() {
 			setErrors(["Please provide a valid email"])
 			return
 		}
+		if (password.length < 6){
+			setErrors(["Password must be at least six characters long"])
+			return
+		}
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(first_name, last_name, username, email, img_url, bio, password));
 			if (data) {
