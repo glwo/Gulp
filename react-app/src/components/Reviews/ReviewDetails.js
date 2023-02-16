@@ -27,7 +27,7 @@ function ReviewDetails({businessId}) {
 
     return (
         <div>
-            <h3> Reviews </h3>
+            <h3> All Reviews </h3>
             <div className='reviewsContainer'>
                 {reviews.map((review) => (
                     <div>
@@ -43,7 +43,7 @@ function ReviewDetails({businessId}) {
                 <OpenModalButton
         buttonText="Delete Review"
         modalComponent={<DeleteReview key={review.id} reviewId={review.id} />}
-        
+
         onButtonClick={() => setOpenModal(true)}
         onModalClose={() => setOpenModal(false)}
         />
