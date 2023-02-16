@@ -10,13 +10,21 @@ import BusinessDetail from "./components/BusinessDetail";
 import CreateBusiness from "./components/CreateBusiness";
 import ProfilePage from "./components/ProfilePage";
 import BusinessCategory from "./components/BusinessCategory";
+import { allReviews } from './store/review';
+// import CreateReviewModal from "./components/Reviews/ReviewModal";
+import CreateReviewForm from "./components/Reviews/CreateReviewForm";
+import ReviewDetails from "./components/Reviews/ReviewDetails";
+import Reviews from "./components/Reviews";
+import BusinessReviews from "./components/Reviews/BusinessReviews";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
+    dispatch(allReviews())
   }, [dispatch]);
+
 
   return (
     <>
@@ -35,15 +43,27 @@ function App() {
           <Route path='/category/:category/:location?'>
             <BusinessCategory />
           </Route>
-          <Route path='/business/:businessId'>
+          <Route exact path='/business/:businessId'>
             <BusinessDetail />
+            {/* <ReviewDetails /> */}
+            {/* <BusinessReviews /> */}
           </Route>
-          <Route path="/business">
+          <Route exact path="/business">
             <CreateBusiness />
           </Route>
-          <Route path="/profile">
+          <Route exact path="/profile">
             <ProfilePage />
           </Route>
+          <Route exact path='/reviews'>
+            {/* <CreateReviewForm /> */}
+            <ReviewDetails />
+            {/* <CreateReviewModal /> */}
+        </Route>
+        <Route exact path='/business/:business_id/writeareview'>
+          <div style={{"display":"flex", 'justifyContent':"center"}}>
+            <CreateReviewForm />
+          </div>
+        </Route>
         </Switch>
       )}
     </>
