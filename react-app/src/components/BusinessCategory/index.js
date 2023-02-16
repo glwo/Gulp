@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useCallback, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkLoadAllBusinesses } from "../../store/business";
 import { GoogleMap, useLoadScript, Marker, MarkerClusterer } from '@react-google-maps/api';
@@ -14,6 +14,7 @@ export default function BusinessCategory() {
     const dispatch = useDispatch()
     const [checkLocation, setCheckLocation] = useState(true)
     const { category, location } = useParams()
+    const [locations, setLocations] = useState([])
     // const [checkType, setCheckType] = useState('')
 
     const key = useSelector(state => state.key)
@@ -52,7 +53,7 @@ export default function BusinessCategory() {
     // const currentCat = Object.values(businesses).filter(curr => curr.business_type == derivedBusinessType)
     const currentCat = Object.values(businesses).filter(curr => catList?.includes(curr.business_type))
 
-    // console.log(currentCat, 'current businesses')
+    console.log(currentCat, 'current businesses')
 
     const bussinessList = currentCat?.map(curr => {
         return (
@@ -67,15 +68,34 @@ export default function BusinessCategory() {
         id: 'google-map-script',
         googleMapsApiKey: realKey
     });
+    const containerStyle = {
+        width: '1000px',
+        height: '800px'
+    };
     const CurrentMap = () => {
         const center = useMemo(() => ({
             lng: -74.0060,
             lat: 40.7128
         }), [])
-        const containerStyle = {
-            width: '1000px',
-            height: '800px'
-        };
+        const locations = useMemo(async () => (async () => {
+            return currentCat?.map((curr) => {
+                getGeocode({ address: curr.address + curr.city }).then((res) => {
+                    const { lat, lng } = getLatLng(res[0])
+                    console.log(lat, lng, 'res map')
+                }).then((lat, lng) => ({ lat, lng }))
+                // return { lat, lng }
+            })
+        }
+        )(), [currentCat])
+        // setLocations(locations)
+        console.log(locations, 'locations')
+        // const mapRef = useRef()
+        // const onLoad = useCallback(map => (mapRef.current = map), [])
+        // const trackNewCenter = async () => {
+        //     const lat = mapRef.current?.getCenter().lat()
+        //     const lng = mapRef.current?.getCenter().lng()
+        //     const zoom = mapRef.current?.getZoom()
+        // }
         return (
             <div >
                 {isLoaded && (
@@ -83,23 +103,24 @@ export default function BusinessCategory() {
                         mapContainerStyle={containerStyle}
                         center={center}
                         zoom={10}
-
                     >
-                        {/* <MarkerClusterer>
-                            {currentCat?.map((curr) => (
+                        <MarkerClusterer>
+                            {(clusterer) => locations?.map((curr, i) => (
 
                                 <Marker
-                                    label={{ fontWeight: 'bold', fontSize: "5px", text: `${curr.store_name}` }}
+                                    // label={{ fontWeight: 'bold', fontSize: "5px", text: `${curr.store_name}` }}
+                                    key={i}
+                                    // clusterer={clusterer}
+                                    position={curr}
 
-                                >
-                                </Marker>
+                                />
                             ))}
 
-                        </MarkerClusterer> */}
+                        </MarkerClusterer>
                     </GoogleMap>
 
                 )}
-            </div>
+            </div >
         )
     }
 
