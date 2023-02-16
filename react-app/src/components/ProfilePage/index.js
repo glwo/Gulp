@@ -10,15 +10,19 @@ import { useModal } from '../../context/Modal';
 import BusinessCard from "../BusinessCard";
 import { updateProfile, getProfile } from '../../store/profile';
 import { getUser, updateUser } from '../../store/session';
+import { userReviews } from '../../store/review';
 import "./profilePage.css";
 
 export default function ProfilePage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const business = useSelector(state => state.business.businesses);
-    // const reviews = useSelector(state => state.reviews.allReviews)
+    const reviews = useSelector(state => state.reviews.allReviews)
     const userBusinesses = Object.values(business).filter(business => business?.owner_id == sessionUser?.id)
-    // const userReviews = Object.values(reviews).filter(review => review?.user_id == sessionUser?.id)
+    const userReviews = Object.values(reviews).filter(review => review?.user_id == sessionUser?.id)
+    // const userReviewBusiness = Object.values(business).filter(business => business?.id == userReviews[0]?.business_id)
+
+    // console.log(userReviewBusiness)
 
     useEffect(() => {
       dispatch(thunkLoadAllBusinesses())
@@ -78,19 +82,15 @@ export default function ProfilePage() {
                 }
               </div>
               <h3>User's Reviews</h3>
-              {/* {!sessionUser ? "Please Login to see this page" : userReviews &&
-                userReviews.map(review =>
-                  <div className='indivreviewCard'> */}
-                  {/* <BusinessCard business={business} key={business.id} />
-                  <OpenModalButton
-                      buttonText="Update Business"
-                      modalComponent={<UpdateBusinessModal business={business} key={business.id}/>}
-                    />
-                    <button onClick={() => removeBusiness(business.id)}>Delete Business</button> */}
-                {/* </div>)
-                } */}
+              <div className='reviewsBox'>
+                {!sessionUser ? "Please Login to see this page" : userReviews &&
+                  userReviews.map(review =>
+                  <div className='indivreviewCard'>
+                    <div> {review.content} {review.rating}</div>
+                </div>)
+                }
+                </div>
             </div>
         </div>
     )
 }
-
