@@ -14,6 +14,7 @@ const BusinessCard = ({ business }) => {
         <img className="business-preview-image" src={business.business_images[0].image_url} />
         <div>
           <div className="businessStoreName">{business.store_name}</div>
+          <div><i class="fa-solid fa-star"></i> {business.avg_rating} - <i class="fa-solid fa-user-check"></i> {business.num_reviews} Reviews</div>
         </div>
       </Link>
     </div>
