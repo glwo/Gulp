@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkLoadAllBusinesses, resetState } from "../../store/business";
 import BusinessCard from "../BusinessCard";
+import "./BusinessIndex.css";
 
 
 const BusinessesIndex = () => {
@@ -18,7 +19,7 @@ const BusinessesIndex = () => {
   }
 
   return (
-    <div>
+    <div className="businessHomePageBox">
       {allBusinesses.map(business => <BusinessCard business={business} key={business.id}/>)}
     </div>
   )

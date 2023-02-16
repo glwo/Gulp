@@ -3,14 +3,17 @@ import thunk from 'redux-thunk';
 import session from './session'
 import filter from './filter'
 import business from './business';
+import reviews from './review'
 import key from './map'
 
 const rootReducer = combineReducers({
   session,
   filter,
   business,
+  reviews,
   key
 });
+
 
 
 let enhancer;

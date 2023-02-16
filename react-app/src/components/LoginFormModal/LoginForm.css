@@ -1,0 +1,44 @@
+.logInModal {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    justify-content: center;
+    padding: 50px;
+}
+
+.loginModalButtons {
+    background-color: #d32323;
+    width: 100%;
+    color: white;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.loginModalButtons:hover {
+    background-color: #ef2b2b;
+    transition-duration: 1000ms;
+}
+
+.logInModal div {
+    padding: 10px;
+}
+
+.logInModal input {
+    width: 96%;
+}
+
+.logInModal ul {
+    color: red;
+}
+
+.logInModal h1{
+    color: #d32383
+}

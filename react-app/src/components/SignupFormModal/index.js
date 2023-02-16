@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
+import { login } from "../../store/session";
+import { getFilter } from "../../store/filter";
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -17,8 +19,21 @@ function SignupFormModal() {
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
 
+	function validateEmail(email) {
+		var re = /\S+@\S+\.\S+/;
+		return re.test(email);
+	  }
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		if(validateEmail(email) === false){
+			setErrors(["Please provide a valid email"])
+			return
+		}
+		if (password.length < 6){
+			setErrors(["Password must be at least six characters long"])
+			return
+		}
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(first_name, last_name, username, email, img_url, bio, password));
 			if (data) {
@@ -26,6 +41,7 @@ function SignupFormModal() {
 			} else {
 				closeModal();
 			}
+			dispatch(getFilter())
 		} else {
 			setErrors([
 				"Confirm Password field must be the same as the Password field",
@@ -33,15 +49,35 @@ function SignupFormModal() {
 		}
 	};
 
+	const demolitionUser = (e) => {
+		e.preventDefault();
+		// const demouser = User
+		dispatch(
+		  login(
+			'demo@aa.io',
+			'password'
+		  )
+		)
+		.then(closeModal())
+		.catch(
+		  async (res) => {
+			const data = await res.json();
+			if (data && data.errors) setErrors(data.errors);
+		  }
+		);
+	}
+
 	return (
 		<>
-			<h1>Sign Up</h1>
+		<div className="signUpModal">
+			<h1>Sign Up for Gulp</h1>
 			<form onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
+				<div>
 				<label>
 					First Name :
 					<input
@@ -51,6 +87,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Last Name :
 					<input
@@ -60,6 +98,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Username :
 					<input
@@ -69,6 +109,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Email :
 					<input
@@ -78,6 +120,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Profile Picture Url :
 					<input
@@ -87,6 +131,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Biography :
 					<input
@@ -96,6 +142,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Password :
 					<input
@@ -105,6 +153,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					Confirm Password :
 					<input
@@ -114,8 +164,15 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				</div>
+				<div>
+				<button className="signUpButtons" type="submit">Sign Up</button>
+				</div>
+				<div>
+				<button className="signUpButtons" onClick={demolitionUser}>Demo User Login</button>
+				</div>
 			</form>
+			</div>
 		</>
 	);
 }

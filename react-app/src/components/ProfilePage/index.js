@@ -2,51 +2,95 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import UpdateProfileModal from "./editProfileModal"
+import UpdateBusinessModal from '../UpdateBusinessModal';
 import OpenModalButton from "../OpenModalButton";
+import { thunkLoadAllBusinesses } from "../../store/business";
+import { thunkRemoveBusiness } from '../../store/business';
+import { useModal } from '../../context/Modal';
+import BusinessCard from "../BusinessCard";
 import { updateProfile, getProfile } from '../../store/profile';
 import { getUser, updateUser } from '../../store/session';
+import "./profilePage.css";
 
 export default function ProfilePage() {
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    // const sessionUser = useSelector(state => state.profileReducer.profile);
+    const business = useSelector(state => state.business.businesses);
+    // const reviews = useSelector(state => state.reviews.allReviews)
+    const userBusinesses = Object.values(business).filter(business => business?.owner_id == sessionUser?.id)
+    // const userReviews = Object.values(reviews).filter(review => review?.user_id == sessionUser?.id)
 
-    // const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(thunkLoadAllBusinesses())
+    }, [dispatch])
 
-    // useEffect(() => {
-    //     // dispatch(getUser(+sessionUser.id))
-    //     if (sessionUser){
-    //     dispatch(updateUser(+sessionUser.id))
-    //     .then(dispatch(getUser(+sessionUser.id)))
-    //     }
-    //     // dispatch(getProfile(+sessionUser.id))
-    // }, [dispatch, sessionUser])
-
+    const removeBusiness = (e) => {
+      return dispatch(thunkRemoveBusiness(e))
+    }
     return (
         <div>
-            <h1>
-                Profile Page
-            </h1>
+          <div className='profileStats'>
             <ul className="profilepageul">
                 <div>
                 {sessionUser &&
                     <>
-                    <li>
+                    <div className='picandname'>
+                    <div className="profileImgDiv">
                         <img id='profilepic' src={sessionUser.img_url} alt="Profile picture could not be found"></img>
-                    </li>
+                    </div>
+                    <div className='profilebox'>
+                    <h1>
+            {sessionUser.first_name} {sessionUser.last_name}
+            </h1>
+
+                    <div className='profileInfo'>
+                    <h2>{sessionUser.first_name}'s Profile</h2>
                     <li>User: {sessionUser.username}</li>
-                    <li>Name: {sessionUser.first_name} {sessionUser.last_name}</li>
                     <li>Email: {sessionUser.email}</li>
                     <li>Biography: {sessionUser.bio}</li>
                     <OpenModalButton
                     className= "updateProfileButton"
-                    buttonText="Update Profile"
+                    buttonText="Update Your Profile"
                     // onItemClick={closeMenu}
                     modalComponent={<UpdateProfileModal />}
                     />
+                    </div>
+                    </div>
+                    </div>
                     </>
                     }
                 </div>
             </ul>
+            </div>
+            <div className='businessH3'>
+              <h3>User's Businesses</h3>
+              <div className='businessesBox'>
+                {!sessionUser ? "Please Login to see this page" : userBusinesses &&
+                userBusinesses.map(business =>
+                  <div className='indivbusinessCard'>
+                  <BusinessCard business={business} key={business.id} />
+                  <OpenModalButton
+                      buttonText="Update Business"
+                      modalComponent={<UpdateBusinessModal business={business} key={business.id}/>}
+                    />
+                    <button onClick={() => removeBusiness(business.id)}>Delete Business</button>
+                </div>)
+                }
+              </div>
+              <h3>User's Reviews</h3>
+              {/* {!sessionUser ? "Please Login to see this page" : userReviews &&
+                userReviews.map(review =>
+                  <div className='indivreviewCard'> */}
+                  {/* <BusinessCard business={business} key={business.id} />
+                  <OpenModalButton
+                      buttonText="Update Business"
+                      modalComponent={<UpdateBusinessModal business={business} key={business.id}/>}
+                    />
+                    <button onClick={() => removeBusiness(business.id)}>Delete Business</button> */}
+                {/* </div>)
+                } */}
+            </div>
         </div>
     )
 }
+

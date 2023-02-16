@@ -1,0 +1,19 @@
+.mainCatPage {
+    display: flex;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    /* position: relative; */
+}
+
+.singleBusinessCat {
+    width: 50vw;
+}
+
+.bigMap {
+    /* display: inline-block; */
+    position: sticky;
+    top: 120px;
+    margin-bottom: auto;
+    width: 45%;
+    /* z-index: 0; */
+}

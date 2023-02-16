@@ -42,24 +42,29 @@ function LoginFormModal() {
 
   return (
     <>
-      <h1>Log In</h1>
+    <div className="logInModal">
+      <h1>Log in to Gulp</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
+        <div>
         <label>
-          Email
+          Email :
           <input
             type="text"
+            // placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
+        </div>
+        <div>
         <label>
-          Password
+          Password :
           <input
             type="password"
             value={password}
@@ -67,9 +72,15 @@ function LoginFormModal() {
             required
           />
         </label>
+        </div>
+        <div>
         <button className="loginModalButtons" type="submit">Log In</button>
+        </div>
+        <div>
         <button className="loginModalButtons" type="submit" onClick={demolitionUser}>Demo User Login</button>
+        </div>
       </form>
+      </div>
     </>
   );
 }

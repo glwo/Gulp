@@ -2,3 +2,11 @@
 * {
     font-family: 'Montserrat', sans-serif;
 }
+
+.nl {
+  list-style-type: none;
+}
+
+body {
+  margin: 0;
+}
