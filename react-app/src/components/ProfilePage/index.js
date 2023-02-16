@@ -16,7 +16,9 @@ export default function ProfilePage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const business = useSelector(state => state.business.businesses);
+    // const reviews = useSelector(state => state.reviews.allReviews)
     const userBusinesses = Object.values(business).filter(business => business?.owner_id == sessionUser?.id)
+    // const userReviews = Object.values(reviews).filter(review => review?.user_id == sessionUser?.id)
 
     useEffect(() => {
       dispatch(thunkLoadAllBusinesses())
@@ -66,11 +68,6 @@ export default function ProfilePage() {
                 {!sessionUser ? "Please Login to see this page" : userBusinesses &&
                 userBusinesses.map(business =>
                   <div className='indivbusinessCard'>
-                    {/* <OpenModalButton
-                      buttonText="Update Business"
-                      modalComponent={<UpdateBusinessModal business={business} key={business.id}/>}
-                    />
-                    <button onClick={() => removeBusiness(business.id)}>Delete business</button> */}
                   <BusinessCard business={business} key={business.id} />
                   <OpenModalButton
                       buttonText="Update Business"
@@ -80,7 +77,20 @@ export default function ProfilePage() {
                 </div>)
                 }
               </div>
+              <h3>User's Reviews</h3>
+              {/* {!sessionUser ? "Please Login to see this page" : userReviews &&
+                userReviews.map(review =>
+                  <div className='indivreviewCard'> */}
+                  {/* <BusinessCard business={business} key={business.id} />
+                  <OpenModalButton
+                      buttonText="Update Business"
+                      modalComponent={<UpdateBusinessModal business={business} key={business.id}/>}
+                    />
+                    <button onClick={() => removeBusiness(business.id)}>Delete Business</button> */}
+                {/* </div>)
+                } */}
             </div>
         </div>
     )
 }
+

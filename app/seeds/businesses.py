@@ -103,8 +103,8 @@ def seed_businesses():
     opening_time="17:00",
     closing_time="22:00",
     phone_num="6464227466",
-    avg_rating=4.6,
-    num_reviews=20,
+    avg_rating=0,
+    num_reviews=0,
     owner_id=3
   )
   honeybliss = Business(
@@ -182,6 +182,277 @@ def seed_businesses():
     num_reviews=0,
     owner_id=1
   )
+  anchor_oyster_bar = Business(
+    store_name="Anchor Oyster Bar",
+    description="Since 1977, diners have been coming to this nautical-themed eatery for fresh fish & shellfish.",
+    city="San Francisco",
+    state="CA",
+    address="579 Castro St",
+    zipcode=94114,
+    business_type="restaurant",
+    opening_time="14:00",
+    closing_time="19:00",
+    phone_num="(650) 910-6946",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=2
+  )
+  deli_board = Business(
+    store_name="Deli Board",
+    description="Lunch spot for sandwiches piled high with fillings like corned beef & pastrami, plus soups & salads.",
+    city="San Francisco",
+    state="CA",
+    address="1058 Folsom St",
+    zipcode=94103,
+    business_type="restaurant",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=2
+  )
+  brendas_french = Business(
+    store_name="Brenda's French Soul Food",
+    description="Fresh takes on beignets, po' boys & other Big Easy bites draw crowds to this narrow but airy spot.",
+    city="San Francisco",
+    state="CA",
+    address="652 Polk St",
+    zipcode=94102,
+    business_type="restaurant",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=2
+  )
+  boulevard= Business(
+    store_name="Boulevard",
+    description="Refined American fare from renowned chef Nancy Oakes at a chic Embarcadero spot boasting bay views.",
+    city="San Francisco",
+    state="CA",
+    address="1 Mission St",
+    zipcode=94105,
+    business_type="restaurant",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=3
+  )
+  toyota_parts = Business(
+    store_name="Toyota Parts",
+    description="Expert service for all things Toyota!",
+    city="San Francisco",
+    state="CA",
+    address="4099 Geary Blvd",
+    zipcode=94109,
+    business_type="auto",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=4
+  )
+  JT_auto = Business(
+    store_name="JT Auto Parts & Accessories Store",
+    description="Provides a variety of car parts and accessories",
+    city="San Francisco",
+    state="CA",
+    address="1239 Polk St #1",
+    zipcode=94109,
+    business_type="auto",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=4
+  )
+  oreilly = Business(
+    store_name="O'Reilly Auto Parts",
+    description="Small place, carries general items, friendly service.",
+    city="San Francisco",
+    state="CA",
+    address="2300 16th St",
+    zipcode=94103,
+    business_type="auto",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=5
+  )
+  abc_motor = Business(
+    store_name="ABC Motor",
+    description="Local shop with excellent service and reasonable prices.",
+    city="San Francisco",
+    state="CA",
+    address="351 S Van Ness Ave",
+    zipcode=94103,
+    business_type="auto",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=5
+  )
+  rite_way = Business(
+    store_name="Rite-Way Electric",
+    description="Rite-Way Electric is your primary source for exceptional marine, antique and industrial starters, alternators and AC electric motors.",
+    city="San Francisco",
+    state="CA",
+    address="261 6th St",
+    zipcode=94103,
+    business_type="auto",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=4
+  )
+  code_salon = Business(
+    store_name="CODE Salon",
+    description="At CODE, we are in love with our craft and are passionate about using it to express individuality.",
+    city="San Francisco",
+    state="CA",
+    address="370 4th Street Second Floor",
+    zipcode=94107,
+    business_type="salon",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=5
+  )
+  bottega = Business(
+    store_name="BOTTEGA",
+    description="Classic Italian fare including pizza, pasta & meat dishes are offered at this modest restaurant.",
+    city="San Francisco",
+    state="CA",
+    address="1132 Valencia St",
+    zipcode=94110,
+    business_type="restaurant",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=5
+  )
+  jims = Business(
+    store_name="Jim's",
+    description="Vintage, unpretentious diner serving American breakfast & lunch amid wood paneling & counter seats.",
+    city="San Francisco",
+    state="CA",
+    address="2420 Mission St",
+    zipcode=94110,
+    business_type="restaurant",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=5
+  )
+  home_instead = Business(
+    store_name="Home Instead San Francisco",
+    description="Home Instead San Francisco is an exceptional caregiver service that truly understands and cares about their clients and family members.",
+    city="San Francisco",
+    state="CA",
+    address="1 Daniel Burnham Ct #307C",
+    zipcode=94109,
+    business_type="home",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=5
+  )
+  castros = Business(
+    store_name="Castro's Cleaning Service",
+    description="Castro's Cleaning Service aims to create your ideal space for your home or business. We have a solid reputation for spotless cleaning, meeting your every need with our wide range of services.",
+    city="San Francisco",
+    state="CA",
+    address="2450 Mission St",
+    zipcode=94110,
+    business_type="home",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=3
+  )
+  grubstake = Business(
+    store_name="Grubstake Diner",
+    description="Set inside an old train car, this diner slings American staples & some Portuguese dishes till late.",
+    city="San Francisco",
+    state="CA",
+    address="1525 Pine St",
+    zipcode=94109,
+    business_type="restaurant",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=5
+  )
+  son_and_garden = Business(
+    store_name="Son and Garden",
+    description="Pastels, plants & flowery wallpaper outfit this cozy destination that serves New American dishes.",
+    city="San Francisco",
+    state="CA",
+    address="700 Polk St",
+    zipcode=94109,
+    business_type="restaurant",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=3
+  )
+  artys = Business(
+    store_name="Arty Hair Salon",
+    description="Great haircut, good price point, excellent service.",
+    city="San Francisco",
+    state="CA",
+    address="1680 Post St",
+    zipcode=94115,
+    business_type="salon",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=2
+  )
+  MJM = Business(
+    store_name="MJM Maintenance LLC",
+    description="M.J.M. Maintenance Co. is a commercial cleaning and janitorial company based in Glendale, California.",
+    city="San Francisco",
+    state="CA",
+    address="308 Turk St",
+    zipcode=94102,
+    business_type="home",
+    opening_time="09:00",
+    closing_time="21:00",
+    phone_num="(415) 552-7687",
+    avg_rating=0,
+    num_reviews=0,
+    owner_id=2
+  )
+
 
   db.session.add(brandons_donuts)
   db.session.add(da_andrea)
@@ -195,6 +466,24 @@ def seed_businesses():
   db.session.add(zy)
   db.session.add(moe_tire)
   db.session.add(enzi)
+  db.session.add(anchor_oyster_bar)
+  db.session.add(deli_board)
+  db.session.add(brendas_french)
+  db.session.add(boulevard)
+  db.session.add(toyota_parts)
+  db.session.add(JT_auto)
+  db.session.add(oreilly)
+  db.session.add(abc_motor)
+  db.session.add(rite_way)
+  db.session.add(code_salon)
+  db.session.add(bottega)
+  db.session.add(jims)
+  db.session.add(home_instead)
+  db.session.add(castros)
+  db.session.add(grubstake)
+  db.session.add(son_and_garden)
+  db.session.add(artys)
+  db.session.add(MJM)
   db.session.commit()
 
 def undo_businesses():

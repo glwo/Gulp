@@ -3,6 +3,7 @@ import { NavLink, Link, useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { editFilter, setFilter } from '../../store/filter';
 import { useModal } from '../../context/Modal';
+import './searchNav.css'
 
 export default function FilterModal() {
     const dispatch = useDispatch();
@@ -108,8 +109,8 @@ export default function FilterModal() {
     }
 
     return (
-        <div>
-            <h2>Customized Filter Settings</h2>
+        <div className='customizeFilterModal'>
+            <h1>Customized Filter Settings</h1>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -140,8 +141,11 @@ export default function FilterModal() {
                 </div>
                 <div>
                     <label>Select Up to 3 Categories</label>
-                    <div>
+                    <div className='catSelectionDiv'>
                         <label>
+                            <div>
+                              Restaurants
+                            </div>
                             <input
                                 type="checkbox"
                                 checked={check1}
@@ -153,9 +157,11 @@ export default function FilterModal() {
                                 disabled={checkCount >= 3 && !check1}
                             >
                             </input>
-                            Restaurants
                         </label>
                         <label>
+                            <div>
+                              Home Services
+                            </div>
                             <input
                                 type="checkbox"
                                 checked={check2}
@@ -167,9 +173,11 @@ export default function FilterModal() {
                                 disabled={checkCount >= 3 && !check2}
                             >
                             </input>
-                            Home Services
                         </label>
                         <label>
+                            <div>
+                              Auto Services
+                            </div>
                             <input
                                 type="checkbox"
                                 checked={check3}
@@ -181,9 +189,11 @@ export default function FilterModal() {
                                 disabled={checkCount >= 3 && !check3}
                             >
                             </input>
-                            Auto Services
                         </label>
                         <label>
+                            <div>
+                              Hair Salons
+                            </div>
                             <input
                                 type="checkbox"
                                 checked={check4}
@@ -195,10 +205,9 @@ export default function FilterModal() {
                                 disabled={checkCount >= 3 && !check4}
                             >
                             </input>
-                            Hair Salons
                         </label>
                     </div>
-                    <button type='Submit'>Save Filter Preferences</button>
+                    <button className='saveFilter' type='Submit'>Save Filter Preferences</button>
                 </div>
 
             </form>

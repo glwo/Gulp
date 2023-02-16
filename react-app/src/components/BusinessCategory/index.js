@@ -4,7 +4,8 @@ import { thunkLoadAllBusinesses } from "../../store/business";
 import { GoogleMap, useLoadScript, Marker, MarkerClusterer } from '@react-google-maps/api';
 import { getGeocode, getLatLng } from 'use-places-autocomplete'
 import { useParams } from "react-router-dom";
-import BusinessCard from "../BusinessCard";
+// import BusinessCard from "../BusinessCard";
+import BusinessCategoryCard from "../BusinessCategoryCard";
 import { getKey } from "../../store/map";
 import { getFilter } from "../../store/filter";
 import('./businessCat.css')
@@ -156,7 +157,7 @@ export default function BusinessCategory() {
             <div key={curr?.id} className='businessSingle'>
                 {/* <div>{curr?.store_name}</div> */}
                 {/* <div>{forum?.content}</div> */}
-                <BusinessCard business={curr} key={curr.id} />
+                <BusinessCategoryCard business={curr} key={curr.id} />
             </div>
         )
     })
