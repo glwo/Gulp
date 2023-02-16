@@ -22,10 +22,12 @@ export default function CreateBusiness() {
   const [image_url, setImageUrl] = useState('');
   const [preview, setPreview] = useState("True");
   const [errors, setErrors] = useState([]);
+  const currentUser = useSelector(state => state.session.user)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
+    if (currentUser == undefined) return history.push('/login')
 
     const business = {
       store_name,
