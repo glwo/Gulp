@@ -5,7 +5,7 @@ import { allReviews } from '../../store/review'
 
 function SingleReview({review}) {
 
-console.log('review', review)
+
 
 
     // const totalReviews = useSelector(state => state.reviews.allReviews)

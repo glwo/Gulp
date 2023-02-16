@@ -14,6 +14,7 @@ function CreateReviewForm() {
 
     const { business_id } = useParams()
     const business = useSelector(state => state.business.businesses)
+    const currentUser = useSelector(state => state.session.user)
     // console.log(business)
     const currentBusiness = Object.values(business).find(business => business.id == business_id)
     // console.log(currentBusiness)
@@ -43,6 +44,7 @@ function CreateReviewForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (currentUser == undefined) return history.push('/login')
 
         let payload;
         // if(image){

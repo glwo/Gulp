@@ -54,6 +54,7 @@ def create_review(id):
         db.session.add(new_review)
         db.session.commit()
 
+
         newImage = Review_Image(
             url = form.data['url'],
             review_id = new_review.id
@@ -75,20 +76,34 @@ def edit_review(id):
     # Edit the review
 
     review = Review.query.get(id)
+    reviewImage = Review_Image.query.get(review.images[0].id)
+
     if not review:
+        print("Review not -----------------1-----found")
         return { "errors": "Review not found"}, 404
-    if current_user.id != review.user.id:
+    if current_user.id != review.user_id:
+        print("Review not ------------2----------found")
         return { "errors": "Forbidden"}, 403
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        form.populate_obj(review)
-        db.session.add(review)
+        print("Review not --------------3--------found")
+        review.business_id = form.data['business_id'],
+        review.user_id = current_user.id,
+        review.firstName = current_user.first_name,
+        review.lastInitial = current_user.last_name[0],
+        review.content = form.data['review'],
+        review.rating = form.data['stars'],
+        reviewImage.url = form.data['url']
+        # db.session.add(review)
+        print("Review not ---------------55555555-------found", review )
         db.session.commit()
+        print("Review not --------------7777777777775-------found", review )
         return review.to_dict(), 201
     if form.errors:
+        print("Review not ---------------4-------found")
         return {
-            "errors": form.errors
+            "errors": validation_errors_to_error_messages(form.errors)
         }, 400
 
 

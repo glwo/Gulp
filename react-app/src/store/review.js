@@ -94,27 +94,35 @@ export const allReviews = () => async dispatch => {
 
     if(response.ok){
         const reviews = await response.json()
-        console.log('reviews', reviews)
+        // console.log('reviews', reviews)
         dispatch(loadAllReviews(reviews.Reviews))
     }
 }
 
-export const reviewUpdate = (reviewId, review) => async dispatch => {
-    const response = await fetch(`/api/reviews/${reviewId}`, {
+export const reviewUpdate = (payload, reviewId) => async dispatch => {
+    // console.log('payload', payload)
+    const response = await fetch(`/api/review/${reviewId}`, {
         method: 'PUT',
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(review)
+        body: JSON.stringify(payload)
       })
+      console.log('response', response)
+
 
     if(response.ok){
         const review = await response.json()
         dispatch(updateReview(review))
         return review
-    }
+    } else if (response.status < 500) {
+        const data = await response.json()
+        if (data.errors) {
+          return data
+        }
+      }
 }
 
 export const removeReview = (reviewId) => async dispatch => {
-    const response = await fetch(`/api/reviews/${reviewId}`, {
+    const response = await fetch(`/api/review/${reviewId}`, {
         method: 'DELETE',
         headers: {"Content-Type": "application/json"}
       })

@@ -5,7 +5,7 @@ import { thunkLoadAllBusinesses } from "../../store/business";
 import { Link, useParams } from "react-router-dom";
 import "./BusinessDetail.css"
 import CreateReviewForm from "../Reviews/CreateReviewForm";
-import CreateReviewModal from "../Reviews/ReviewModal";
+import CreateReviewModal from "../Reviews/EditReviewModal";
 import OpenModalButton from "../OpenModalButton";
 import ReviewDetails from "../Reviews/ReviewDetails";
 
@@ -48,19 +48,20 @@ const BusinessDetail = () => {
         <div className="detail-business-div">
           <div className="business-div">
             <div className="review-button-div">
-              <Link to={`/business/${currentBusiness.id}/writeareview`}><button className="review-button">Write a Review Link</button></Link>
-              <OpenModalButton
+              {/* <Link to={`/business/${currentBusiness.id}/writeareview`}><button className="review-button">Write a Review Link</button></Link> */}
+              {/* <OpenModalButton
         buttonText="Write a Review Modal"
         modalComponent={<CreateReviewForm />}
         onButtonClick={() => setOpenModal(true)}
         onModalClose={() => setOpenModal(false)}
-      />
+      /> */}
             </div>
-            < ReviewDetails businessId={currentBusiness.id} />
+
 
             <h4>Location & Hours</h4>
             <div className="location-hour-maindiv">
-              <button className="write-review-button">{<i class="fa-regular fa-star"></i>} Write a review</button>
+            <Link to={`/business/${currentBusiness.id}/writeareview`}>
+              <button className="write-review-button">{<i class="fa-regular fa-star"></i>} Write a review</button></Link>
             </div>
             <h3>Location & Hours</h3>
             <div className="location-hour-main-div">
@@ -152,7 +153,7 @@ const BusinessDetail = () => {
                   <p>Stars rating</p>
                 </div>
                 <div>
-                  <p>review</p>
+                < ReviewDetails businessId={currentBusiness.id} />
                 </div>
               </div>
             </div>

@@ -49,7 +49,7 @@ class Review_Image(db.Model):
     review_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("reviews.id")))
     url = db.Column(db.String(500), nullable=False)
 
-    review = relationship('Review', back_populates='images')
+    review = db.relationship('Review', back_populates='images')
 
     def to_dict(self):
         return {

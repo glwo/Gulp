@@ -11,7 +11,7 @@ import CreateBusiness from "./components/CreateBusiness";
 import ProfilePage from "./components/ProfilePage";
 import BusinessCategory from "./components/BusinessCategory";
 import { allReviews } from './store/review';
-import CreateReviewModal from "./components/Reviews/ReviewModal";
+// import CreateReviewModal from "./components/Reviews/ReviewModal";
 import CreateReviewForm from "./components/Reviews/CreateReviewForm";
 import ReviewDetails from "./components/Reviews/ReviewDetails";
 import Reviews from "./components/Reviews";
