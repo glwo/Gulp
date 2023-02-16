@@ -161,7 +161,9 @@
 .rating-bar {
   display: flex;
   column-gap: 20px;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 meter {
   width: 70%;

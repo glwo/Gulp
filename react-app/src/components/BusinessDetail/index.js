@@ -16,11 +16,24 @@ const BusinessDetail = () => {
   const business = useSelector(state => state.business.businesses)
   const currentBusiness = Object.values(business).find(business => business.id == businessId)
   const suggestBusiness = Object.values(business).filter(business => business.city == currentBusiness.city && business != currentBusiness)
+  
+  let businessReviews;
+  if (currentBusiness) {
+    businessReviews = currentBusiness.review
+  }
 
   useEffect(() => {
     dispatch(thunkLoadAllBusinesses())
   }, [dispatch, businessId])
-// console.log(currentBusiness, 'current business')
+
+  const reviewFilter = (array, num) => {
+    if (array) {
+      const result = array.filter(review => review.rating == num)
+      return result.length
+    } 
+    return null
+  } 
+
   if (!currentBusiness) {
     return null
   }
@@ -117,31 +130,31 @@ const BusinessDetail = () => {
                     <div>
                       5 stars
                     </div>
-                    <meter min="0" max={currentBusiness.num_reviews} value="6">Rate 5 stars</meter>
+                    <meter min="0" max={currentBusiness.num_reviews} value={reviewFilter(businessReviews, 5)} >Rate 5 stars</meter>
                   </div>
                   <div className="rating-bar">
                     <div>
                       4 stars
                     </div>
-                    <meter min="0" max={currentBusiness.num_reviews} value="6">Rate 4 stars</meter>
+                    <meter min="0" max={currentBusiness.num_reviews} value={reviewFilter(businessReviews, 4)} >Rate 4 stars</meter>
                   </div>
                   <div className="rating-bar">
                     <div>
                       3 stars
                     </div>
-                    <meter min="0" max={currentBusiness.num_reviews} value="6">Rate 3 stars</meter>
+                    <meter min="0" max={currentBusiness.num_reviews} value={reviewFilter(businessReviews, 3)} >Rate 3 stars</meter>
                   </div>
                   <div className="rating-bar">
                     <div>
                       2 stars
                     </div>
-                    <meter min="0" max={currentBusiness.num_reviews} value="6">Rate 2 stars</meter>
+                    <meter min="0" max={currentBusiness.num_reviews} value={reviewFilter(businessReviews, 2)}>Rate 2 stars</meter>
                   </div>
                   <div className="rating-bar">
                     <div>
                       1 star
                     </div>
-                    <meter min="0" max={currentBusiness.num_reviews} value="6">Rate 1 star</meter>
+                    <meter min="0" max={currentBusiness.num_reviews} value={reviewFilter(businessReviews, 1)}>Rate 1 star</meter>
                   </div>
                 </div>
               </div>
