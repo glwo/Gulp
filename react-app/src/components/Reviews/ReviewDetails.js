@@ -15,7 +15,6 @@ function ReviewDetails({businessId}) {
     }, [dispatch])
 
 
-
     const totalReviews = useSelector(state => state.reviews.allReviews)
     const currentUser = useSelector(state => state.session.user)
     const [openModal, setOpenModal] = useState(false)
@@ -40,18 +39,13 @@ function ReviewDetails({businessId}) {
       />
                         </div> : "" }
                         <SingleReview key={review.id} review={review} />
-                <OpenModalButton
-        buttonText="Delete Review"
-        modalComponent={<DeleteReview key={review.id} reviewId={review.id} />}
-
-        onButtonClick={() => setOpenModal(true)}
-        onModalClose={() => setOpenModal(false)}
-        />
+                        {currentUser && review.user_id == currentUser.id ? <div>
+                            <DeleteReview key={review.id} review={review} />
+                        </div> : "" }
                         </div>
                 ))}
 
             </div>
-
         </div>
     )
 }
