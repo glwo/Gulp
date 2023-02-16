@@ -23,19 +23,6 @@ export default function BusinessCategory() {
     const businesses = useSelector(state => state.business.businesses)
     const currentFilter = useSelector(state => state.filter?.filter)
     // console.log(businesses, 'check if emphty')
-    useEffect(() => {
-        if (!location) {
-            setCheckLocation(false)
-        }
-        if ((Object.keys(businesses).length === 0)) {
-            dispatch(thunkLoadAllBusinesses()) //just in case don't really need it
-        }
-        if ((Object.keys(key).length === 0)) dispatch(getKey())
-        // setCheckType(category || '')
-        if (!currentFilter) {
-            dispatch(getFilter())
-        }
-    }, [checkLocation, businesses, key, currentFilter])
     const derivedBusinessType = category == 'filter' && (currentFilter) ? true : category == 'autoServices' ? 'auto' : category == 'homeServices' ? 'home' : category == 'hairSalons' ? 'salon' : 'restaurant'
     const catList = (() => {
         const list = []
@@ -48,12 +35,121 @@ export default function BusinessCategory() {
         return [derivedBusinessType]
     })();
 
-    console.log(catList, 'catList')
+    // console.log(catList, 'catList')
 
     // const currentCat = Object.values(businesses).filter(curr => curr.business_type == derivedBusinessType)
     const currentCat = Object.values(businesses).filter(curr => catList?.includes(curr.business_type))
 
-    console.log(currentCat, 'current businesses')
+
+    // const Temp = (() => {
+    //     const locationList = []
+    //     currentCat?.forEach((curr) => {
+    //         const res = getGeocode({ address: curr.address + curr.city }).then((res) => {
+    //             const { lat, lng } = getLatLng(res[0])
+    //             console.log(lat, lng, 'res map')
+    //             locationList.push({ lat, lng })
+    //         })
+    //     })
+    //     console.log(locationList, 'locationList')
+    //     return locationList
+    // })()
+    // console.log(Temp, 'temp')
+
+    const Temp = useEffect(() => {
+        const locationList = []
+        currentCat?.forEach((curr) => {
+            const res = getGeocode({ address: curr.address + curr.city }).then((res) => {
+                const { lat, lng } = getLatLng(res[0])
+                console.log(lat, lng, 'res map')
+                locationList.push({ lat, lng })
+            })
+        })
+        console.log(locationList, 'locationList')
+        return locationList
+    }, [])
+    console.log(Temp, 'temp')
+
+
+
+
+
+
+
+    // const CurrentMap = () => {
+    //     const center = useMemo(() => ({
+    //         lng: -74.0060,
+    //         lat: 40.7128
+    //     }), [])
+
+    useEffect(async () => {
+        // if (!location) {
+        //     setCheckLocation(false)
+        // }
+        if ((Object.keys(businesses).length === 0)) {
+            dispatch(thunkLoadAllBusinesses()) //just in case don't really need it
+        }
+        if ((Object.keys(key).length === 0)) dispatch(getKey())
+        // setCheckType(category || '')
+        if (!currentFilter) {
+            dispatch(getFilter())
+        }
+        // if (currentCat && !location) {
+        //     console.log('cat if')
+        //     setLocations(currentCat?.map(async (curr) => {
+        //         await getGeocode({ address: curr.address + curr.city }).then((res) => {
+        //             const { lat, lng } = getLatLng(res[0])
+        //             console.log(lat, lng, 'res map')
+        //             return { lat, lng }
+        //         })
+        //         // .then((lat, lng) => { return { lat, lng } })
+        //     }))
+
+        // }
+        // console.log(locations, 'locationsGeo')
+
+        // const temp = (() => {
+        //     const locationList = []
+        //     currentCat?.forEach(async (curr) => {
+        //         const res = await getGeocode({ address: curr.address + curr.city })
+        //         const { lat, lng } = await getLatLng(res[0])
+        //         console.log(lat, lng, 'res map')
+        //         locationList.push({ lat, lng })
+        //     })
+        //     console.log(locationList, 'locationList')
+        //     setLocations(locationList)
+        //     // return locationList
+        // })
+        // console.log(locations, 'what is location')
+
+
+        // if ((!currentCat && !locations) || (locations?.length !== currentCat?.length)) {
+        //     temp()
+        // }
+
+
+        // console.log(temp, 'temp')
+
+
+        // if (locations?.length !== currentCat?.length) temp()
+
+    }, [checkLocation, businesses, key, currentFilter, currentCat])
+
+
+    // if (currentCat) {
+    //     const list = currentCat.map(curr => {
+    //         const res = getGeocode({ address: (curr.address + curr.city) })
+    //         if (res) {
+    //             const { lat, lng } = getLatLng(res[0])
+    //             return { lat, lng }
+    //         }
+    //     })
+    //     console.log(list, 'list of lat lng ')
+    //     // const latlng = list.map(curr => {
+
+    //     // })
+    // }
+
+    // console.log(currentCat, 'current businesses')
 
     const bussinessList = currentCat?.map(curr => {
         return (
@@ -105,16 +201,34 @@ export default function BusinessCategory() {
                         zoom={10}
                     >
                         <MarkerClusterer>
-                            {(clusterer) => currentCat?.map((curr, i) => (
+                            {(clusterer) => currentCat?.map((curr, i) => {
+                                // console.log(curr, 'curr is what')
+                                return (
+                                    // const currentGeo = getGeocode({address: curr.address + curr.city}).then(res => {
+                                    //     const {lat,lng} = getLatLng(res[0])
+                                    //     console.log(lat, lng, "temp")
+                                    //     return {lat, lng}
+                                    // })
+                                    // console.log(curr, 'curr inside temp.map')
 
-                                <Marker
-                                    // label={{ fontWeight: 'bold', fontSize: "5px", text: `${curr.store_name}` }}
-                                    key={i}
-                                    // clusterer={clusterer}
-                                    position={{ lat: 40.69562006703377, lng: -74.18387869355652 }}
+                                    < Marker
+                                        // label={{ fontWeight: 'bold', fontSize: "5px", text: `${curr.store_name}` }}
+                                        key={i}
+                                        // clusterer={clusterer}
+                                        position={{ lat: 40.69562006703377, lng: -74.18387869355652 }}
+                                    // position={curr}
+                                    // currentCat?.map((curr) => {
+                                    //     getGeocode({ address: curr.address + curr.city }).then((res) => {
+                                    //         const { lat, lng } = getLatLng(res[0])
+                                    //         console.log(lat, lng, 'res map')
+                                    //     }).then((lat, lng) => ({ lat, lng }))
+                                    //     // return { lat, lng }
+                                    // })
 
-                                />
-                            ))}
+                                    />
+                                )
+                            }
+                            )}
 
                         </MarkerClusterer>
                     </GoogleMap>
