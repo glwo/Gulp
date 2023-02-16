@@ -59,7 +59,7 @@ def post_business():
     )
     db.session.add(newBusinessImage)
     db.session.commit()
-    
+
     return newBusiness.to_dict(), 201
 
   if form.errors:

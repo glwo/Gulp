@@ -8,10 +8,8 @@ const getTheKey = (k) => {
 }
 
 export const getKey = () => async (dispatch) => {
-    const res = await fetch('/api/map/key', {
-        method: 'POST'
-    })
-
+    const res = await fetch('/api/map/key')
+    console.log('get key redux')
     if (res.ok) {
 
         const data = await res.json()
@@ -27,7 +25,7 @@ const initialState = {}
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_KEY:
-            return { action }
+            return { key: action.k }
         default:
             return state
     }

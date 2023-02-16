@@ -2,24 +2,28 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 34px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px .06px;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
-    width: 872;
+    width: 872px;
     height: 48px;
     /* align-items: center;
     align-content: center;
     justify-content: center; */
     margin-top: 12px;
+    display: flex;
+
 }
 
 .mainSearchNav>input,
 select {
     width: 412px;
     height: 48px;
-
+    margin-left: 0px;
     border: none;
-    margin: auto;
+    /* margin: auto; */
     outline: none;
-    text-indent: 10px
+    text-indent: 10px;
+    padding-right: auto;
 }
+
 
 /* #pipeSearch {
     font-size: 26px;
@@ -75,3 +79,31 @@ select {
     color: rgba(224, 7, 7, 1);
     border: 1.5px solid;
 }
+
+.editFilter {
+    display: flex;
+    column-gap: 26px;
+    width: 260px;
+}
+
+.filterLink {
+    width: 90px;
+}
+
+.editFilter button {
+    cursor: pointer;
+    width: fit-content;
+    /* height: 40px; */
+    /* width: 300px; */
+    /* margin: auto; */
+    background-color: transparent;
+    border: none;
+    /* border-radius: 15px; */
+    color: #0073bb;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* .filterModal {
+    min-width: 120px;
+} */
