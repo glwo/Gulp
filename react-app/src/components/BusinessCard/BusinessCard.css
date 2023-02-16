@@ -12,6 +12,7 @@
   display: flex;
   object-fit: cover;
   border-radius: 5%;
+  box-shadow: 0 0 2px grey;
 }
 
 .businessCard-main-div a{
@@ -21,5 +22,3 @@
 .businessCard-main-div a:hover{
   text-decoration-line: underline;
 }
-
-
