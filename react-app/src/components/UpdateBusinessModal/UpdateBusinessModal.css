@@ -35,6 +35,13 @@
 .update-business-modal div {
   padding: 10px;
 }
+.update-business-modal select {
+  border: 1px solid black;
+  border-radius: 2px;
+  height: 23px;
+  padding: 10px;
+  width: 100%;
+}
 
 .update-business-modal input {
   width: 97%;
