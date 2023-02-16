@@ -5,6 +5,7 @@ import { allReviews } from '../../store/review'
 import SingleReview from './SingleReview'
 import OpenModalButton from '../OpenModalButton'
 import EditReviewModal from './EditReviewModal'
+import DeleteReview from './DeleteReview'
 
 
 function ReviewDetails({businessId}) {
@@ -18,6 +19,7 @@ function ReviewDetails({businessId}) {
     const totalReviews = useSelector(state => state.reviews.allReviews)
     const currentUser = useSelector(state => state.session.user)
     const [openModal, setOpenModal] = useState(false)
+
 
     // console.log('review details', totalReviews)
     const reviews = Object.values(totalReviews).filter(review => review.business_id == businessId)
@@ -40,7 +42,8 @@ function ReviewDetails({businessId}) {
                         <SingleReview key={review.id} review={review} />
                 <OpenModalButton
         buttonText="Delete Review"
-        // modalComponent={<EditReviewModal key={review.id} reviewDetails={review} />}
+        modalComponent={<DeleteReview key={review.id} reviewId={review.id} />}
+        
         onButtonClick={() => setOpenModal(true)}
         onModalClose={() => setOpenModal(false)}
         />
