@@ -109,7 +109,7 @@ function CreateReviewForm() {
             <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
                 className='formChildren'
                 type={'url'}
-                placeholder={'Image (optional)'}
+                placeholder={'Image'}
                 value={image}
                 onChange={updateImage}
             />

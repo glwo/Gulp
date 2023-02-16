@@ -50,6 +50,7 @@ function EditReviewModal({ reviewDetails }) {
             "list-style-type": "none",
             "margin-bottom": "0px",
             "margin-top": "0px",
+            
           }}
         >
 
