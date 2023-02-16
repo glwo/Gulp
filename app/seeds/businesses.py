@@ -103,8 +103,8 @@ def seed_businesses():
     opening_time="17:00",
     closing_time="22:00",
     phone_num="6464227466",
-    avg_rating=4.6,
-    num_reviews=20,
+    avg_rating=0,
+    num_reviews=0,
     owner_id=3
   )
   honeybliss = Business(

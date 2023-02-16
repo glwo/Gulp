@@ -104,10 +104,6 @@ select {
     margin: 0;
 }
 
-/* .filterModal {
-    min-width: 120px;
-} */
-
 /*------------- Customized Filter Modal Form ---------- */
 .customizeFilterModal {
   display: flex;
@@ -144,9 +140,6 @@ select {
 .catSelectionDiv {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* width: ; */
-  /* align-items: center; */
   padding: 0;
 }
 .catSelectionDiv label {
@@ -165,7 +158,6 @@ select {
   border: 1px black solid;
   border-radius: 2px;
   height: 23px;
-  padding: 10px;
   width: 100%;
 }
 

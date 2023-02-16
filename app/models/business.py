@@ -29,6 +29,11 @@ class Business(db.Model):
   reviews = db.relationship("Review", back_populates="business")
 
   def to_dict(self):
+    if len([review.rating for review in self.reviews]) == 0:
+      avg = 0
+    else:
+      avg = sum([review.rating for review in self.reviews]) / len([review.rating for review in self.reviews]),
+
     return {
       "id": self.id,
       "owner_id": self.owner_id,
@@ -42,8 +47,9 @@ class Business(db.Model):
       "opening_time": self.opening_time,
       "closing_time": self.closing_time,
       "phone_num": self.phone_num,
-      "avg_rating": self.avg_rating,
-      "num_reviews": self.num_reviews,
-      "business_images": [image.to_dict() for image in self.business_images]
+      "avg_rating": avg,
+      "num_reviews": len([review.to_dict() for review in self.reviews]),
+      "business_images": [image.to_dict() for image in self.business_images],
+      "review": [review.to_dict() for review in self.reviews]
     }
 

@@ -56,7 +56,7 @@
   border-radius: 5px;
 }
 
-/* Location and hours div */
+/*--------------- Location and hours div --------------------*/
 .location-hour-main-div {
   display: flex;
   padding-top: 20px;
@@ -95,7 +95,7 @@
   top: 120px;
 }
 
-/* Suggest business under You might consider */
+/*--------------------- Suggest business under You might consider --------------------*/
 .suggest-business-main-div {
   display: flex;
   flex-direction: column;
@@ -129,7 +129,7 @@
   color: gray;
 }
 
-/* Recommended Reviews Div */
+/*------------------------------ Recommended Reviews Div --------------------------*/
 .review-main-div {
   display: flex;
   flex-direction: column;
@@ -161,7 +161,9 @@
 .rating-bar {
   display: flex;
   column-gap: 20px;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 meter {
   width: 70%;
