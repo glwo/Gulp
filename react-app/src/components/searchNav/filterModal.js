@@ -32,8 +32,8 @@ export default function FilterModal() {
     const currentFilter = useSelector(state => state.filter?.filter)
     console.log(currentFilter, 'currentfilter on modal')
     useMemo(() => {
-        setReviews(currentFilter?.reviews || '')
-        setRatings(currentFilter?.ratings || '')
+        setReviews(currentFilter?.reviews || 'noInput')
+        setRatings(currentFilter?.ratings || 'noInput')
         setCheck1(currentFilter?.category1 == 'restaurant' || currentFilter?.category2 == 'restaurant' || currentFilter?.category3 == 'restaurant' || currentFilter?.category4 == 'restaurant' ? true : false)
         setCheck2(currentFilter?.category1 == 'home' || currentFilter?.category2 == 'home' || currentFilter?.category3 == 'auto' || currentFilter?.category4 == 'salon' ? true : false)
         setCheck3(currentFilter?.category1 == 'auto' || currentFilter?.category2 == 'auto' || currentFilter?.category3 == 'auto' || currentFilter?.category4 == 'auto' ? true : false)
@@ -67,11 +67,17 @@ export default function FilterModal() {
         const cleanedCat = currentCat.filter((curr) => ((curr != 'noInput' && curr != '')))
         const count = cleanedCat.length
         console.log(count, 'count')
-        console.log(currentCat, 'currentCat')
+        console.log(currentCat, 'currentCat', cleanedCat)
+
+
         const filterData = {
             reviews,
             ratings
         };
+
+        console.log(filterData[reviews], 'inside filter')
+        if (filterData[reviews] == "") filterData[reviews] = 'noInput'
+        if (filterData[ratings] == "") filterData[ratings] = 'noInput'
 
         for (let [idx, cat] of cleanedCat.entries()) {
             if (!(cat == 'noInput' || cat == '')) {
@@ -83,6 +89,7 @@ export default function FilterModal() {
             filterData[`category${i + count + 1}`] = 'noInput'
         }
 
+        console.log(filterData, 'filterdata after claened')
 
         if (currentFilter) {
             const data = await dispatch(editFilter(filterData))
@@ -144,7 +151,7 @@ export default function FilterModal() {
                     <div className='catSelectionDiv'>
                         <label>
                             <div>
-                              Restaurants
+                                Restaurants
                             </div>
                             <input
                                 type="checkbox"
@@ -160,7 +167,7 @@ export default function FilterModal() {
                         </label>
                         <label>
                             <div>
-                              Home Services
+                                Home Services
                             </div>
                             <input
                                 type="checkbox"
@@ -176,7 +183,7 @@ export default function FilterModal() {
                         </label>
                         <label>
                             <div>
-                              Auto Services
+                                Auto Services
                             </div>
                             <input
                                 type="checkbox"
@@ -192,7 +199,7 @@ export default function FilterModal() {
                         </label>
                         <label>
                             <div>
-                              Hair Salons
+                                Hair Salons
                             </div>
                             <input
                                 type="checkbox"
