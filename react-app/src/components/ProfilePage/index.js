@@ -20,9 +20,12 @@ export default function ProfilePage() {
     const reviews = useSelector(state => state.reviews.allReviews)
     const userBusinesses = Object.values(business).filter(business => business?.owner_id == sessionUser?.id)
     const userReviews = Object.values(reviews).filter(review => review?.user_id == sessionUser?.id)
-    // const userReviewBusiness = Object.values(business).filter(business => business?.id == userReviews[0]?.business_id)
+    const getBusiness = (id) => {
+      const specificBusiness = Object.values(business).find(business => business.id == id)
+      return specificBusiness
+    }
 
-    // console.log(userReviewBusiness)
+    console.log(Object.values(business))
 
     useEffect(() => {
       dispatch(thunkLoadAllBusinesses())
@@ -87,7 +90,9 @@ export default function ProfilePage() {
                 {!sessionUser ? "Please Login to see this page" : userReviews &&
                   userReviews.map(review =>
                   <div className='indivreviewCard'>
-                    <div> {review.content}</div>
+                    <h4>{getBusiness(review.business_id).store_name}</h4>
+                    <div>{getBusiness(review.business_id).address}</div>
+                    <div>{getBusiness(review.business_id).city}, {getBusiness(review.business_id).state}, {getBusiness(review.business_id).zipcode}</div>
                     <div>
                       {review.rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
                       {review.rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
@@ -95,6 +100,7 @@ export default function ProfilePage() {
                       {review.rating >= 4 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
                       {review.rating >= 5 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
                     </div>
+                    <div> {review.content}</div>
                 </div>)
                 }
                 </div>

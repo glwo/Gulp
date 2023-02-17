@@ -129,7 +129,7 @@
 .reviewsBox {
     padding: 45px 200px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 20px;
