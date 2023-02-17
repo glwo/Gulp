@@ -15,7 +15,7 @@ def seed_reviews():
         user_id=2,
         firstName="Marnie",
         lastInitial="H",
-        content="Nothing special! I think the presentation wins out over the flavor, the dough was a bit on the dry side, and the frosting was a bit too hard. I think the gingerbread donut with it's festive spices, super sweet sprinkles, and a gingerbread cookie on top was definitely the winning choice, flavorings tend to make the better donut here.",
+        content="Nothing special! I think the presentation wins out over the flavor, the dough was a bit on the dry side, and the frosting was a bit too hard. I think the gingerbread donut with it's festive spices, super sweet sprinkles...",
         rating=2,
     )
     brandons_donuts3 = Review(
@@ -23,7 +23,7 @@ def seed_reviews():
         user_id=3,
         firstName="Bobbie",
         lastInitial="C",
-        content="I'm not a huge donut fan, but I do love a good apple pie, and this donut was a great combination of the two. The apple filling was sweet and tart, and the donut itself was soft and fluffy. I would definitely recommend this donut to anyone who loves apple pie!",
+        content="I'm not a huge donut fan, but I do love a good apple pie, and this donut was a great combination of the two. The apple filling was sweet and tart, and the donut itself was soft and fluffy. I would recommend this donut to anyone who loves apple pie!",
         rating=3,
     )
     brandons_donuts4 = Review(
@@ -55,7 +55,7 @@ def seed_reviews():
         user_id=2,
         firstName="Marnie",
         lastInitial="H",
-        content="The food was very decent, nothing too unique or awe-inspiring, but wow, the service is really top notch. The staff are kind, detail-oriented, and really made us feel so welcome and comfortable. Never really experienced service like this before - they could be serving peanut butter sandwiches and I'd come back still. Also super romantic and nice environment!",
+        content="The food was very decent, nothing too unique or awe-inspiring, but wow, the service is really top notch. The staff are kind, detail-oriented, and really made us feel so welcome and comfortable. ",
         rating=4,
     )
     da_andrea3 = Review(
@@ -103,7 +103,7 @@ def seed_reviews():
         user_id=3,
         firstName="Bobbie",
         lastInitial="C",
-        content='Just left Midas after waiting for 40 min for an inspection just for a mechanic to come out to my truck in the parking lot and look at my wheels and tell me i needed brakes or I wont pass inspection. When I looked, I can see I had about 1/4" meat left on my rear pads and O showed him that, but he walked away from me. Im not a novice about mechanical issues, ive done my own brakes a few times amongst other things when I had a garage full of tools. He didnt even properly put the truck on the lift to prove it or properly check. He rudely walked away from me when I told him I see pad. I felt as though he saw I was a woman and that was his was of trying to squeeze a few hundred out of me.',
+        content='Just left Midas after waiting for 40 min for an inspection just for a mechanic to come out to my truck in the parking lot and look at my wheels and tell me i needed brakes or I wont pass inspection.',
         rating=1,
     )
     midas4 = Review(
@@ -255,7 +255,7 @@ def seed_reviews():
         user_id=5,
         firstName="Alex",
         lastInitial="G",
-        content="Kadir is absolutely phenomenal! I started going to him about 5 years ago when I decided I wanted to go from brunette to a blonde balayage and he managed to not only do an incredible job with the color but he did it in such a way that my hair was still healthy.",
+        content="Kadir is absolutely phenomenal! I started going to him about 5 years ago when I decided I wanted to go from brunette to a blonde balayage... he did it in such a way that my hair was still healthy.",
         rating=5,
     )
     nytdr1 = Review(
@@ -439,7 +439,7 @@ def seed_reviews():
         user_id=4,
         firstName="Austin",
         lastInitial="S",
-        content="We call him Dr. Sam in my family because he's the one we trust to keep our cars healthy. I always learn something from him about our cars as he very throughly explains what the issues are and what he's going to do. Sam, the owner and his crew are all friendly and seem genuinely enthusiastic about problem-solving car problems.",
+        content="We call him Dr. Sam in my family because he's the one we trust to keep our cars healthy. I always learn something from him about our cars as he very throughly explains what the issues are and what he's going to do.",
         rating=5,
     )
     abc_motor2 = Review(
