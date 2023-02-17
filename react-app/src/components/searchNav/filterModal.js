@@ -45,6 +45,7 @@ export default function FilterModal() {
         // if (check4) setCat4('salon')
         // console.log(reviews, ratings, 'reviews', check1, check2, check3, check4, 'check', cat1, cat2, cat3, cat4, 'okay?')
     }, [])
+
     useEffect(() => {
         if (check1) setCat1('restaurant')
         if (check2) setCat2('home')
@@ -113,6 +114,15 @@ export default function FilterModal() {
 
             //   history.push(`/business/${data.id}`);
         }
+    }
+
+    const resetFilterButton = () => {
+        setReviews('noInput')
+        setRatings('noInput')
+        setCheck1(false)
+        setCheck2(false)
+        setCheck3(false)
+        setCheck4(false)
     }
 
     return (
@@ -215,6 +225,7 @@ export default function FilterModal() {
                         </label>
                     </div>
                     <button className='saveFilter' type='Submit'>Save Filter Preferences</button>
+                    <button className='resetFilter' type="button" onClick={() => resetFilterButton()}>Reset Filter Options</button>
                 </div>
 
             </form>

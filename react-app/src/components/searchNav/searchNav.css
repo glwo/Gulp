@@ -116,7 +116,7 @@ select {
     align-items: center;
     border-radius: 25px;
     padding: 25px;
-    height: 50vh;
+    height: 54vh;
     overflow-y: scroll;
 }
 
@@ -125,7 +125,8 @@ select {
 }
 
 
-.saveFilter {
+.saveFilter,
+.resetFilter {
     background-color: #d32323;
     width: 100%;
     color: white;
@@ -135,9 +136,14 @@ select {
     cursor: pointer;
 }
 
-.saveFilter:hover {
+.saveFilter:hover,
+.resetFilter {
     background-color: #ef2b2b;
     transition-duration: 1000ms;
+}
+
+.resetFilter {
+    margin-top: 10px;
 }
 
 .catSelectionDiv {
@@ -163,9 +169,10 @@ select {
 .customizeFilterModal select {
     border: 1px black solid;
     border-radius: 2px;
-    height: 23px;
-    padding: 10px;
+    height: 32px;
+    padding: 0 10px 0 10px;
     width: 100%;
+    text-align: center;
 }
 
 .customizeFilterModal input {
