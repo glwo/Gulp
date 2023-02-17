@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { NavLink, Link, useParams, useLocation } from 'react-router-dom';
+import { NavLink, Link, useParams, useLocation, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import ProfileButton from './ProfileButton';
 import './searchNav.css';
@@ -8,6 +8,7 @@ import { getFilter } from '../../store/filter';
 import FilterModal from './filterModal';
 
 export default function SearchNav() {
+    const history = useHistory()
     const dispatch = useDispatch();
     const currentPath = useLocation().pathname.slice(1, 9)
     const subPath = useLocation().pathname.slice(10)
@@ -34,6 +35,7 @@ export default function SearchNav() {
             // console.log('ehelloo?')
             dispatch(getFilter())
         }
+
     }, [dispatch, currentFilter, bar, subPath]) //delete bar after filter is working!
 
     // const barClick = (businessCat) => {
@@ -51,14 +53,23 @@ export default function SearchNav() {
     // }
     // console.log(bar)
     // console.log(currentPath)
+
+    const searchClick = (e) => {
+        if (search != '') history.push(`/search/${search}/${city}`, { search, city })
+        else history.push(`/search/${city}`, { search, city })
+    }
+
     return (
         <div className='godNav'>
+            {/* <form> */}
+
             <div className='mainSearchNav'>
                 <input
                     placeholder="tacos, cheap dinner, Max's"
                     type="text"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
+                    onKeyDown={e => e.key === 'Enter' ? searchClick() : ''}
                 />
                 <a id='pipeSearch'> | </a>
                 <select
@@ -66,15 +77,16 @@ export default function SearchNav() {
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}>
-                    <option defaultValue='all'>Select All Cities</option>
+                    <option value='all'>Select All Cities</option>
                     <option value="nyc">New York City</option>
                     <option value="sf">San Francisco</option>
                 </select>
 
-                <button>
+                <button onClick={() => searchClick()} >
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </div>
+            {/* </form> */}
             <div className='categoryBar' id='categoryBar'>
                 <Link to={`/category/restaurants`}>
                     <div>Restaurants <i class="fa fa-caret-down"></i></div>

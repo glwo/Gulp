@@ -12,6 +12,10 @@
 
 }
 
+.mainSearchNav>button:hover {
+    cursor: pointer;
+}
+
 .mainSearchNav>input,
 select {
     width: 412px;
