@@ -16,10 +16,35 @@
     flex-wrap: wrap;
     gap: 20px;
     width: 80%;
-    
+
 }
 
-.homePageBox {
-    /* display: flex; */
-    /* flex-direction: row; */
+.developerInfo h3 {
+    color: #d32383;
+    /* border-bottom: 1px solid grey; */
+}
+
+.indivDeveloperInfo div{
+    padding: 5px;
+}
+.developerInfo a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.developerInfo a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.RepoLink {
+    padding: 10px;
+}
+
+.developerInfo {
+    display: inline-block;
+    border: 1px solid gray;
+    border-radius: 5%;
+    padding: 20px;
+    max-width: 60vh;
 }

@@ -27,12 +27,13 @@ const BusinessesIndex = () => {
       {!sessionUser &&
       <>
       <div className="developerInfo">
-      <h3>Project Repo Link</h3>
-      <a href="https://github.com/glwo/pong-grp10-proj">Click Here!</a>
-      <h3>About the Developers</h3>
+      <h2>Welcome to Gulp!</h2>
+      <h3>Project Repo Link :</h3>
+      <a className="RepoLink" href="https://github.com/glwo/pong-grp10-proj">Click Here!</a>
+      <h3>About the Developers :</h3>
       <div className="indivDeveloperInfo">
         <div>
-        <i class="fa-brands fa-github"></i> <a href="https://github.com/nedned1108">Ned's Github</a>, <i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/ned-nguyen-693575257/">Ned's LinkedIn</a>
+        <i class="fa-brands fa-github"></i> <a href="https://github.com/nedned1108">Ned's Github</a>,  <i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/ned-nguyen-693575257/">Ned's LinkedIn</a>
         </div>
         <div>
         <i class="fa-brands fa-github"></i> <a href="https://github.com/armynso">Prap's Github</a>, <i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/prapassorn-tinnabavorn-8505ba141/">Prap's LinkedIn</a>
@@ -51,29 +52,6 @@ const BusinessesIndex = () => {
     <div className="businessHomePageBox">
       {allBusinesses.map(business => <BusinessCard business={business} key={business.id} />)}
     </div>
-    {/* <div className="aboutUsBox">
-      {!sessionUser &&
-      <>
-      <h3>Project Repo Link</h3>
-      <a href="https://github.com/glwo/pong-grp10-proj">Click Here!</a>
-      <h3>About Us</h3>
-      <div>
-        <div>
-        <i class="fa-brands fa-github"></i> <a href="https://github.com/nedned1108">Ned's Github</a>, <i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/ned-nguyen-693575257/">Ned's LinkedIn</a>
-        </div>
-        <div>
-        <i class="fa-brands fa-github"></i> <a href="https://github.com/armynso">Prap's Github</a>, <i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/prapassorn-tinnabavorn-8505ba141/">Prap's LinkedIn</a>
-        </div>
-        <div>
-        <i class="fa-brands fa-github"></i> <a href="https://github.com/olegv3">Oleg's Github</a>, <i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/oleg-volkov-90b0b1184/">Oleg's LinkedIn</a>
-        </div>
-        <div>
-        <i class="fa-brands fa-github"></i> <a href="https://github.com/glwo">Glen's Github</a>
-        </div>
-      </div>
-      </>
-      }
-    </div> */}
     </div>
     </>
   )
