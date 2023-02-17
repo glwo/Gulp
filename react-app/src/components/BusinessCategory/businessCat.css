@@ -15,5 +15,5 @@
     top: 120px;
     margin-bottom: auto;
     width: 45%;
-    /* z-index: 0; */
+    z-index: -1;
 }
