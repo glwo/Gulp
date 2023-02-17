@@ -15,7 +15,7 @@ const BusinessDetail = () => {
   const dispatch = useDispatch();
   const business = useSelector(state => state.business.businesses)
   const currentBusiness = Object.values(business).find(business => business.id == businessId)
-  const suggestBusiness = Object.values(business).filter(business => business.city == currentBusiness.city && business != currentBusiness)
+  const suggestBusiness = Object.values(business).filter(business => business.city == currentBusiness.city && business.business_type == currentBusiness.business_type && business != currentBusiness)
   
   let businessReviews;
   if (currentBusiness) {
