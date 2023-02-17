@@ -26,7 +26,7 @@ export default function DeleteReview({ review }) {
     return (
 
         <div className="delete-review">
-        <button onClick={deleteReview}>Delete Review</button>
+        <button onClick={deleteReview}>{<i class="fa-solid fa-trash"></i>}</button>
         </div>
     );
     }

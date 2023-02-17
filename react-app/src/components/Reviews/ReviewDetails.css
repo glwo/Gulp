@@ -53,8 +53,10 @@
 .reviewsContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0em 0em 0em 0em;
-    background-color: aqua;
+    margin-bottom: 20px;
+}
+
+.editDeleteButton {
+  display: flex;
+  padding-left: 10px;
 }
