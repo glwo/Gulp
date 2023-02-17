@@ -125,3 +125,28 @@
 .profilebox h1{
     margin-top: 0px;
 }
+
+.reviewsBox {
+    padding: 45px 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 80%;
+}
+
+.indivreviewCard {
+    padding: 20px;
+    box-shadow: 0px 0px 2px grey;
+    border-radius: 5%;
+    max-width: 200px;
+}
+
+.indivreviewCard .businessinfodiv{
+    padding: 10px 0px;
+}
+.indivreviewCard .businessratingdiv{
+    padding: 10px 0px;
+}
+

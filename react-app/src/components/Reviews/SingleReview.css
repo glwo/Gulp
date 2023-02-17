@@ -1,0 +1,14 @@
+.review {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin: 0px;
+  width: 500px;
+  row-gap: 5px;
+  font-weight: 500;
+}
+
+.userImage {
+  width: 30px;
+  border-radius: 100%;
+}

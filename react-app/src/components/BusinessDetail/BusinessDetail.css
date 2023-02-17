@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   padding-top: 240px;
-  color: whitesmoke;
+  color: black;
   font-weight: bold;
   font-size: 1.4em;
   row-gap: 5px;
@@ -135,13 +135,8 @@
   flex-direction: column;
 }
 
-.review-user-info-div {
-  border: 1px red solid;
-}
-
 .review-overall-rating-div {
   display: flex;
-  border: 1px blue solid;
   height: 200px;
 }
 .review-overall-div {
@@ -161,11 +156,14 @@
 .rating-bar {
   display: flex;
   column-gap: 20px;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 meter {
   width: 70%;
   height: 20px;
+  z-index: -1;
 }
 meter::-webkit-meter-bar {
   background: #eee;
@@ -175,9 +173,4 @@ meter::-webkit-meter-bar {
 }
 meter::-webkit-meter-optimum-value {
   background-color: red;
-}
-
-
-.all-review-div {
-  border: 1px yellow solid;
 }

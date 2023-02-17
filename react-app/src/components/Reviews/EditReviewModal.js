@@ -4,10 +4,11 @@ import OpenModalButton from "../OpenModalButton";
 import CreateReviewForm from "./CreateReviewForm";
 import  { useModal } from "../../context/Modal";
 import { reviewUpdate } from "../../store/review";
+import './EditReviewModal.css'
+import { thunkLoadAllBusinesses } from "../../store/business";
 
 
 function EditReviewModal({ reviewDetails }) {
-  // console.log("review", review);
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const [review, setReview] = useState(reviewDetails.content);
@@ -28,8 +29,6 @@ function EditReviewModal({ reviewDetails }) {
       url,
     };
 
-    // console.log("payload", payload);
-
     const updatedReview = await dispatch(reviewUpdate(payload, reviewDetails.id));
     if (updatedReview.errors) {
       setErrors(updatedReview.errors);
@@ -42,15 +41,15 @@ function EditReviewModal({ reviewDetails }) {
 
   return (
     <div>
-    <h1>Update Review</h1>
+    <h2>Edit Review</h2>
     <form onSubmit={handleSubmit}>
-      <div className="errors">
+      <div className='reviewForm'>
         <ul
           style={{
             "list-style-type": "none",
-            "margin-bottom": "0px",
+            "margin-bottom": "-40px",
             "margin-top": "0px",
-            
+
           }}
         >
 
@@ -60,7 +59,7 @@ function EditReviewModal({ reviewDetails }) {
             </li>
           ))}
         </ul>
-        <textarea style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
+        <textarea style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px", width:"95%"}}
                 className='reviewText'
                 type={'text'}
                 placeholder={'Review'}
@@ -68,7 +67,7 @@ function EditReviewModal({ reviewDetails }) {
                 value={review}
                 onChange={updateReview}
             />
-            <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
+            {/* <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px", width:"95%"}}
                 className='formChildren'
                 type={'number'}
                 placeholder={'Stars'}
@@ -77,8 +76,20 @@ function EditReviewModal({ reviewDetails }) {
                 max={5}
                 review={stars}
                 onChange={updateStars}
-            />
-            <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
+            /> */}
+            <div class="rate">
+              <input type="radio" id="star5" name="rate" value="5" onChange={updateStars}/>
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4" name="rate" value="4" onChange={updateStars}/>
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3" name="rate" value="3" onChange={updateStars}/>
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2" name="rate" value="2" onChange={updateStars}/>
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1" name="rate" value="1" onChange={updateStars}/>
+              <label for="star1" title="text">1 star</label>
+            </div>
+            <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px", width:"95%"}}
                 className='formChildren'
                 type={'url'}
                 placeholder={'Image'}

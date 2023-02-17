@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { reviewCreate } from '../../store/review'
 import { thunkLoadAllBusinesses } from '../../store/business'
+import './CreateReviewForm.css'
 
 function CreateReviewForm() {
     const dispatch = useDispatch()
@@ -15,24 +16,16 @@ function CreateReviewForm() {
     const { business_id } = useParams()
     const business = useSelector(state => state.business.businesses)
     const currentUser = useSelector(state => state.session.user)
-    // console.log(business)
+
     const currentBusiness = Object.values(business).find(business => business.id == business_id)
-    // console.log(currentBusiness)
+
     useEffect(() => {
         dispatch(thunkLoadAllBusinesses())
     }, [dispatch])
 
-
     const updateReview = (e) => setReview(e.target.value)
     const updateStars = (e) => setStars(e.target.value)
     const updateImage = (e) => setImage(e.target.value)
-
-    useEffect(() => {
-        const errors = []
-        if(stars > 5 || stars < 1) errors.push("Stars must be between 1 and 5")
-        if(!review.length) errors.push("Review required")
-        setErrors(errors)
-    }, [stars, review])
 
     const clearData = (newReview) => {
         setReview('')
@@ -73,7 +66,7 @@ function CreateReviewForm() {
         }
     }
 
-
+    console.log(stars)
 
     return (
         <div className='reviewForm'>
@@ -96,7 +89,7 @@ function CreateReviewForm() {
                 value={review}
                 onChange={updateReview}
             />
-            <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
+            {/* <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
                 className='formChildren'
                 type={'number'}
                 placeholder={'Stars'}
@@ -105,7 +98,19 @@ function CreateReviewForm() {
                 max={5}
                 value={stars}
                 onChange={updateStars}
-            />
+            /> */}
+            <div class="rate">
+              <input type="radio" id="star5" name="rate" value="5" onChange={updateStars}/>
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4" name="rate" value="4" onChange={updateStars}/>
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3" name="rate" value="3" onChange={updateStars}/>
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2" name="rate" value="2" onChange={updateStars}/>
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1" name="rate" value="1" onChange={updateStars}/>
+              <label for="star1" title="text">1 star</label>
+            </div>
             <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
                 className='formChildren'
                 type={'url'}

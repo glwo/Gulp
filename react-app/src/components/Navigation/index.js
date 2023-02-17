@@ -19,11 +19,11 @@ function Navigation({ isLoaded }) {
 				</div>
 			</NavLink>
 			<SearchNav />
-			<NavLink exact to="/business" className='addBusinessNav'>
-				<div>
-					Add your Business!
-				</div>
-			</NavLink>
+			<div className='addBusinessNav'>
+        <NavLink exact to="/business">
+          Add your Business!
+        </NavLink>
+      </div>
 			<div id='nav-buttons'>
 				{isLoaded && (
 					<ul>

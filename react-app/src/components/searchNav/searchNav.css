@@ -2,7 +2,7 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 6px 34px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px .06px;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
-    width: 872px;
+    width: 65vw;
     height: 48px;
     /* align-items: center;
     align-content: center;
@@ -12,9 +12,13 @@
 
 }
 
+.mainSearchNav>button:hover {
+    cursor: pointer;
+}
+
 .mainSearchNav>input,
 select {
-    width: 412px;
+    width: 100%;
     height: 48px;
     margin-left: 0px;
     border: none;
@@ -22,6 +26,7 @@ select {
     outline: none;
     text-indent: 10px;
     padding-right: auto;
+    cursor: pointer;
 }
 
 
@@ -106,70 +111,83 @@ select {
 
 /*------------- Customized Filter Modal Form ---------- */
 .customizeFilterModal {
-  display: flex;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 25px;
-  padding: 25px;
-  height: 50vh;
-  overflow-y:scroll;
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    padding: 25px;
+    height: 54vh;
+    overflow-y: scroll;
 }
-.customizeFilterModal::-webkit-scrollbar { 
-  display: none;
+
+.customizeFilterModal::-webkit-scrollbar {
+    display: none;
 }
 
 
-.saveFilter {
-  background-color: #d32323;
-  width: 100%;
-  color: white;
-  border: none;
-  height: 30px;
-  border-radius: 5px;
-  cursor: pointer;
+.saveFilter,
+.resetFilter {
+    background-color: #d32323;
+    width: 100%;
+    color: white;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
 }
-.saveFilter:hover {
-  background-color: #ef2b2b;
-  transition-duration: 1000ms;
+
+.saveFilter:hover,
+.resetFilter {
+    background-color: #ef2b2b;
+    transition-duration: 1000ms;
 }
+
+.resetFilter {
+    margin-top: 10px;
+}
+
 .catSelectionDiv {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
 }
+
 .catSelectionDiv label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 .catSelectionDiv div {
-  width: 100%;
+    width: 100%;
 }
 
 .customizeFilterModal div {
-  padding: 10px;
+    padding: 10px;
 }
+
 .customizeFilterModal select {
-  border: 1px black solid;
-  border-radius: 2px;
-  height: 23px;
-  padding: 10px;
-  width: 100%;
+    border: 1px black solid;
+    border-radius: 2px;
+    height: 32px;
+    padding: 0 10px 0 10px;
+    width: 100%;
+    text-align: center;
 }
 
 .customizeFilterModal input {
-  width: 97%;
+    width: 97%;
 }
 
 .customizeFilterModal ul {
-  color: red;
+    color: red;
 }
 
 .customizeFilterModal h1 {
-  color: #d32383;
+    color: #d32383;
 }

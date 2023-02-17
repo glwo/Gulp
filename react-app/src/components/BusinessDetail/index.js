@@ -15,12 +15,25 @@ const BusinessDetail = () => {
   const dispatch = useDispatch();
   const business = useSelector(state => state.business.businesses)
   const currentBusiness = Object.values(business).find(business => business.id == businessId)
-  const suggestBusiness = Object.values(business).filter(business => business.city == currentBusiness.city && business != currentBusiness)
+  const suggestBusiness = Object.values(business).filter(business => business.city == currentBusiness.city && business.business_type == currentBusiness.business_type && business != currentBusiness)
+  
+  let businessReviews;
+  if (currentBusiness) {
+    businessReviews = currentBusiness.review
+  }
 
   useEffect(() => {
     dispatch(thunkLoadAllBusinesses())
   }, [dispatch, businessId])
-// console.log(currentBusiness, 'current business')
+
+  const reviewFilter = (array, num) => {
+    if (array) {
+      const result = array.filter(review => review.rating == num)
+      return result.length
+    } 
+    return null
+  } 
+
   if (!currentBusiness) {
     return null
   }
@@ -47,21 +60,10 @@ const BusinessDetail = () => {
         </div>
         <div className="detail-business-div">
           <div className="business-div">
-            <div className="review-button-div">
-              {/* <Link to={`/business/${currentBusiness.id}/writeareview`}><button className="review-button">Write a Review Link</button></Link> */}
-              {/* <OpenModalButton
-        buttonText="Write a Review Modal"
-        modalComponent={<CreateReviewForm />}
-        onButtonClick={() => setOpenModal(true)}
-        onModalClose={() => setOpenModal(false)}
-      /> */}
-            </div>
-
-
-            <h4>Location & Hours</h4>
-            <div className="location-hour-maindiv">
-            <Link to={`/business/${currentBusiness.id}/writeareview`}>
-              <button className="write-review-button">{<i class="fa-regular fa-star"></i>} Write a review</button></Link>
+            <div>
+              <Link to={`/business/${currentBusiness.id}/writeareview`}>
+                <button className="write-review-button">{<i class="fa-regular fa-star"></i>} Write a review</button>
+              </Link>
             </div>
             <h3>Location & Hours</h3>
             <div className="location-hour-main-div">
@@ -93,9 +95,6 @@ const BusinessDetail = () => {
             </div>
             <div className="review-main-div">
               <h3>Recommended Reviews</h3>
-              <div className="review-user-info-div">
-                <p>User info</p>
-              </div>
               <div className="review-overall-rating-div">
                 <div className="review-overall-div">
                   <div>
@@ -117,41 +116,35 @@ const BusinessDetail = () => {
                     <div>
                       5 stars
                     </div>
-                    <meter min="0" max={currentBusiness.num_reviews} value="6">Rate 5 stars</meter>
+                    <meter min="0" max={currentBusiness.num_reviews} value={reviewFilter(businessReviews, 5)} >Rate 5 stars</meter>
                   </div>
                   <div className="rating-bar">
                     <div>
                       4 stars
                     </div>
-                    <meter min="0" max={currentBusiness.num_reviews} value="6">Rate 4 stars</meter>
+                    <meter min="0" max={currentBusiness.num_reviews} value={reviewFilter(businessReviews, 4)} >Rate 4 stars</meter>
                   </div>
                   <div className="rating-bar">
                     <div>
                       3 stars
                     </div>
-                    <meter min="0" max={currentBusiness.num_reviews} value="6">Rate 3 stars</meter>
+                    <meter min="0" max={currentBusiness.num_reviews} value={reviewFilter(businessReviews, 3)} >Rate 3 stars</meter>
                   </div>
                   <div className="rating-bar">
                     <div>
                       2 stars
                     </div>
-                    <meter min="0" max={currentBusiness.num_reviews} value="6">Rate 2 stars</meter>
+                    <meter min="0" max={currentBusiness.num_reviews} value={reviewFilter(businessReviews, 2)}>Rate 2 stars</meter>
                   </div>
                   <div className="rating-bar">
                     <div>
                       1 star
                     </div>
-                    <meter min="0" max={currentBusiness.num_reviews} value="6">Rate 1 star</meter>
+                    <meter min="0" max={currentBusiness.num_reviews} value={reviewFilter(businessReviews, 1)}>Rate 1 star</meter>
                   </div>
                 </div>
               </div>
               <div className="all-review-div">
-                <div>
-                  <p>user's review info</p>
-                </div>
-                <div>
-                  <p>Stars rating</p>
-                </div>
                 <div>
                 < ReviewDetails businessId={currentBusiness.id} />
                 </div>

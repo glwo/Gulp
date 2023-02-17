@@ -1,10 +1,8 @@
-.reviewForm {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 5em 0em 20em 0em;
+.reviewText {
+    resize: none;
+
 }
+
 
 .reviewCreateContainer {
     display: flex;
@@ -15,9 +13,10 @@
     border: 1px solid gray;
     border-radius: 10px;
     box-shadow: 1px 1px 5px gray;
+    width: 26em;
 }
 
-.reviewFormHeader {
+/* .reviewFormHeader {
     margin-bottom: 1em;
 }
 
@@ -29,7 +28,7 @@
 .reviewText {
     width: 30em;
     height: 5em;
-}
+} */
 
 .reviewSubmit {
     font-weight: bold;
@@ -45,45 +44,39 @@
     transition: background-color 1s;
 }
 
-.reviewSubmit:hover {
-    background-color:#ff2b2b;
-    transition:0.5s;
-}
-
-
-/* -------------------rating stars------------- */
+/* --------------rating stars---------------- */
 .rate {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
+  float: left;
+  height: 46px;
+  padding: 0 10px;
 }
 .rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
+  position:absolute;
+  top:-9999px;
 }
 .rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
 }
 .rate:not(:checked) > label:before {
-    content: '★ ';
+  content: '★ ';
 }
 .rate > input:checked ~ label {
-    color: #ff0707;    
+  color: #ff0707;    
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-    color: #a80000;  
+  color: #a80000;  
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-    color: #a80000;
+  color: #a80000;
 }
