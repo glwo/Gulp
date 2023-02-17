@@ -60,21 +60,10 @@ const BusinessDetail = () => {
         </div>
         <div className="detail-business-div">
           <div className="business-div">
-            <div className="review-button-div">
-              {/* <Link to={`/business/${currentBusiness.id}/writeareview`}><button className="review-button">Write a Review Link</button></Link> */}
-              {/* <OpenModalButton
-        buttonText="Write a Review Modal"
-        modalComponent={<CreateReviewForm />}
-        onButtonClick={() => setOpenModal(true)}
-        onModalClose={() => setOpenModal(false)}
-      /> */}
-            </div>
-
-
-            <h4>Location & Hours</h4>
-            <div className="location-hour-maindiv">
-            <Link to={`/business/${currentBusiness.id}/writeareview`}>
-              <button className="write-review-button">{<i class="fa-regular fa-star"></i>} Write a review</button></Link>
+            <div>
+              <Link to={`/business/${currentBusiness.id}/writeareview`}>
+                <button className="write-review-button">{<i class="fa-regular fa-star"></i>} Write a review</button>
+              </Link>
             </div>
             <h3>Location & Hours</h3>
             <div className="location-hour-main-div">
@@ -106,9 +95,6 @@ const BusinessDetail = () => {
             </div>
             <div className="review-main-div">
               <h3>Recommended Reviews</h3>
-              <div className="review-user-info-div">
-                <p>User info</p>
-              </div>
               <div className="review-overall-rating-div">
                 <div className="review-overall-div">
                   <div>
@@ -159,12 +145,6 @@ const BusinessDetail = () => {
                 </div>
               </div>
               <div className="all-review-div">
-                <div>
-                  <p>user's review info</p>
-                </div>
-                <div>
-                  <p>Stars rating</p>
-                </div>
                 <div>
                 < ReviewDetails businessId={currentBusiness.id} />
                 </div>

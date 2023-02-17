@@ -16,24 +16,16 @@ function CreateReviewForm() {
     const { business_id } = useParams()
     const business = useSelector(state => state.business.businesses)
     const currentUser = useSelector(state => state.session.user)
-    // console.log(business)
+
     const currentBusiness = Object.values(business).find(business => business.id == business_id)
-    // console.log(currentBusiness)
+
     useEffect(() => {
         dispatch(thunkLoadAllBusinesses())
     }, [dispatch])
 
-
     const updateReview = (e) => setReview(e.target.value)
     const updateStars = (e) => setStars(e.target.value)
     const updateImage = (e) => setImage(e.target.value)
-
-    useEffect(() => {
-        const errors = []
-        if(stars > 5 || stars < 1) errors.push("Stars must be between 1 and 5")
-        if(!review.length) errors.push("Review required")
-        setErrors(errors)
-    }, [stars, review])
 
     const clearData = (newReview) => {
         setReview('')

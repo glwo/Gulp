@@ -135,13 +135,8 @@
   flex-direction: column;
 }
 
-.review-user-info-div {
-  border: 1px red solid;
-}
-
 .review-overall-rating-div {
   display: flex;
-  border: 1px blue solid;
   height: 200px;
 }
 .review-overall-div {
