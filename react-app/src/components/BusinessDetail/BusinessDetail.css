@@ -168,6 +168,7 @@
 meter {
   width: 70%;
   height: 20px;
+  z-index: -1;
 }
 meter::-webkit-meter-bar {
   background: #eee;
@@ -178,4 +179,3 @@ meter::-webkit-meter-bar {
 meter::-webkit-meter-optimum-value {
   background-color: red;
 }
-

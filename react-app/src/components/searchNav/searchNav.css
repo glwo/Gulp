@@ -22,6 +22,7 @@ select {
     outline: none;
     text-indent: 10px;
     padding-right: auto;
+    cursor: pointer;
 }
 
 
