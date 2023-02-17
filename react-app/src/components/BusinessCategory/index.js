@@ -39,13 +39,24 @@ export default function BusinessCategory() {
     // console.log(catList, 'catList')
 
     // const currentCat = Object.values(businesses).filter(curr => curr.business_type == derivedBusinessType)
-    const currentCat = Object.values(businesses).filter(curr => catList?.includes(curr.business_type))
+
+    let currentCat = Object.values(businesses).filter(curr => catList?.includes(curr.business_type))
+
+    if (currentFilter?.reviews != 'noInput') currentCat.sort((a, b) => {
+        if (currentFilter?.reviews == 'fromHigh') return b?.num_reviews - a?.num_reviews
+        return a?.num_reviews - b?.num_reviews
+    })
+    if (currentFilter?.ratings != 'noInput') currentCat.sort((a, b) => {
+        if (currentFilter?.ratings == 'fromHigh') return b?.avg_rating[0] - a?.avg_rating[0]
+        return a?.avg_rating[0] - b?.avg_rating[0]
+    })
 
 
     // const Temp = (() => {
     //     const locationList = []
     //     currentCat?.forEach((curr) => {
     //         const res = getGeocode({ address: curr.address + curr.city }).then((res) => {
+    //             console.log(res, 'this is ressssssssssssss')
     //             const { lat, lng } = getLatLng(res[0])
     //             console.log(lat, lng, 'res map')
     //             locationList.push({ lat, lng })
