@@ -24,8 +24,12 @@ export default function DeleteReview({ review }) {
 
 
     return (
-        <div>
+
+        <div className="delete-review">
         <button onClick={deleteReview}>Delete Review</button>
         </div>
     );
     }
+
+
+    

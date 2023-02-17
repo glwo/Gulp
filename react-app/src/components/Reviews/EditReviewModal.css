@@ -1,10 +1,8 @@
-.reviewForm {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 5em 0em 20em 0em;
+.reviewText {
+    resize: none;
+
 }
+
 
 .reviewCreateContainer {
     display: flex;
@@ -15,9 +13,10 @@
     border: 1px solid gray;
     border-radius: 10px;
     box-shadow: 1px 1px 5px gray;
+    width: 26em;
 }
 
-.reviewFormHeader {
+/* .reviewFormHeader {
     margin-bottom: 1em;
 }
 
@@ -29,7 +28,7 @@
 .reviewText {
     width: 30em;
     height: 5em;
-}
+} */
 
 .reviewSubmit {
     font-weight: bold;
@@ -43,9 +42,4 @@
     border: none;
     box-shadow: 0px .5px 1px rgba(114, 113, 113, 0.2);
     transition: background-color 1s;
-}
-
-.reviewSubmit:hover {
-    background-color:#ff2b2b;
-    transition:0.5s;
 }

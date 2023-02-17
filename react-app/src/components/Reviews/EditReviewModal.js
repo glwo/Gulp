@@ -4,6 +4,8 @@ import OpenModalButton from "../OpenModalButton";
 import CreateReviewForm from "./CreateReviewForm";
 import  { useModal } from "../../context/Modal";
 import { reviewUpdate } from "../../store/review";
+import './EditReviewModal.css'
+import { thunkLoadAllBusinesses } from "../../store/business";
 
 
 function EditReviewModal({ reviewDetails }) {
@@ -42,15 +44,15 @@ function EditReviewModal({ reviewDetails }) {
 
   return (
     <div>
-    <h1>Update Review</h1>
+    <h2>Edit Review</h2>
     <form onSubmit={handleSubmit}>
-      <div className="errors">
+      <div className='reviewForm'>
         <ul
           style={{
             "list-style-type": "none",
-            "margin-bottom": "0px",
+            "margin-bottom": "-40px",
             "margin-top": "0px",
-            
+
           }}
         >
 
@@ -60,7 +62,7 @@ function EditReviewModal({ reviewDetails }) {
             </li>
           ))}
         </ul>
-        <textarea style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
+        <textarea style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px", width:"95%"}}
                 className='reviewText'
                 type={'text'}
                 placeholder={'Review'}
@@ -68,7 +70,7 @@ function EditReviewModal({ reviewDetails }) {
                 value={review}
                 onChange={updateReview}
             />
-            <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
+            <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px", width:"95%"}}
                 className='formChildren'
                 type={'number'}
                 placeholder={'Stars'}
@@ -78,7 +80,7 @@ function EditReviewModal({ reviewDetails }) {
                 review={stars}
                 onChange={updateStars}
             />
-            <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px"}}
+            <input style={{"borderRadius":"10px 10px 10px 10px", marginBottom:"10px", width:"95%"}}
                 className='formChildren'
                 type={'url'}
                 placeholder={'Image'}
