@@ -87,13 +87,15 @@ export default function ProfilePage() {
               </div>
               <h3>User's Reviews</h3>
               <div className='reviewsBox'>
-                {!sessionUser ? "Please Login to see this page" : userReviews &&
+                {userReviews.length === 0 ? "Current user has not left any reviews." : userReviews &&
                   userReviews.map(review =>
                   <div className='indivreviewCard'>
-                    <h4>{getBusiness(review.business_id).store_name}</h4>
-                    <div>{getBusiness(review.business_id).address}</div>
-                    <div>{getBusiness(review.business_id).city}, {getBusiness(review.business_id).state}, {getBusiness(review.business_id).zipcode}</div>
-                    <div>
+                    <div className='businessinfodiv'>
+                    <h4>{getBusiness(review.business_id) ? getBusiness(review.business_id).store_name : null}</h4>
+                    <div>{getBusiness(review.business_id) ? getBusiness(review.business_id).address : null}</div>
+                    <div>{getBusiness(review.business_id) ? getBusiness(review.business_id).city : null}, {getBusiness(review.business_id) ? getBusiness(review.business_id).state : null} {getBusiness(review.business_id) ? getBusiness(review.business_id).zipcode : null}</div>
+                    </div>
+                    <div className='businessratingdiv'>
                       {review.rating >= 1 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
                       {review.rating >= 2 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
                       {review.rating >= 3 ? <i className="fas fa-solid fa-star red"></i> : <i className="fas fa-solid fa-star gray"></i>}
