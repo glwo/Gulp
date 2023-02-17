@@ -154,3 +154,19 @@
     display: flex;
     flex-direction: row;
 } */
+
+.developerInfo {
+    display: inline-block;
+    border: 1px solid gray;
+    border-radius: 5%;
+    padding: 20px;
+    max-width: 60vh;
+}
+
+.developerInfo h3 {
+    color: #d32383;
+}
+
+.indivDeveloperInfo div{
+    padding: 5px;
+}

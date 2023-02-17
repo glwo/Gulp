@@ -11,7 +11,11 @@
     justify-content: center;
     padding: 50px;
     height: 60vh;
-    /* overflow-y:scroll; */
+    overflow-y:scroll;
+}
+
+.editProfileModal::-webkit-scrollbar {
+    display: none;
 }
 
 .updateProfileButton {

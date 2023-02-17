@@ -8,3 +8,18 @@
     width: 80%;
 }
 
+.aboutUsBox{
+    padding: 10px 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 80%;
+    
+}
+
+.homePageBox {
+    /* display: flex; */
+    /* flex-direction: row; */
+}
