@@ -38,7 +38,9 @@ function ReviewDetails({businessId}) {
         onModalClose={() => setOpenModal(false)}
       />
                         </div> : "" }
+
                         <SingleReview key={review.id} review={review} />
+
                         {currentUser && review.user_id == currentUser.id ? <div>
                             <DeleteReview key={review.id} review={review} />
                         </div> : "" }

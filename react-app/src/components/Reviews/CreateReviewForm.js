@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { reviewCreate } from '../../store/review'
 import { thunkLoadAllBusinesses } from '../../store/business'
+import './CreateReviewForm.css'
 
 function CreateReviewForm() {
     const dispatch = useDispatch()

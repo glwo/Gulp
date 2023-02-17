@@ -1,4 +1,4 @@
-.reviewCard {
+/* .reviewCard {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -48,4 +48,13 @@
 #reviewAction {
     font-size: 12px;
     color: rgb(91, 102, 114);
+} */
+
+.reviewsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0em 0em 0em 0em;
+    background-color: aqua;
 }
