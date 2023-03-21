@@ -24,7 +24,6 @@ function LoginFormModal() {
 
   const demolitionUser = (e) => {
     e.preventDefault();
-    // const demouser = User
     dispatch(
       login(
         'demo@aa.io',

@@ -9,7 +9,6 @@ const getTheKey = (k) => {
 
 export const getKey = () => async (dispatch) => {
     const res = await fetch('/api/map/key')
-    console.log('get key redux')
     if (res.ok) {
 
         const data = await res.json()
