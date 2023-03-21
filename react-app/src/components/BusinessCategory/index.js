@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { thunkLoadAllBusinesses } from "../../store/business";
 import { GoogleMap, useLoadScript, Marker, MarkerClusterer } from '@react-google-maps/api';
 import { getGeocode, getLatLng } from 'use-places-autocomplete'
+import Geocode from 'react-geocode'
 import { useParams } from "react-router-dom";
 import BusinessCategoryCard from "../BusinessCategoryCard";
 import { getKey } from "../../store/map";
@@ -13,12 +14,15 @@ import('./businessCat.css')
 export default function BusinessCategory() {
   const dispatch = useDispatch()
   const [checkLocation, setCheckLocation] = useState(true)
+  const [businessLocation, setBusinessLocation] = useState([])
   const { category, location } = useParams()
-  const [map, setMap] = useState(null)
-  const key = useSelector(state => state.key)
-  const realKey = key?.key
+  const [loadMap, setMap] = useState(true)
+
   const businesses = useSelector(state => state.business.businesses)
   const currentFilter = useSelector(state => state.filter?.filter)
+  const key = useSelector(state => state.key)
+  const realKey = key?.key
+
   const derivedBusinessType = category == 'filter' && (currentFilter) ? true : category == 'autoServices' ? 'auto' : category == 'homeServices' ? 'home' : category == 'hairSalons' ? 'salon' : 'restaurant'
   const catList = (() => {
     const list = []
@@ -33,6 +37,7 @@ export default function BusinessCategory() {
 
   let currentCat = Object.values(businesses).filter(curr => catList?.includes(curr.business_type))
 
+
   if (currentFilter?.reviews != 'noInput') currentCat.sort((a, b) => {
     if (currentFilter?.reviews == 'fromHigh') return b?.num_reviews - a?.num_reviews
     return a?.num_reviews - b?.num_reviews
@@ -41,16 +46,6 @@ export default function BusinessCategory() {
     if (currentFilter?.ratings == 'fromHigh') return b?.avg_rating[0] - a?.avg_rating[0]
     return a?.avg_rating[0] - b?.avg_rating[0]
   })
-  const locationList = []
-  if (currentCat) {
-    const list = currentCat.map(async curr => {
-      const res = await getGeocode({ address: curr.address + curr.city }).then((res) => {
-        const { lat, lng } = getLatLng(res[0])
-        locationList.push({ lat, lng })
-      })
-    })
-  }
-  console.log(locationList)
 
   useEffect(async () => {
     dispatch(thunkLoadAllBusinesses()) //just in case don't really need it
@@ -67,65 +62,91 @@ export default function BusinessCategory() {
   })
 
   // for Google API
-  const { isLoaded } = useLoadScript({
-    id: 'google-map-script',
-    googleMapsApiKey: realKey,
-  });
-  const containerStyle = {
-    width: '600px',
-    height: '600px'
-  };
-  const CurrentMap = () => {
-    const center = useMemo(() => ({
-      lng: -74.0060,
-      lat: 40.7128
-    }), [])
-
-    return (
-      <div >
-        {isLoaded && (
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={{ lng: -74.0060, lat: 40.7128 }}
-            zoom={9}
-          >
-            {/* <MarkerClusterer>
-                <div>
-                  {() => locationList.map((location, i) => {
-                      <Marker
-                        key={i}
-                        position={{ lat: location.lat, lng: location.lng }}
-                      />
-                      
-                    })
-                  }
-                </div>
-            </MarkerClusterer> */}
-            
-
-            <MarkerClusterer>
-              {(clusterer) => currentCat?.map((curr, i) => {
-                return (
-                  <div>
-                    < Marker
-                      key={i}
-                      position={{ lat: 40.69562006703377, lng: -74.18387869355652 }}
-                    />
-                    < Marker
-                      key={i}
-                      position={{ lat: 40.7749295, lng: -74.18397869355652 }}
-                    />
-                  </div>
-                )
-              })}
-            </MarkerClusterer>
-          </GoogleMap>
-
-        )}
-      </div >
-    )
+  if (key) {
+    Geocode.setApiKey(realKey)
   }
-  if (locationList == undefined || key == undefined) return null;
+
+  // useEffect(() => {
+  //   let locationList = [];
+  //   if (currentCat) {
+  //     currentCat.forEach((business) => {
+  //       const realAddress = business.address + " " + business.city + " " + business.state
+  //       Geocode.fromAddress(realAddress).then(
+  //         (response) => {
+  //           const { lat, lng } = response.results[0].geometry.location;
+  //           locationList.push({lat, lng})
+  //         },
+  //         (error) => {
+  //           console.error(error);
+  //         }
+  //         );
+  //     })
+  //     setBusinessLocation(locationList)
+  //     setMap(false)
+  //   }
+  // }, [])
+  // console.log(businessLocation)
+
+
+  // const { isLoaded } = useLoadScript({
+  //   id: 'google-map-script',
+  //   googleMapsApiKey: realKey,
+  // });
+  // const containerStyle = {
+  //   width: '600px',
+  //   height: '600px'
+  // };
+  // let center;
+  // if (businessLocation.length != 0) {
+  //   center = {
+  //     lat: businessLocation[0].lat,
+  //     lng: businessLocation[0].lng
+  //   }
+  // }
+  // const CurrentMap = () => {
+
+  //   if (loadMap == true) {
+  //     return (
+  //       <div>
+  //         Loading...
+  //       </div>
+  //     )
+  //   }
+
+  //   return (
+  //     <div >
+  //       {isLoaded && (
+  //         <GoogleMap
+  //           mapContainerStyle={containerStyle}
+  //           center={{ lat: 40.71566079999999, lng: -73.99670119999999}}
+  //           // center={center}
+  //           zoom={9}
+  //         >
+  //           {
+  //             businessLocation.length != 0 && 
+  //             <MarkerClusterer>
+  //               {(clusterer) => businessLocation.map((location, i) => (
+  //                 < Marker
+  //                   key={i}
+  //                   position={location}
+  //                 />
+  //               ))}
+  //             </MarkerClusterer>
+  //           }
+  //         </GoogleMap>
+
+  //       )}
+  //     </div >
+  //   )
+  // }
+  // if (key == undefined || currentCat == undefined) return null;
+  // if (isLoading == true) {
+  //   return (
+  //     <div>
+  //       Loading...
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className='mainCatPage'>
@@ -135,9 +156,9 @@ export default function BusinessCategory() {
         <h2>location</h2>
         {bussinessList}
       </div>
-      <div className='bigMap'>
+      {/* <div className='bigMap'>
         <CurrentMap />
-      </div>
+      </div> */}
     </div>
   )
 }
