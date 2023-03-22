@@ -13,12 +13,12 @@ export default function BusinessSearch({ props }) {
 
 
     const { search, city } = { ...location.state }
-    console.log(search, city)
+    // console.log(search, city)
 
     const businesses = useSelector(state => state.business.businesses)
-    console.log(businesses, 'businesses')
+    // console.log(businesses, 'businesses')
     let currentSearch = Object.values(businesses).filter(curr => (curr['store_name']).toLowerCase().includes((search).toLowerCase()) || (curr['description']).toLowerCase().includes((search).toLowerCase()) || (curr['business_type']).toLowerCase().includes((search).toLowerCase()) || (curr['address']).toLowerCase().includes((search).toLowerCase()))
-    console.log(currentSearch)
+    // console.log(currentSearch)
 
 
 

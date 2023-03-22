@@ -8,7 +8,7 @@ import CreateBusiness from '../CreateBusiness';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
-	console.log(useParams(), 'praramsnav main')
+	// console.log(useParams(), 'praramsnav main')
 	const { category, location } = useParams()
 	return (
 		<div id='permanentNavBar'>
@@ -20,7 +20,7 @@ function Navigation({ isLoaded }) {
 			</NavLink>
 			<SearchNav />
 			<div className='addBusinessNav'>
-        <NavLink exact to="/business">
+        <NavLink hidden={sessionUser && sessionUser !== null ? false : true} exact to="/business">
           Add your Business!
         </NavLink>
       </div>

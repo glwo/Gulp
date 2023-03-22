@@ -11,7 +11,10 @@ const BusinessCard = ({ business }) => {
   return (
     <Link className="businessCard-main-div" to={`/business/${business.id}`}>
       <div className="image-div">
-        <img className="business-preview-image" src={business.business_images[0] !== undefined ? business.business_images[0].image_url : null} alt="No Business Image found" />
+        <img className="business-preview-image" src={business.business_images[0] !== undefined ? business.business_images[0].image_url : null} alt="No Business Image found" onError={(e) => {
+            e.currentTarget.src =
+              "https://images.businessnewsdaily.com/app/uploads/2019/03/25101809/Write-a-business-plan-1.png";
+          }}/>
       </div>
       <div className="businessInfoDiv">
         <div className="businessStoreName">{business.store_name}</div>

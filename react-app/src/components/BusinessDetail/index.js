@@ -16,7 +16,7 @@ const BusinessDetail = () => {
   const business = useSelector(state => state.business.businesses)
   const currentBusiness = Object.values(business).find(business => business.id == businessId)
   const suggestBusiness = Object.values(business).filter(business => business.city == currentBusiness.city && business.business_type == currentBusiness.business_type && business != currentBusiness)
-  
+
   let businessReviews;
   if (currentBusiness) {
     businessReviews = currentBusiness.review
@@ -30,9 +30,9 @@ const BusinessDetail = () => {
     if (array) {
       const result = array.filter(review => review.rating == num)
       return result.length
-    } 
+    }
     return null
-  } 
+  }
 
   if (!currentBusiness) {
     return null
@@ -42,7 +42,10 @@ const BusinessDetail = () => {
   return (
     <>
       <div className="business-image-div">
-        {currentBusiness && currentBusiness.business_images.map(image => <img className="business-image" src={image.image_url}/>)}
+        {currentBusiness && currentBusiness.business_images.map(image => <img className="business-image" src={image.image_url} onError={(e) => {
+            e.currentTarget.src =
+              "https://images.businessnewsdaily.com/app/uploads/2019/03/25101809/Write-a-business-plan-1.png";
+          }}/>)}
       </div>
       <div className="main-div">
         <div className="title-description-main-div">

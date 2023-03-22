@@ -30,7 +30,7 @@ export default function FilterModal() {
     // }
 
     const currentFilter = useSelector(state => state.filter?.filter)
-    console.log(currentFilter, 'currentfilter on modal')
+    // console.log(currentFilter, 'currentfilter on modal')
     useMemo(() => {
         setReviews(currentFilter?.reviews || 'noInput')
         setRatings(currentFilter?.ratings || 'noInput')
@@ -56,19 +56,19 @@ export default function FilterModal() {
         setCheckCount([check1, check2, check3, check4].filter((curr) => curr).length)
 
         // console.log(checkCount, 'checkCount')
-        console.log(cat1, cat2, cat3, cat4)
+        // console.log(cat1, cat2, cat3, cat4)
     }, [check1, check2, check3, check4, cat1, cat2, cat3, cat4, errors])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        console.log(reviews, ratings, 'reviews', check1, check2, check3, check4, 'check', cat1, cat2, cat3, cat4, 'okay?')
+        // console.log(reviews, ratings, 'reviews', check1, check2, check3, check4, 'check', cat1, cat2, cat3, cat4, 'okay?')
         const currentCat = [cat1, cat2, cat3, cat4]
 
         const cleanedCat = currentCat.filter((curr) => ((curr != 'noInput' && curr != '')))
         const count = cleanedCat.length
-        console.log(count, 'count')
-        console.log(currentCat, 'currentCat', cleanedCat)
+        // console.log(count, 'count')
+        // console.log(currentCat, 'currentCat', cleanedCat)
 
 
         const filterData = {
@@ -76,7 +76,7 @@ export default function FilterModal() {
             ratings
         };
 
-        console.log(filterData[reviews], 'inside filter')
+        // console.log(filterData[reviews], 'inside filter')
         if (filterData[reviews] == "") filterData[reviews] = 'noInput'
         if (filterData[ratings] == "") filterData[ratings] = 'noInput'
 
@@ -90,13 +90,13 @@ export default function FilterModal() {
             filterData[`category${i + count + 1}`] = 'noInput'
         }
 
-        console.log(filterData, 'filterdata after claened')
+        // console.log(filterData, 'filterdata after claened')
 
         if (currentFilter) {
             const data = await dispatch(editFilter(filterData))
             if (data.errors) {
                 setErrors(data.errors)
-                console.log(data.errors, 'what does errors say')
+                // console.log(data.errors, 'what does errors say')
             } else {
                 setErrors([]);
                 closeModal()
@@ -107,7 +107,7 @@ export default function FilterModal() {
         const data = await dispatch(setFilter(filterData))
         if (data.errors) {
             setErrors(['Failed to create the filter. Please try again'])
-            console.log(errors, 'what does errors say')
+            // console.log(errors, 'what does errors say')
         } else {
             setErrors([]);
             closeModal()
