@@ -1,6 +1,6 @@
 # Gulp Project
 
-Welcome to Gulp! This is a clone of the Yelp website, which provides locals with a user friendly to advertise and review businesses in New York and San Francisco.
+Welcome to Gulp! This is a clone of the Yelp website, which provides locals with a user friendly platform to advertise and review businesses in New York and San Francisco.
 We worked on this as a team of four to round off our experiences as students at AppAcademy.
 
 Deployed Live Link: https://gulp.onrender.com/
