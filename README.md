@@ -1,3 +1,39 @@
+# Gulp Project
+
+Welcome to Gulp! This is a clone of the Yelp website, which provides locals with a user friendly to advertise and review businesses in New York and San Francisco.
+We worked on this as a team of four to round off our experiences as students at AppAcademy.
+
+Deployed Live Link: https://gulp.onrender.com/
+
+## Major Features
+- There are 4 deployed features currently in this project, 2 of which have full CRUD(Create, Read, Update, Delete):
+  - Buisnesses(Full CRUD)
+  - Reviews(Full CRUD)
+  - Search bar/filter
+  - User Profile
+
+## Future Features
+- Features that are coming soon:
+  - Maps API
+  - User followers
+
+## Technology
+The technologies we used for this project are:
+  - Backend: Python, Flask
+  - Frontend: JavaScript, React, Redux, HTML, CSS
+
+## Splash Page
+![gulpSplash](https://user-images.githubusercontent.com/112520930/227059333-bf02ff24-64f5-4598-a429-4e39640ff5c8.PNG)
+
+## Business Page
+![gulpBusiness](https://user-images.githubusercontent.com/112520930/227059713-1ee2a870-34ce-45b0-8b72-43f75cd6b0c8.PNG)
+
+## Business Reviews Section
+![gulpReviews](https://user-images.githubusercontent.com/112520930/227059984-46cdc3a7-0b7a-4654-991c-fc63f302b643.PNG)
+
+## Profile Page
+![gulpProfle](https://user-images.githubusercontent.com/112520930/227060482-9e824c61-844e-47ad-94c7-ea732b429849.PNG)
+
 # Flask React Project
 
 This is the starter for the Flask React project.
