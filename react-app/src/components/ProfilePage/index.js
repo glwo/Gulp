@@ -25,7 +25,7 @@ export default function ProfilePage() {
       return specificBusiness
     }
 
-    console.log(Object.values(business))
+    // console.log(Object.values(business))
 
     useEffect(() => {
       dispatch(thunkLoadAllBusinesses())

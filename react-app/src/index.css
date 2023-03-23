@@ -10,3 +10,18 @@
 body {
   margin: 0;
 }
+
+.errorpageDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.errorpageDiv a {
+  text-decoration: none;
+  color: #e33d26;
+}
+
+.errorpageDiv a:hover {
+  text-decoration: underline;
+}

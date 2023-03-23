@@ -50,7 +50,7 @@ export const setFilter = (load) => async (dispatch) => {
 }
 
 export const editFilter = (load) => async (dispatch) => {
-    console.log(load, 'editfilter load from frontend')
+    // console.log(load, 'editfilter load from frontend')
     const res = await fetch('/api/filter/editFilter', {
         method: 'PUT',
         headers: {

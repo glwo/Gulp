@@ -66,7 +66,7 @@ function CreateReviewForm() {
         }
     }
 
-    console.log(stars)
+    // console.log(stars)
 
     return (
         <div className='reviewForm'>
