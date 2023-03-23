@@ -5,7 +5,7 @@ import { thunkUpdateBusiness } from "../../store/business";
 import './UpdateBusinessModal.css'
 
 function UpdateBusinessModal({ business }) {
-  console.log(business)
+  // console.log(business)
   const dispatch = useDispatch();
   const { user } = useSelector(state => state.session)
   const [store_name, setStoreName] = useState(business.store_name);

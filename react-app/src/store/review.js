@@ -91,7 +91,7 @@ export const reviewUpdate = (payload, reviewId) => async dispatch => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
       })
-      console.log('response', response)
+    //   console.log('response', response)
 
 
     if(response.ok){

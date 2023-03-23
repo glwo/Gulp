@@ -5,7 +5,7 @@ import { getGeocode, getLatLng } from 'use-places-autocomplete'
 import { getKey } from "../../store/map";
 
 const Map = ({currentBusiness}, {lat}, lng) => {
-  console.log(lng)
+  // console.log(lng)
   const [location, setLocation] = useState('')
   const dispatch = useDispatch();
   const key = useSelector(state => state.key)
