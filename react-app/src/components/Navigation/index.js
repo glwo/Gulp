@@ -8,7 +8,6 @@ import CreateBusiness from '../CreateBusiness';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
-	// console.log(useParams(), 'praramsnav main')
 	const { category, location } = useParams()
 	return (
 		<div id='permanentNavBar'>
