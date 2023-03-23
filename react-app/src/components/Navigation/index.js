@@ -19,7 +19,7 @@ function Navigation({ isLoaded }) {
 			</NavLink>
 			<SearchNav />
 			<div className='addBusinessNav'>
-        <NavLink exact to="/business">
+        <NavLink exact to="/business" hidden={sessionUser && sessionUser !== null ? false : true}>
           Add your Business!
         </NavLink>
       </div>

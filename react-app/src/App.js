@@ -17,6 +17,7 @@ import ReviewDetails from "./components/Reviews/ReviewDetails";
 import Reviews from "./components/Reviews";
 import BusinessReviews from "./components/Reviews/BusinessReviews";
 import BusinessSearch from "./components/BusinessSearch";
+import { NavLink } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
@@ -66,6 +67,14 @@ function App() {
           <Route exact path='/business/:business_id/writeareview'>
             <div style={{ "display": "flex", 'justifyContent': "center" }}>
               <CreateReviewForm />
+            </div>
+          </Route>
+          <Route>
+            <div className="errorpageDiv">
+              <h2>We’re sorry. We can’t find the page you’re looking for.</h2>
+              <p>Please return home to browse the popular content in your area</p>
+              <NavLink to="/">Go home</NavLink>
+              <img src="https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_design_cdn/1c54cc25ce01/assets/img/svg_illustrations/cant_find_650x520_v2.svg"></img>
             </div>
           </Route>
         </Switch>
