@@ -132,7 +132,7 @@ def seed_businesses():
     business_type="home",
     opening_time="10:00",
     closing_time="19:00",
-    phone_num="(646) 690-2283",
+    phone_num="6466902283",
     avg_rating=0,
     num_reviews=0,
     owner_id=5
@@ -147,7 +147,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="11:30",
     closing_time="21:00",
-    phone_num="(415) 981-8988",
+    phone_num="4159818988",
     avg_rating=0,
     num_reviews=0,
     owner_id=3
@@ -162,7 +162,7 @@ def seed_businesses():
     business_type="auto",
     opening_time="7:00",
     closing_time="20:00",
-    phone_num="(650) 910-6946",
+    phone_num="6509106946",
     avg_rating=0,
     num_reviews=0,
     owner_id=1
@@ -177,7 +177,7 @@ def seed_businesses():
     business_type="salon",
     opening_time="14:00",
     closing_time="19:00",
-    phone_num="(650) 910-6946",
+    phone_num="6509106946",
     avg_rating=0,
     num_reviews=0,
     owner_id=1
@@ -192,7 +192,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="14:00",
     closing_time="19:00",
-    phone_num="(650) 910-6946",
+    phone_num="6509106946",
     avg_rating=0,
     num_reviews=0,
     owner_id=2
@@ -207,7 +207,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=2
@@ -222,7 +222,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=2
@@ -237,7 +237,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=3
@@ -252,7 +252,7 @@ def seed_businesses():
     business_type="auto",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=4
@@ -267,7 +267,7 @@ def seed_businesses():
     business_type="auto",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=4
@@ -282,7 +282,7 @@ def seed_businesses():
     business_type="auto",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=5
@@ -297,7 +297,7 @@ def seed_businesses():
     business_type="auto",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=5
@@ -312,7 +312,7 @@ def seed_businesses():
     business_type="auto",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=4
@@ -327,7 +327,7 @@ def seed_businesses():
     business_type="salon",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=5
@@ -342,7 +342,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=5
@@ -357,7 +357,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=5
@@ -372,7 +372,7 @@ def seed_businesses():
     business_type="home",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=5
@@ -387,7 +387,7 @@ def seed_businesses():
     business_type="home",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=3
@@ -402,7 +402,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=5
@@ -417,7 +417,7 @@ def seed_businesses():
     business_type="restaurant",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=3
@@ -432,7 +432,7 @@ def seed_businesses():
     business_type="salon",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=2
@@ -447,7 +447,7 @@ def seed_businesses():
     business_type="home",
     opening_time="09:00",
     closing_time="21:00",
-    phone_num="(415) 552-7687",
+    phone_num="4155527687",
     avg_rating=0,
     num_reviews=0,
     owner_id=2
