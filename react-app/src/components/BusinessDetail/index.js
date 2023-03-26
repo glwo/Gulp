@@ -223,7 +223,7 @@ const BusinessDetail = () => {
               <div className="side-info-top-div">
                 <div className="info-container">
                   <div>
-                    {currentBusiness.phone_num}
+                    ({currentBusiness.phone_num.slice(0, 3)})-{currentBusiness.phone_num.slice(3, 6)}-{currentBusiness.phone_num.slice(6)} 
                   </div>
                   <div>
                     <i class="fa-solid fa-phone"></i>
