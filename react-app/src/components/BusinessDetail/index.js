@@ -22,7 +22,6 @@ const BusinessDetail = () => {
   const dispatch = useDispatch();
   const business = useSelector(state => state.business.businesses)
   const [location, setLocation] = useState()
-  const [isLoading, setLoading] = useState(true)
   const key = useSelector(state => state.key)
   const realKey = key?.key
   const currentBusiness = Object.values(business).find(business => business.id == businessId)
@@ -55,7 +54,6 @@ const BusinessDetail = () => {
         (response) => {
           const { lat, lng } = response.results[0].geometry.location;
           setLocation({lat, lng})
-          setLoading(false)
         },
         (error) => {
           console.error(error);
@@ -74,6 +72,9 @@ const BusinessDetail = () => {
   };
 
   const CurrentMap = () => {
+    if (!location) {
+      return null
+    }
 
     return isLoaded && (
       <GoogleMap
@@ -97,14 +98,6 @@ const BusinessDetail = () => {
 
   if (!currentBusiness) {
     return null
-  }
-
-  if (isLoading == true) {
-    return (
-      <div>
-        Loading...
-      </div>
-    )
   }
 
   return (
